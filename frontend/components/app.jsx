@@ -12,7 +12,7 @@ import {
 
 const App = () => (
   <div>
-    <h1>This is Faquity.</h1>
+    <h1>Fake equity</h1>
     <Switch>
       <Route exact path="/signup" component={SignUpFormContainer} />
       <Route exact path="/login" component={LogInFormContainer} />
