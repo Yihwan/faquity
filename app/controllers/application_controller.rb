@@ -23,6 +23,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    
+    if current_user.nil?
+      render json: ['nope'], status: 401
+    end
   end
 end
