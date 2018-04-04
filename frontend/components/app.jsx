@@ -14,7 +14,7 @@ import DashboardContainer from './main/dashboard/dashboard_container';
 
 const App = () => (
   <div>
-    <h1>Faquity</h1>
+    <h1>Cool Name</h1>
     <Switch>
       <Route exact path="/signup" component={SignUpFormContainer} />
       <Route exact path="/login" component={LogInFormContainer} />

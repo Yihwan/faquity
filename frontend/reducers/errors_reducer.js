@@ -10,7 +10,7 @@ const errorsReducer = (state=[], action) => {
     case RECEIVE_CURRENT_USER:
       return [];
     case RECEIVE_ERRORS:
-      return action.errors;
+      return Object.assign([], action.errors);
     default:
       return state;
   }
