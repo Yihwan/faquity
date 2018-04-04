@@ -11,13 +11,14 @@ import {
 import SignUpFormContainer from './signup_form/signup_form_container';
 import LogInFormContainer from './login_form/login_form_container';
 import DashboardContainer from './main/dashboard/dashboard_container';
+import { AuthRoute } from '../utils/route_util';
 
 const App = () => (
   <div>
     <h1>Cool Name</h1>
     <Switch>
-      <Route exact path="/signup" component={SignUpFormContainer} />
-      <Route exact path="/login" component={LogInFormContainer} />
+      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+      <AuthRoute exact path="/login" component={LogInFormContainer} />
       <Route exact path="/" component={DashboardContainer} />
     </Switch>
   </div>
