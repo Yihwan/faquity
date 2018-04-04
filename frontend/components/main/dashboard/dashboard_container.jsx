@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user
+  currentUser: state.session.currentUser
 });
 
 const mapDispatchToProps = (dispatch) => ({
