@@ -34,27 +34,35 @@ class LoginForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <h2>Welcome back!</h2>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <input
-            type="text"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange('email')}
-          />
 
-          <input
-            type="password"
-            placeholder="Password [min. 10 characters]"
-            value={this.state.password}
-            onChange={this.handleChange('password')}
-          />
+        <section className='session-container'>
+          <div className='left-half'>
+            <div className='color-layer'/>
+          </div>
+          <div className='right-half'>
+            <div className='outer-form-container'>
+              <form onSubmit={this.handleSubmit}>
+                <h2>Welcome to Cool-Name</h2>
+                <label>Email</label>
+                <input
+                  type="text"
+                  value={this.state.email}
+                  onChange={this.handleChange('email')}
+                  />
 
-        <input className="primary-cta" type="submit" value="Sign In"/>
-        </form>
-      </div>
+                <label>Password</label>
+                <input
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleChange('password')}
+                  />
+                {this.renderErrors()}
+                <input type="submit" value="Sign In"/>
+            </form>
+          </div>
+          </div>
+        </section>
+
     );
   }
 }

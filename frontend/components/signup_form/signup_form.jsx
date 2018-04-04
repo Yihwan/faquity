@@ -37,50 +37,60 @@ class SignupForm extends React.Component {
 
   render() {
     return(
-      <div>
-        <h2>Let's get started</h2>
-        <ul>
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          {this.renderErrors()}
-          <input
-            type="text"
-            placeholder="First Name"
-            value={this.state.firstName}
-            onChange={this.handleChange('first_name')}
-          />
+      <section className='session-container'>
+        <div className='left-half'>
+          <div className='color-layer'/>
+        </div>
 
-          <input
-            type="text"
-            placeholder="Last Name"
-            value={this.state.lastName}
-            onChange={this.handleChange('last_name')}
-          />
+        <div className='right-half'>
+          <ul>
+            {this.renderErrors()}
+          </ul>
+          <div className='outer-form-container'>
+            <form onSubmit={this.handleSubmit}>
+              <h2>Let's get started</h2>
+              <div>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={this.state.firstName}
+                  onChange={this.handleChange('first_name')}
+                />
 
-          <input
-            type="text"
-            placeholder="Email"
-            value={this.state.email}
-            onChange={this.handleChange('email')}
-          />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  value={this.state.lastName}
+                  onChange={this.handleChange('last_name')}
+                />
+              </div>
 
-          <input
-            type="number"
-            placeholder="Buying power"
-            value={this.state.buying_power}
-            onChange={this.handleChange('buying_power')}
-          />
+              <input
+                type="text"
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.handleChange('email')}
+              />
 
-          <input
-            type="password"
-            placeholder="Password [min. 10 characters]"
-            value={this.state.password}
-            onChange={this.handleChange('password')}
-          />
+              <input
+                type="number"
+                placeholder="Buying power"
+                value={this.state.buying_power}
+                onChange={this.handleChange('buying_power')}
+              />
 
-        <input className="primary-cta" type="submit" value="Sign Up"/>
-        </form>
+              <input
+                type="password"
+                placeholder="Password [min. 10 characters]"
+                value={this.state.password}
+                onChange={this.handleChange('password')}
+              />
+
+            <input className="primary-cta" type="submit" value="Sign Up"/>
+            </form>
+        </div>
       </div>
+      </section>
     );
   }
 }

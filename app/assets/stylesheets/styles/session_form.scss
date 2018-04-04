@@ -1,10 +1,97 @@
 @import "../base/globals";
 
-.what {
-  color: red;
-  background-color: $dark;
-}
+.session-container {
+  display: flex;
+  height: 100vh;
 
-.primary-cta {
-  background-color: $green;
+
+  .left-half {
+    background-image: url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    display: flex;
+
+    .color-layer {
+      background-color: rgba(33, 206, 153, 0.5);
+      flex: 1;
+    }
+  }
+
+
+  .right-half {
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    display: flex;
+
+    .outer-form-container {
+      display: flex;
+      flex-direction: column;
+
+      form {
+        padding-left: 50px;
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+
+        h2 {
+          margin: 0 0 16px;
+          font-weight: 500;
+        }
+
+        label {
+          padding: 9px 0;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: .25px;
+          line-height: 19px;
+          display: flex;
+        }
+
+        input[type="text"], input[type="password"] {
+          border: 1px solid;
+          border-radius: 4px;
+          line-height: 1.5em;
+          padding: 15px 20px;
+          background-color: $lightest-grey;
+          border: 1px solid transparent;
+          font-size: 14px;
+        }
+
+        input[type="text"]:hover, input[type="password"]:hover {
+          background-color: $white;
+          border: 1px solid $light-grey;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+          border: 1px solid $green;
+          background-color: $white;
+          outline: none;
+        }
+
+
+        input[type="submit"] {
+          background-color: $green;
+          color: $white;
+          border: 1px solid transparent;
+          width: 50%;
+          margin-top: 50px;
+
+          font-weight: 500;
+          font-size: 14px;
+
+          height: 48px;
+          cursor: pointer;
+          padding: 0 32px;
+          border-radius: 4px;
+        }
+      }
+    }
+  }
+
+
 }
