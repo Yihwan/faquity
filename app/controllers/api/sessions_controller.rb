@@ -7,17 +7,18 @@ class Api::SessionsController < ApplicationController
 
     if user
       login!(user)
+      render 'api/users/show'
     else
-      render json: ["nope"], status: 401
+      render json: ["Wrong!!!"], status: 401
     end
   end
 
   def destroy
     if current_user
       logout!
-      render json: ["nope"]
+      render 'api/users/show'
     else
-      render json: ["YOU CANT DO THAT"]
+      render json: ["YOU CANT DO THAT"], status: 404
     end
   end
 end

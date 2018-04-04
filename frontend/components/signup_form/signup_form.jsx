@@ -21,14 +21,28 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.signup(this.state);
+    this.props.signup(this.state)
+      .then(() => this.props.history.push('/'));
+  }
+
+  renderErrors() {
+    return(
+      this.props.errors.map((error, idx) => (
+        <li key={`error-${idx}`}>
+          {error}
+        </li>
+      ))
+    );
   }
 
   render() {
     return(
       <div>
         <h3>Let's get started</h3>
+        <ul>
+        </ul>
         <form onSubmit={this.handleSubmit}>
+          {this.renderErrors()}
           <input
             type="text"
             placeholder="First Name"
