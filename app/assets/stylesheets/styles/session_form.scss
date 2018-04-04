@@ -64,23 +64,21 @@
           min-width: 100px;
         }
 
-        input[type="text"]:hover, input[type="password"]:hover {
+        input[type="text"]:hover, input[type="password"]:hover, input[type="number"]:hover {
           background-color: $white;
           border: 1px solid $light-grey;
         }
 
-        input[type=text]:focus, input[type=password]:focus {
+        input[type=text]:focus, input[type=password]:focus, input[type="number"]:focus {
           border: 1px solid $green;
           background-color: $white;
           outline: none;
         }
 
 
-        input[type="submit"] {
-          background-color: $green;
+        input[type="submit"], .demo-button {
           color: $white;
           border: 1px solid transparent;
-          width: 50%;
           margin-top: 50px;
 
           font-weight: 500;
@@ -90,6 +88,37 @@
           cursor: pointer;
           padding: 0 32px;
           border-radius: 4px;
+        }
+
+        .cta {
+          width: 100%;
+          display: flex;
+        }
+        input[type="submit"] {
+          background-color: $green;
+          margin-right: 7px;
+          flex: 1;
+        }
+
+        .demo-button {
+          background-color: $grey;
+          margin-left: 7px;
+          flex: 1;
+          text-align: center;
+          padding: 16px 32px;
+          box-sizing: border-box;
+
+        }
+
+        .other-session {
+          padding: 14px 20px;
+          font-size: 14px;
+
+          a {
+            text-decoration: none;
+            font-weight: 600;
+            color: $green;
+          }
         }
 
         .errors-module {
@@ -106,14 +135,17 @@
 
           input {
             width: 100%;
+            display: flex;
           }
 
           .first-name {
-            margin-right: 5px;
+            margin-right: 7px;
+            flex: 1;
           }
 
           .last-name {
-            margin-left: 5px;
+            margin-left: 7px;
+            flex: 1;
           }
         }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -32,6 +33,14 @@ class LoginForm extends React.Component {
     );
   }
 
+  demoUser() {
+    return({
+        email: 'vincent_adultman@businessfactory.com',
+        password: 'passwordpassword'
+      }
+    );
+  }
+
   render() {
     return(
 
@@ -57,11 +66,24 @@ class LoginForm extends React.Component {
                   value={this.state.password}
                   onChange={this.handleChange('password')}
                   />
-                <ul class='errors-module'>
+
+                <div className='other-session'>
+                  Don't have an account? &nbsp;
+                  <Link to='/signup'>Click here to signup.</Link>
+                </div>
+
+                <ul className='errors-module'>
                   {this.renderErrors()}
                 </ul>
-                <input type="submit" value="Sign In"/>
+
+                <div className='cta'>
+                  <input type="submit" value="Sign In"/>
+                  <div
+                    className="demo-button"
+                    onClick={() => this.props.login(this.demoUser())}>Demo</div>
+                </div>
             </form>
+
           </div>
           </div>
         </section>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -32,6 +33,14 @@ class SignupForm extends React.Component {
           {error}
         </li>
       ))
+    );
+  }
+
+  demoUser() {
+    return({
+        email: 'vincent_adultman@businessfactory.com',
+        password: 'passwordpassword'
+      }
     );
   }
 
@@ -71,7 +80,7 @@ class SignupForm extends React.Component {
 
               <input
                 type="number"
-                placeholder="Buying power"
+                placeholder="Initial cash value (you can't change this later!)"
                 value={this.state.buying_power}
                 onChange={this.handleChange('buying_power')}
               />
@@ -83,11 +92,21 @@ class SignupForm extends React.Component {
                 onChange={this.handleChange('password')}
               />
 
+            <div className='other-session'>
+              Already have an account? &nbsp;
+              <Link to='/login'>Click here to login.</Link>
+            </div>
+
             <ul className='errors-module'>
               {this.renderErrors()}
             </ul>
 
-            <input className="primary-cta" type="submit" value="Sign Up"/>
+            <div className='cta'>
+              <input className="primary-cta" type="submit" value="Sign Up"/>
+              <div
+                className="demo-button"
+                onClick={() => this.props.login(this.demoUser())}>Demo</div>
+            </div>
             </form>
         </div>
       </div>

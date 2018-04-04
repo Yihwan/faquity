@@ -15,12 +15,18 @@ import { AuthRoute } from '../utils/route_util';
 
 const App = () => (
 
-    <Switch>
-      <AuthRoute exact path="/signup" component={SignUpFormContainer} />
-      <AuthRoute exact path="/login" component={LogInFormContainer} />
-      <Route exact path="/" component={DashboardContainer} />
-    </Switch>
-  
+  // <Header />
+  // <Main />
+  // <Footer />
+
+  // All routes go here?
+
+  <Switch>
+    <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+    <AuthRoute exact path="/login" component={LogInFormContainer} />
+    <Route exact path="/" component={DashboardContainer} />
+  </Switch>
+
 );
 
 export default App;
