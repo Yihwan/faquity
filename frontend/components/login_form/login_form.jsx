@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
   render() {
     return(
       <div>
-        <h3>Welcome back!</h3>
+        <h3 className="what">Welcome back!</h3>
         <form onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <input
