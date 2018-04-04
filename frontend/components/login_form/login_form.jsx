@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
   render() {
     return(
       <div>
-        <h3 className="what">Welcome back!</h3>
+        <h2>Welcome back!</h2>
         <form onSubmit={this.handleSubmit}>
           {this.renderErrors()}
           <input
@@ -52,7 +52,7 @@ class LoginForm extends React.Component {
             onChange={this.handleChange('password')}
           />
 
-        <input type="submit" value="Sign In"/>
+        <input className="primary-cta" type="submit" value="Sign In"/>
         </form>
       </div>
     );

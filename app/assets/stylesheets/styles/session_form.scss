@@ -1,4 +1,10 @@
+@import "../base/globals";
+
 .what {
   color: red;
-  background-color: yellow; 
+  background-color: $dark;
+}
+
+.primary-cta {
+  background-color: $green;
 }

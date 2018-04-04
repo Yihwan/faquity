@@ -38,7 +38,7 @@ class SignupForm extends React.Component {
   render() {
     return(
       <div>
-        <h3>Let's get started</h3>
+        <h2>Let's get started</h2>
         <ul>
         </ul>
         <form onSubmit={this.handleSubmit}>
@@ -78,7 +78,7 @@ class SignupForm extends React.Component {
             onChange={this.handleChange('password')}
           />
 
-        <input type="submit" value="Sign Up"/>
+        <input className="primary-cta" type="submit" value="Sign Up"/>
         </form>
       </div>
     );
