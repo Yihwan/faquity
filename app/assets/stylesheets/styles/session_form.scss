@@ -44,7 +44,7 @@
         }
 
         label {
-          padding: 9px 0;
+          margin: 4px 0;
           font-size: 14px;
           font-weight: 400;
           letter-spacing: .25px;
@@ -52,7 +52,7 @@
           display: flex;
         }
 
-        input[type="text"], input[type="password"] {
+        input[type="text"], input[type="password"], input[type="number"] {
           border: 1px solid;
           border-radius: 4px;
           line-height: 1.5em;
@@ -60,6 +60,8 @@
           background-color: $lightest-grey;
           border: 1px solid transparent;
           font-size: 14px;
+          margin: 9px 0;
+          min-width: 100px;
         }
 
         input[type="text"]:hover, input[type="password"]:hover {
@@ -89,6 +91,33 @@
           padding: 0 32px;
           border-radius: 4px;
         }
+
+        .errors-module {
+          padding: 14px 20px;
+          color: $red;
+          font-size: 13px;
+        }
+
+        // For signup form ...
+
+        .name-fields {
+          display: flex;
+          justify-content: space-between;
+
+          input {
+            width: 100%;
+          }
+
+          .first-name {
+            margin-right: 5px;
+          }
+
+          .last-name {
+            margin-left: 5px;
+          }
+        }
+
+
       }
     }
   }

@@ -43,20 +43,23 @@ class LoginForm extends React.Component {
             <div className='outer-form-container'>
               <form onSubmit={this.handleSubmit}>
                 <h2>Welcome to Cool-Name</h2>
-                <label>Email</label>
+
                 <input
                   type="text"
+                  placeholder="Email"
                   value={this.state.email}
                   onChange={this.handleChange('email')}
                   />
 
-                <label>Password</label>
                 <input
                   type="password"
+                  placeholder="Password"
                   value={this.state.password}
                   onChange={this.handleChange('password')}
                   />
-                {this.renderErrors()}
+                <ul class='errors-module'>
+                  {this.renderErrors()}
+                </ul>
                 <input type="submit" value="Sign In"/>
             </form>
           </div>

@@ -43,21 +43,18 @@ class SignupForm extends React.Component {
         </div>
 
         <div className='right-half'>
-          <ul>
-            {this.renderErrors()}
-          </ul>
           <div className='outer-form-container'>
             <form onSubmit={this.handleSubmit}>
               <h2>Let's get started</h2>
-              <div>
-                <input
+              <div className='name-fields'>
+                <input className='first-name'
                   type="text"
                   placeholder="First Name"
                   value={this.state.firstName}
                   onChange={this.handleChange('first_name')}
                 />
 
-                <input
+              <input className='last-name'
                   type="text"
                   placeholder="Last Name"
                   value={this.state.lastName}
@@ -85,6 +82,10 @@ class SignupForm extends React.Component {
                 value={this.state.password}
                 onChange={this.handleChange('password')}
               />
+
+            <ul className='errors-module'>
+              {this.renderErrors()}
+            </ul>
 
             <input className="primary-cta" type="submit" value="Sign Up"/>
             </form>
