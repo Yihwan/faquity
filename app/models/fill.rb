@@ -26,4 +26,9 @@ class Fill < ApplicationRecord
     primary_key: :id,
     foreign_key: :asset_id
 
+  has_one :user,
+    class_name: 'User',
+    through: :portfolio,
+    source: :user
+
 end

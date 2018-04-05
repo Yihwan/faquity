@@ -31,13 +31,22 @@ class Dashboard extends React.Component {
 
   renderAssetIndex() {
     let assetIndex = this.props.assets.map((asset) => (
-      <li key={asset.id}>
-        {asset.name} &nbsp;
-        {asset.symbol} &nbsp;
-        {asset.latest_price} &nbsp;
-        {asset.tags} &nbsp;
+      <li className="trElement" key={asset.id}>
+        <div className="tdElement">{asset.name}</div>
+        <div className="tdElement">{asset.symbol}</div>
+        <div className="tdElement">{asset.latest_price}</div>
+        <div className="tdElement">{asset.tags}</div>
       </li>
     ));
+
+    assetIndex.unshift(
+      <li key="0"className="trElement">
+        <div className="thElement">Name</div>
+        <div className="thElement">Symbol</div>
+        <div className="thElement">Price</div>
+        <div className="thElement">Tags</div>
+      </li>
+    );
 
     return assetIndex;
   }
@@ -49,7 +58,7 @@ class Dashboard extends React.Component {
       <div>
         {this.renderGreeting()}
         {this.renderSummaryStats()}
-        <ul>
+        <ul className="tableElement">
           {this.renderAssetIndex()}
         </ul>
       </div>

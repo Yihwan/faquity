@@ -12,4 +12,7 @@ const mapDispatchToProps = (dispatch) => ({
   fetchAsset: (id) => dispatch(fetchAsset(id))
 });
 
+// completeFill: (fill)
+// fill { type: buy, size: 10, } // asset detail
+
 export default connect(mapStateToProps, mapDispatchToProps)(AssetDetail);

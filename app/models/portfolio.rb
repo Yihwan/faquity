@@ -25,4 +25,9 @@ class Portfolio < ApplicationRecord
   has_many :assets,
     through: :fills,
     source: :asset
+
+  # iterate through fills and do some math
+  # def
+
+  #
 end
