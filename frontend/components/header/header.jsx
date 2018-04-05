@@ -5,8 +5,8 @@ import AssetSearchContainer from './asset_search/asset_search_container';
 const navLinks = () => {
   return(
     <div className='nav-links'>
-      <span>Home</span>
-      <span>Account</span>
+      <Link className='link' to='/'>Home</Link>
+      <Link className='link' to='/'>Account</Link>
     </div>
   );
 };

@@ -34,14 +34,29 @@
       background-color: $dark;
       height: 100%;
       flex: 4;
+      border: 1px solid $darker;
+      border-radius: 4px;
+      align-items: center;
+
+      .asset-search-icon {
+        padding-left: 10px;
+      }
 
       .asset-search-input {
         display: flex;
         justify-content: flex-start;
         width: 90%;
-        background-color: $dark;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        font-size: 14px;
+        padding-left: 10px;
         color: $white;
       }
+    }
+
+    .asset-search-module:hover {
+
     }
   }
 
@@ -52,7 +67,7 @@
     flex: 1;
     width: 100px;
 
-    span {
+    .link {
       cursor: pointer;
       text-decoration: none;
       font-size: 13px;
@@ -60,9 +75,10 @@
       line-height: 19px;
       font-weight: 500;
       margin-left: 25px;
+      color: $white;
     }
 
-    span:hover {
+    .link:hover {
       color: $green;
     }
   }
