@@ -8,6 +8,7 @@ class CreateAssets < ActiveRecord::Migration[5.1]
       t.integer :num_employees
       t.integer :year_founded
       t.string :headquarters
+      t.string :tags, array: true 
       t.decimal :latest_price, null: false
 
       t.timestamps

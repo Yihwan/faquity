@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20180405160812) do
     t.integer "num_employees"
     t.integer "year_founded"
     t.string "headquarters"
+    t.string "tags", array: true
     t.decimal "latest_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
