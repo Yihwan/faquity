@@ -6,10 +6,31 @@ class Dashboard extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchAssets();
+  }
+
+  renderAssetIndex() {
+    let assetIndex = this.props.assets.map((asset) => (
+      <li key={asset.id}>
+        {asset.name} &nbsp;
+        {asset.symbol} &nbsp;
+        {asset.latest_price} &nbsp;
+        {asset.tags} &nbsp;
+      </li>
+    ));
+
+    return assetIndex;
+  }
+
   render() {
+
+
     return(
       <div>
-        <h3>i am dashboard</h3>
+        <ul>
+          {this.renderAssetIndex()}
+        </ul>
       </div>
     );
   }
