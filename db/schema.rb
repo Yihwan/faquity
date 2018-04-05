@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405160812) do
+ActiveRecord::Schema.define(version: 20180405203135) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20180405160812) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["symbol"], name: "index_assets_on_symbol", unique: true
+  end
+
+  create_table "fills", force: :cascade do |t|
+    t.integer "asset_id", null: false
+    t.integer "portfolio_id", null: false
+    t.decimal "price", null: false
+    t.integer "size", null: false
+    t.string "side", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_fills_on_asset_id", unique: true
+    t.index ["portfolio_id"], name: "index_fills_on_portfolio_id", unique: true
+  end
+
+  create_table "portfolios", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_portfolios_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

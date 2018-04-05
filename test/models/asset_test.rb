@@ -10,6 +10,7 @@
 #  num_employees :integer
 #  year_founded  :integer
 #  headquarters  :string
+#  tags          :string           is an Array
 #  latest_price  :decimal(, )      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

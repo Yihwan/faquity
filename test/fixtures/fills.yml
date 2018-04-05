@@ -1,0 +1,29 @@
+# == Schema Information
+#
+# Table name: fills
+#
+#  id           :integer          not null, primary key
+#  asset_id     :integer          not null
+#  portfolio_id :integer          not null
+#  price        :decimal(, )      not null
+#  size         :integer          not null
+#  side         :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  asset_id: 1
+  portfolio_id: 1
+  price: 9.99
+  size: 1
+  side: MyString
+
+two:
+  asset_id: 1
+  portfolio_id: 1
+  price: 9.99
+  size: 1
+  side: MyString

@@ -16,14 +16,15 @@ class Dashboard extends React.Component {
     );
   }
 
-  // from https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript
-  
+  // from http://jsfiddle.net/hAfMM/
+  formatCurrency(n, currency) {
+    return currency + " " + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+  }
 
   renderSummaryStats() {
     return(
       <div>
         <h2>Portfolio Cash Value:</h2>
-        <h3>{this.props.currentUser.buying_power}</h3>
       </div>
     );
   }
