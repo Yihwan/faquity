@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
       login!(@user)
       render 'api/users/show'
     else
-      render json: ["Wrong!!!"], status: 401
+      render json: ["Invalid credentials - please try again."], status: 401
     end
   end
 
