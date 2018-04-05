@@ -29,26 +29,37 @@ class Dashboard extends React.Component {
     );
   }
 
-  renderAssetIndex() {
-    let assetIndex = this.props.assets.map((asset) => (
-      <li className="trElement" key={asset.id}>
-        <div className="tdElement">{asset.name}</div>
-        <div className="tdElement">{asset.symbol}</div>
-        <div className="tdElement">{asset.latest_price}</div>
-        <div className="tdElement">{asset.tags}</div>
-      </li>
-    ));
+  renderTags() {
+    return("tag");
+  }
 
-    assetIndex.unshift(
-      <li key="0"className="trElement">
-        <div className="thElement">Name</div>
-        <div className="thElement">Symbol</div>
-        <div className="thElement">Price</div>
-        <div className="thElement">Tags</div>
-      </li>
+  // with help from menubar.io, creating react tables
+  renderAssetIndex(assets) {
+    return(
+      <table>
+
+        <thead>
+          <tr key="0">
+            <td>Name</td>
+            <td>Symbol</td>
+            <td>Price</td> 
+            <td>Tags</td>
+          </tr>
+        </thead>
+        <tbody>
+        {assets.map(asset => {
+          return(
+            <tr key={asset.id}>
+              <td key={asset.name}>{asset.name}</td>
+              <td key={asset.price}>{asset.symbol}</td>
+              <td key={asset.price}>{asset.latest_price}</td>
+              <td key={asset.price}>{asset.tags}</td>
+            </tr>
+          );
+        })}
+        </tbody>
+      </table>
     );
-
-    return assetIndex;
   }
 
   render() {
@@ -58,9 +69,7 @@ class Dashboard extends React.Component {
       <div>
         {this.renderGreeting()}
         {this.renderSummaryStats()}
-        <ul className="tableElement">
-          {this.renderAssetIndex()}
-        </ul>
+        {this.renderAssetIndex(this.props.assets)}
       </div>
     );
   }
