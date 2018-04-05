@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const AssetSearch = () => (
   <section className='asset-search-module'>
-    <div className='asset-search-icon'></div>
+    <div className='asset-search-icon'>IC</div>
     <input
       className="asset-search-input"
       type="text"
