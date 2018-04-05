@@ -1,4 +1,6 @@
 import React from 'react';
+import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
+
 import { Link } from 'react-router-dom';
 
 class Dashboard extends React.Component {
@@ -8,57 +10,86 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchAssets();
+    this.renderGreeting();
   }
 
   renderGreeting() {
+    let currentDate = new Date();
+    let currentHour = currentDate.getHours();
+    let greeting;
+
+    if (currentHour < 12) {
+      greeting = "Good morning";
+    } else if (currentHour < 17) {
+      greeting = "Good afternoon";
+    } else {
+      greeting = "Good evening";
+    }
+
     return(
-      <h1>Hello, {this.props.currentUser.first_name}</h1>
+      <h1 className="greeting">
+        {greeting}, {this.props.currentUser.first_name}
+      </h1>
     );
   }
 
   // from http://jsfiddle.net/hAfMM/
   formatCurrency(n, currency) {
-    return currency + " " + n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+    return currency + " " +
+      n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
 
   renderSummaryStats() {
     return(
-      <div>
+      <div className="summary-stats">
         <h2>Portfolio Cash Value:</h2>
       </div>
     );
   }
 
-  renderTags() {
-    return("tag");
+  renderTags(tags) {
+    return(
+      tags.map((tag, idx) => {
+        return <div key={idx} className='tag'>{tag}</div>;
+      })
+    );
+  }
+
+  renderTableRows(assets) {
+    return(
+      assets.map(asset => {
+        return(
+          <tr key={asset.id}>
+            <td>{asset.name}</td>
+            <td>{asset.symbol}</td>
+            <td>{asset.latest_price}</td>
+            <td>{this.renderTags(asset.tags)}</td>
+          </tr>
+        );
+      })
+    );
   }
 
   // with help from menubar.io, creating react tables
   renderAssetIndex(assets) {
     return(
-      <table>
-
-        <thead>
-          <tr key="0">
-            <td>Name</td>
-            <td>Symbol</td>
-            <td>Price</td> 
-            <td>Tags</td>
-          </tr>
-        </thead>
-        <tbody>
-        {assets.map(asset => {
-          return(
-            <tr key={asset.id}>
-              <td key={asset.name}>{asset.name}</td>
-              <td key={asset.price}>{asset.symbol}</td>
-              <td key={asset.price}>{asset.latest_price}</td>
-              <td key={asset.price}>{asset.tags}</td>
+      <section className="asset-index">
+        <h1>All Assets</h1>
+        <table className="asset-table">
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Symbol</td>
+              <td>Price</td>
+              <td>Tags</td>
             </tr>
-          );
-        })}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {this.renderTableRows(assets)}
+          </tbody>
+        </table>
+      </section>
     );
   }
 
@@ -66,11 +97,20 @@ class Dashboard extends React.Component {
 
 
     return(
-      <div>
-        {this.renderGreeting()}
-        {this.renderSummaryStats()}
-        {this.renderAssetIndex(this.props.assets)}
-      </div>
+      <section className="main">
+        <div className="left">
+
+          <section className="summary-bar">
+            {this.renderGreeting()}
+            {this.renderSummaryStats()}
+          </section>
+
+          {this.renderAssetIndex(this.props.assets)}
+        </div>
+        <div className="right">
+          <DashboardSidebar />
+        </div>
+      </section>
     );
   }
 }

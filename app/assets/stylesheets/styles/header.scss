@@ -1,6 +1,10 @@
 @import "../base/globals";
 
 .navbar {
+  width: 100%;
+  top: 0;
+  position: fixed;
+  
   background-color: $dark;
   color: $white;
   display: flex;

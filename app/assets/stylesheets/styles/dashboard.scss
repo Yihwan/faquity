@@ -1,0 +1,48 @@
+@import "../base/globals";
+
+.main {
+  margin-top: 35px;
+  background-color: $dark;
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  min-height: 90vh;
+
+  .left {
+    flex-direction: column;
+    margin-right: 50px;
+    width: 690px;
+
+    .summary-bar {
+      color: $white;
+
+      .greeting {
+        font-weight: 600;
+      }
+
+      .summary-stats{
+        height: 300px;
+        margin: 10px 0 50px 0;
+        background-color: $grey;
+      }
+    }
+
+    .asset-index {
+      width: 690px;
+      background-color: green;
+      height: 300px;
+    }
+  }
+
+  .right {
+    display: flex;
+    background-color: blue;
+
+    .dashboard-sidebar {
+      width: 275px;
+      background-color: cyan;
+      height: 90%;
+    }
+  }
+
+}
