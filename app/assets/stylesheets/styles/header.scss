@@ -1,10 +1,69 @@
 @import "../base/globals";
 
 .navbar {
-  background-color: red;
+  background-color: $dark;
+  color: $white;
   display: flex;
+  justify-content: space-between;
+  height: 55px;
+  align-items: center;
+  padding: 0 50px 0 50px;
 
-  li {
+  div {
     justify-content: space-around;
+  }
+
+  .logo-search {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 36px;
+    flex: 1;
+
+    .logo {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 30px;
+      flex: 1;
+    }
+
+    .asset-search-module {
+      display: flex;
+      justify-content: flex-end;
+      background-color: $dark;
+      height: 100%;
+      flex: 4;
+
+      .asset-search-input {
+        display: flex;
+        justify-content: flex-start;
+        width: 90%;
+        background-color: $dark;
+        color: $white;
+      }
+    }
+  }
+
+
+  .nav-links {
+    display: flex;
+    justify-content: flex-end;
+    flex: 1;
+    width: 100px;
+
+    span {
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: .25px;
+      line-height: 19px;
+      font-weight: 500;
+      margin-left: 25px;
+    }
+
+    span:hover {
+      color: $green;
+    }
   }
 }

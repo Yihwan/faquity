@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export const AssetSearch = () => (
-  <div>
-    <div></div>
+  <section className='asset-search-module'>
     <input
+      className="asset-search-input"
       type="text"
       placeholder="Search by asset name or symbol"
       />
-  </div>
+  </section>
 );
 
 export default AssetSearch;
