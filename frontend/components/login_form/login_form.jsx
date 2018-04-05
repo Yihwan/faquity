@@ -11,6 +11,10 @@ class LoginForm extends React.Component {
     };
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors(); 
+  }
+
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -26,9 +30,9 @@ class LoginForm extends React.Component {
   renderErrors() {
     return(
       this.props.errors.map((error, idx) => (
-        <li key={`error-${idx}`}>
-          {error}
-        </li>
+          <li key={`error-${idx}`}>
+            {error}
+          </li>
       ))
     );
   }
@@ -42,6 +46,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
+
     return(
 
         <section className='session-container'>

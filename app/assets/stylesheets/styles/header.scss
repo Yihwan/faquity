@@ -1,0 +1,10 @@
+@import "../base/globals";
+
+.navbar {
+  background-color: red;
+  display: flex;
+
+  li {
+    justify-content: space-around;
+  }
+}

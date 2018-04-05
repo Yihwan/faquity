@@ -14,6 +14,9 @@ class SignupForm extends React.Component {
     };
   }
 
+  componentDidMount() {
+  }
+
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
@@ -80,7 +83,7 @@ class SignupForm extends React.Component {
 
               <input
                 type="number"
-                placeholder="Initial cash value (you can't change this later!)"
+                placeholder="Initial cash value (you can only set this once!)"
                 value={this.state.buying_power}
                 onChange={this.handleChange('buying_power')}
               />

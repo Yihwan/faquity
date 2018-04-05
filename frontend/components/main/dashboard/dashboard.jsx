@@ -21,7 +21,7 @@ class Dashboard extends React.Component {
       return(
         <div>
           <Link to='/login'>Go to login</Link>
-          &nbsp; &nbsp; 
+          &nbsp; &nbsp;
           <Link to='/signup'>Go to signup</Link>
         </div>
       );
