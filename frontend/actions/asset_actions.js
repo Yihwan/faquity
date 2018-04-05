@@ -9,7 +9,7 @@ export const receiveAssets = (assets) =>({
 });
 
 export const receiveAsset = (asset) =>({
-  type: RECEIVE_ASSETS,
+  type: RECEIVE_ASSET,
   asset
 });
 
@@ -18,7 +18,7 @@ export const fetchAssets = () => (dispatch) => (
     .then((assets) => dispatch(receiveAssets(assets)))
 );
 
-export const fetchAsset = () => (dispatch) => (
-  AssetAPIUtil.fetchAsset()
+export const fetchAsset = (id) => (dispatch) => (
+  AssetAPIUtil.fetchAsset(id)
     .then((asset) => dispatch(receiveAsset(asset)))
 );

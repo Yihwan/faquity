@@ -10,7 +10,10 @@ class Header extends React.Component {
   navLinks() {
     return(
       <div className='nav-links'>
-        <div>Welcome, {this.props.currentUser.first_name}!</div>
+        <div>
+          {this.props.currentUser.first_name} &nbsp;
+          {this.props.currentUser.last_name}
+        </div>
         <div className='link' onClick={() => this.props.logout()}>Logout</div>
       </div>
     );

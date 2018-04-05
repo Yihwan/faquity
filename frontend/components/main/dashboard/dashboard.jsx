@@ -10,6 +10,24 @@ class Dashboard extends React.Component {
     this.props.fetchAssets();
   }
 
+  renderGreeting() {
+    return(
+      <h1>Hello, {this.props.currentUser.first_name}</h1>
+    );
+  }
+
+  // from https://stackoverflow.com/questions/149055/how-can-i-format-numbers-as-dollars-currency-string-in-javascript
+  
+
+  renderSummaryStats() {
+    return(
+      <div>
+        <h2>Portfolio Cash Value:</h2>
+        <h3>{this.props.currentUser.buying_power}</h3>
+      </div>
+    );
+  }
+
   renderAssetIndex() {
     let assetIndex = this.props.assets.map((asset) => (
       <li key={asset.id}>
@@ -28,6 +46,8 @@ class Dashboard extends React.Component {
 
     return(
       <div>
+        {this.renderGreeting()}
+        {this.renderSummaryStats()}
         <ul>
           {this.renderAssetIndex()}
         </ul>

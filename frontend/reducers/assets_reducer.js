@@ -15,4 +15,4 @@ const assetsReducer = (state={}, action) => {
   }
 };
 
-export default assetsReducer; 
+export default assetsReducer;
