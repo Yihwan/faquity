@@ -8,4 +8,5 @@ json.extract! @asset,
               :num_employees,
               :year_founded,
               :headquarters,
+              :tags,
               :latest_price

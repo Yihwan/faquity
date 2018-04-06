@@ -1,5 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TradeSidebar from './trade_sidebar/trade_sidebar';
+import AssetSummary from './asset_research/asset_summary';
+import AssetAbout from './asset_research/asset_about';
 
 class AssetDetail extends React.Component {
   constructor(props) {
@@ -21,14 +24,11 @@ class AssetDetail extends React.Component {
     return(
         <section className="main">
           <div className="left">
-            i am left
-            <section className="summary-bar">
-              i am summary bar
-            </section>
-
+            <AssetSummary asset={this.props.asset}/>
+            <AssetAbout asset={this.props.asset}/>
           </div>
           <div className="right">
-            i am trade form
+            <TradeSidebar asset={this.props.asset}/>
           </div>
         </section>
 

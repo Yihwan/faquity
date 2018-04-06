@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import AssetSearchContainer from './asset_search/asset_search_container';
 
 class Header extends React.Component {
@@ -10,6 +10,7 @@ class Header extends React.Component {
   navLinks() {
     return(
       <div className='nav-links'>
+        <div className='link' onClick={() => this.props.history.push('/')}>Home</div>
         <div>
           {this.props.currentUser.first_name} &nbsp;
           {this.props.currentUser.last_name}
@@ -36,4 +37,4 @@ class Header extends React.Component {
 }
 
 
-export default Header;
+export default withRouter(Header);
