@@ -1,109 +1,112 @@
 @import "../base/globals";
 
-.navbar {
+.nav-wrapper {
   width: 100%;
-  top: 0;
-  position: fixed;
-  
-  background-color: $dark;
-  color: $white;
-  display: flex;
-  justify-content: space-between;
   height: 55px;
-  align-items: center;
-  padding: 0 50px 0 50px;
+  background: $dark;
+  position:fixed;
 
-  div {
-    justify-content: space-around;
-  }
+  .navbar {
 
-  .logo-search {
+    padding: 0 55px;
+    background-color: $dark;
+    color: $white;
     display: flex;
-    justify-content: flex-start;
+    height: 55px;
     align-items: center;
-    height: 36px;
-    flex: 1;
 
-    .logo {
+    div {
+      justify-content: space-around;
+    }
+
+    .logo-search {
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      font-size: 30px;
+      height: 36px;
       flex: 1;
-    }
 
-    .asset-search-module {
-      display: flex;
-      justify-content: flex-end;
-      background-color: $dark;
-      height: 90%;
-      flex: 4;
-      border: 1px solid $darker;
-      border-radius: 4px;
-      align-items: center;
-
-      .asset-search-icon {
-        padding: 0 5px 0 10px ;
-        color: $grey;
-      }
-
-      .asset-search-input {
+      .logo {
         display: flex;
         justify-content: flex-start;
-        width: 90%;
-        height: 100%;
-        background-color: transparent;
-        border: none;
-        font-size: 14px;
-        padding-left: 10px;
+        align-items: center;
+        font-size: 30px;
+        flex: 1;
+      }
+
+      .asset-search-module {
+        display: flex;
+        justify-content: flex-end;
+        background-color: $dark;
+        height: 90%;
+        flex: 4;
+        border: 1px solid $darker;
+        border-radius: 4px;
+        align-items: center;
+
+        .asset-search-icon {
+          padding: 0 5px 0 10px ;
+          color: $grey;
+        }
+
+        .asset-search-input {
+          display: flex;
+          justify-content: flex-start;
+          width: 90%;
+          height: 100%;
+          background-color: transparent;
+          border: none;
+          font-size: 14px;
+          padding-left: 10px;
+          color: $white;
+        }
+      }
+
+      // handle hovers
+
+      .asset-search-module:hover {
+        border: 1px solid $dark;
+        -webkit-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
+        -moz-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
+        box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
+      }
+
+      .asset-search-module:hover .asset-search-icon {
+        color: $white;
+      }
+
+      .asset-search-module:hover ::placeholder {
         color: $white;
       }
     }
 
-    // handle hovers
 
-    .asset-search-module:hover {
-      border: 1px solid $dark;
-      -webkit-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
-      -moz-box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
-      box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.85);
+    .nav-links {
+      display: flex;
+      justify-content: flex-end;
+      flex: 1;
+      width: 100px;
+
+      .link, div {
+        text-decoration: none;
+        font-size: 14px;
+        letter-spacing: .25px;
+        line-height: 19px;
+        font-weight: 500;
+        margin-left: 25px;
+        color: $white;
+      }
+
+      .link {
+        cursor: pointer;
+      }
+      .link:hover {
+        color: $red;
+      }
     }
 
-    .asset-search-module:hover .asset-search-icon {
-      color: $white;
+    ::placeholder {
+      color: $grey;
     }
-
-    .asset-search-module:hover ::placeholder {
-      color: $white;
-    }
-  }
-
-
-  .nav-links {
-    display: flex;
-    justify-content: flex-end;
-    flex: 1;
-    width: 100px;
-
-    .link, div {
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: .25px;
-      line-height: 19px;
-      font-weight: 500;
-      margin-left: 25px;
-      color: $white;
-    }
-
-    .link {
-      cursor: pointer;
-    }
-    .link:hover {
-      color: $red;
-    }
-  }
-
-  ::placeholder {
-    color: $grey;
   }
 }

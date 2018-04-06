@@ -21,6 +21,7 @@ class Header extends React.Component {
 
   render() {
     return(
+      <div className="nav-wrapper">
       <header className="navbar">
         <div className='logo-search'>
           <div className='logo'>😎</div>
@@ -29,6 +30,7 @@ class Header extends React.Component {
         </div>
         {this.navLinks()}
       </header>
+    </div>
     );
   }
 }
