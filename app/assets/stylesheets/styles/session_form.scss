@@ -40,6 +40,7 @@
         h2 {
           margin: 0 0 16px;
           font-weight: 500;
+          color: $white;
         }
 
         label {
@@ -69,7 +70,7 @@
         }
 
         input[type=text]:focus, input[type=password]:focus, input[type="number"]:focus {
-          border: 1px solid $green;
+          border: 2px solid $green;
           background-color: $white;
           outline: none;
         }
@@ -112,6 +113,7 @@
         .other-session {
           padding: 14px 20px;
           font-size: 14px;
+          color: $white;
 
           a {
             text-decoration: none;

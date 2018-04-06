@@ -2,10 +2,10 @@
 
 .main {
   background-color: $dark;
+  color: $white;
   display: flex;
   justify-content: center;
   padding-top: 50px;
-  min-height: 90vh;
 
   .left {
     margin-top: 50px;
@@ -14,7 +14,6 @@
     width: 690px;
 
     .summary-bar {
-      color: $white;
 
       .greeting {
         font-weight: 600;
@@ -29,13 +28,12 @@
 
     .asset-index {
       width: 690px;
-      background-color: green;
       height: 300px;
     }
   }
 
   .right {
-    margin-top: 50px; 
+    margin-top: 50px;
     display: flex;
     background-color: blue;
 

@@ -9,7 +9,6 @@ const ProtectedViews = () => (
   <div>
     <HeaderContainer />
     <MainContainer />
-    <FooterContainer />
   </div>
 );
 

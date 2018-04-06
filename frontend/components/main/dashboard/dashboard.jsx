@@ -1,12 +1,13 @@
 import React from 'react';
 import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
-
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
   }
+
 
   componentDidMount() {
     this.props.fetchAssets();
@@ -36,7 +37,7 @@ class Dashboard extends React.Component {
   // from http://jsfiddle.net/hAfMM/
   formatCurrency(n, currency) {
     return currency + " " +
-      n.toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+      n.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
   }
 
   renderSummaryStats() {
@@ -50,21 +51,30 @@ class Dashboard extends React.Component {
   renderTags(tags) {
     return(
       tags.map((tag, idx) => {
-        return <div key={idx} className='tag'>{tag}</div>;
+        return <span key={idx} className='tag'>{tag}</span>;
       })
     );
+  }
+
+  handleClick(id) {
+    return (e) => {
+      this.props.history.push(`/assets/${id}`);
+    };
   }
 
   renderTableRows(assets) {
     return(
       assets.map(asset => {
         return(
-          <tr key={asset.id}>
-            <td>{asset.name}</td>
-            <td>{asset.symbol}</td>
-            <td>{asset.latest_price}</td>
-            <td>{this.renderTags(asset.tags)}</td>
-          </tr>
+            <tr key={asset.id} className="main-table-row"
+                onClick={this.handleClick(asset.id)}>
+                <td className="asset-name">{asset.name}</td>
+              <td>{asset.symbol}</td>
+              <td>{this.formatCurrency(asset.latest_price, "$")}</td>
+              <td>{this.renderTags(asset.tags)}</td>
+            </tr>
+
+
         );
       })
     );
@@ -115,4 +125,4 @@ class Dashboard extends React.Component {
   }
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);
