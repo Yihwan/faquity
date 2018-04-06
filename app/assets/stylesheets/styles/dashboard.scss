@@ -28,20 +28,28 @@
 
     .asset-index {
       width: 690px;
-      height: 300px;
+
     }
   }
 
   .right {
     margin-top: 50px;
-    background-color: blue;
+    background-color: $dark;
 
 
-    // with help from https://bl.ocks.org/tristen
+    // scroll help from https://bl.ocks.org/tristen
     .dashboard-sidebar {
       background-color: $dark;
       width: 275px;
 
+      border: solid 1px $dark;
+      -webkit-box-shadow: 0px 0px 10px 5px rgba(14,13,13,1);
+      -moz-box-shadow: 0px 0px 10px 5px rgba(14,13,13,1);
+      box-shadow: 0px 0px 10px 5px rgba(14,13,13,1);
+
+      position: -webkit-sticky;  // required for Safari
+      position: sticky;
+      top: 50px;
 
       display:-webkit-box;
       display:flex;
@@ -52,7 +60,7 @@
 
       .scrollable {
 
-
+        min-height: 0;
         overflow-y:scroll;
         -webkit-box-flex:1;
         flex:1;
@@ -61,7 +69,7 @@
   }
 
 }
-// 
+//
 // h1 {
 //   position: -webkit-sticky;  // required for Safari
 //   position: sticky;
