@@ -1,5 +1,6 @@
 import React from 'react';
 import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
+import DashboardSummary from './summary';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 
@@ -38,14 +39,6 @@ class Dashboard extends React.Component {
   formatCurrency(n, currency) {
     return currency + " " +
       n.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
-  }
-
-  renderSummaryStats() {
-    return(
-      <div className="summary-stats">
-        <h2>Portfolio Cash Value:</h2>
-      </div>
-    );
   }
 
   renderTags(tags) {
@@ -112,7 +105,7 @@ class Dashboard extends React.Component {
 
           <section className="summary-bar">
             {this.renderGreeting()}
-            {this.renderSummaryStats()}
+            <DashboardSummary user={this.props.currentUser}/>
           </section>
 
           {this.renderAssetIndex(this.props.assets)}

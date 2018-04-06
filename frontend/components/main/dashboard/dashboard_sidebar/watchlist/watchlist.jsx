@@ -1,9 +1,9 @@
 import React from 'react';
 
 const renderTableRows = (assets) => (
-  assets.map(asset => {
+  assets.map((asset, idx) => {
     return(
-      <tr className="main-table-row">
+      <tr key={idx} className="main-table-row">
         <td className="asset-name">name</td>
         <td className="asset-symbol">symbol</td>
         <td className="asset-price">latest_price</td>
