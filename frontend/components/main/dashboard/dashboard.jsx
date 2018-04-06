@@ -100,20 +100,20 @@ class Dashboard extends React.Component {
 
 
     return(
-      <section className="main">
-        <div className="left">
+        <section className="main">
+          <div className="left">
 
-          <section className="summary-bar">
-            {this.renderGreeting()}
-            <DashboardSummary user={this.props.currentUser}/>
-          </section>
+            <section className="summary-bar">
+              {this.renderGreeting()}
+              <DashboardSummary user={this.props.currentUser}/>
+            </section>
 
-          {this.renderAssetIndex(this.props.assets)}
-        </div>
-        <div className="right">
-          <DashboardSidebar />
-        </div>
-      </section>
+            {this.renderAssetIndex(this.props.assets)}
+          </div>
+          <div className="right">
+            <DashboardSidebar />
+          </div>
+        </section>
     );
   }
 }
