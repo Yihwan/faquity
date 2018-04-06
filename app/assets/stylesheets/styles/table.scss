@@ -16,7 +16,7 @@
 
   thead {
     font-weight: 600;
-    border-bottom: 2px solid $darker;
+    border-bottom: 3px solid $darker;
 
     td {
       color: $green;
@@ -30,8 +30,8 @@
     }
 
     tr:hover {
-      border-bottom: 3px solid $green;
-      cursor: pointer; 
+      border-bottom: 2px solid $green;
+      cursor: pointer;
     }
 
     tr:hover .asset-name {
