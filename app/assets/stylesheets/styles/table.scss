@@ -16,7 +16,7 @@
 
   thead {
     font-weight: 600;
-    border-bottom: 3px solid $darker;
+    border-bottom: 2px solid $darker;
 
     td {
       color: $green;
@@ -25,12 +25,12 @@
 
   tbody {
     tr {
-      border-bottom: 2px solid $darker;
+      border-bottom: 1px solid $darker;
       padding: 5px;
     }
 
     tr:hover {
-      border-bottom: 2px solid $green;
+      border-bottom: 1px solid $green;
       cursor: pointer;
     }
 

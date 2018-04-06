@@ -1,21 +1,12 @@
 import React from 'react';
+import PortfolioSidebar from './portfolio/portfolio';
+import WatchlistSidebar from './watchlist/watchlist';
 
 const DashboardSidebar = () => (
   <section className='dashboard-sidebar'>
-    <h3>i am dashboard sideasdasdasdsabar</h3>
     <div className="scrollable">
-      <ul>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-        <li>test</li>
-
-      </ul>
+      <PortfolioSidebar />
+      <WatchlistSidebar />
     </div>
   </section>
 );
