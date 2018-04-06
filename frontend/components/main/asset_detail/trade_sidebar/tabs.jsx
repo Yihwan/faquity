@@ -49,7 +49,7 @@ export default class Tabs extends React.Component {
     return (
       <div>
         <div className='tabs'>
-          <Headers
+          <Headers 
             selectedPane={this.state.selectedPane}
             onTabChosen={this.selectTab}
             panes={this.props.panes}>

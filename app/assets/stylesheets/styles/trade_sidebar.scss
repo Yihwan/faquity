@@ -1,0 +1,39 @@
+@import "../base/globals";
+
+.tabs {
+
+
+  .tab-header {
+    display: flex;
+    height: 45px;
+    border-bottom: 1px solid $darker;
+    padding: 0 20px;
+
+    li {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 22px;
+      letter-spacing: .5px;
+
+      border-bottom: 2px solid transparent;
+
+      margin-right: 15px;
+    }
+
+    li:hover {
+      cursor: pointer;
+    }
+
+    .active {
+      border-bottom: 2px solid $green;
+    }
+  }
+
+
+
+
+}
