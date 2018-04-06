@@ -24,5 +24,15 @@ const Protected = ({ loggedIn, path, component: Component }) => (
     />
 );
 
+const ProtectedNav = ({ loggedIn, path, component: Component }) => (
+    <Route
+      path={path}
+      render={props => (
+        loggedIn ? <Component {...props} /> : null
+      )}
+    />
+);
+
 export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 export const ProtectedRoute = withRouter(connect(mapStateToProps)(Protected));
+export const ProtectedNavRoute = withRouter(connect(mapStateToProps)(ProtectedNav));

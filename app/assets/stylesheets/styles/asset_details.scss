@@ -51,7 +51,7 @@
       h2 {
         font-weight: 500;
         padding-bottom: 15px;
-        margin-bottom: 25px;
+        margin-bottom: 20px;
         border-bottom: 1px solid $darker;
       }
 
@@ -64,7 +64,12 @@
         }
 
         tbody {
-          font-weight: 400; 
+          font-weight: 400;
+
+        }
+
+        td {
+          padding-top: 5px;
         }
       }
     }

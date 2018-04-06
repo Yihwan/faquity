@@ -15,11 +15,12 @@ import AssetDetailContainer from './main/asset_detail/asset_detail_container';
 import HeaderContainer from './header/header_container';
 import ProtectedViews from './protected';
 
-import { AuthRoute, ProtectedRoute } from '../utils/route_util';
+import { AuthRoute, ProtectedRoute, ProtectedNavRoute } from '../utils/route_util';
 
 const App = () => (
   <div>
-  <ProtectedRoute path='/' component={HeaderContainer}/>
+  <ProtectedNavRoute path='/' component={HeaderContainer}/>
+
     <Switch>
       <AuthRoute exact path="/signup" component={SignUpFormContainer} />
       <AuthRoute exact path="/login" component={LogInFormContainer} />
