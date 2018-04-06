@@ -60,6 +60,9 @@
           padding-left: 10px;
           color: $white;
         }
+        textarea:focus, input:focus{
+          outline: none;
+        }
       }
 
       // handle hovers
