@@ -84,7 +84,7 @@ class Dashboard extends React.Component {
   renderAssetIndex(assets) {
     return(
       <section className="asset-index">
-        <h1>All Assets</h1>
+        <h1 className='sticky'>All Assets</h1>
         <table className="asset-table">
           <thead>
             <tr>
