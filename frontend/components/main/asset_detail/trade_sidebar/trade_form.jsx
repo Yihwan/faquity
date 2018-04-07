@@ -4,21 +4,34 @@ import { withRouter } from 'react-router-dom';
 class TradeForm extends React.Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.state = this.props.fill;
+  }
 
+  handleChange(type) {
+    return (e) => {
+      this.setState({ [type]: e.target.value });
+    };
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.createFill(this.state);
   }
 
   render() {
     return(
       <section >
-        <form className="trade-form">
+        <form className="trade-form" onSubmit={this.handleSubmit}>
           <div className="shares">
             <label>Shares</label>
-            <input type="number" min="0" step="1" placeholder="0"/>
+            <input type="number" min="0" step="1" placeholder="0"
+              onChange={this.handleChange('size')}/>
           </div>
 
           <div className="market-price">
             <label>Market Price</label>
-            <div>$0</div>
+            <div>${this.props.asset.latest_price}</div>
           </div>
 
           <div className="estimated">

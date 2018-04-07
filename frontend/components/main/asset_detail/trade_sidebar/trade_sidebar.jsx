@@ -4,8 +4,8 @@ import BuyFormContainer from './buy_form_container';
 import SellFormContainer from './sell_form_container';
 
 const panes = (asset) => ([
-  {title: `Buy ${asset.symbol}`, content: <BuyFormContainer />},
-  {title: `Sell ${asset.symbol}`, content: <SellFormContainer />},
+  {title: `Buy ${asset.symbol}`, content: <BuyFormContainer asset={asset}/>},
+  {title: `Sell ${asset.symbol}`, content: <SellFormContainer asset={asset}/>},
   ]
 );
 
