@@ -47,7 +47,7 @@ class TradeForm extends React.Component {
       </form>
 
       <div className="message">
-        <div>Useful Message Here</div>
+        <div>{this.props.message}</div>
       </div>
     </section>
     );

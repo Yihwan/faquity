@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TradeForm from './trade_form';
 import { createFill } from '../../../../actions/fill_actions';
+import { currencyFormatter } from '../../../../utils/helpers';
 
 const mapStateToProps = (state, ownProps) => ({
   fill: {
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
     size: 0,
     side: 'buy'
   },
-  errors: state.errors
+  errors: state.errors,
+  message: `${currencyFormatter(state.session.currentUser.buying_power)} Buying Power Available`
 });
 
 const mapDispatchToProps = (dispatch) => ({

@@ -14,6 +14,7 @@
 #
 
 class User < ApplicationRecord
+  after_create :create_portfolio
   before_validation :ensure_session_token
 
   validates :first_name, :last_name, :email, :buying_power,
@@ -25,7 +26,7 @@ class User < ApplicationRecord
   has_one :portfolio,
     class_name: 'Portfolio',
     primary_key: :id,
-    foreign_key: :user_id 
+    foreign_key: :user_id
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
@@ -59,5 +60,9 @@ class User < ApplicationRecord
 
   def is_password?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+
+  def create_portfolio
+    portfolio = Portfolio.create!(user_id: self.id)
   end
 end
