@@ -6,7 +6,7 @@ import { fetchAssets } from '../../../actions/asset_actions';
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
-  assets: Object.values(state.assets)
+  assets: Object.values(state.entities.assets)
 });
 
 const mapDispatchToProps = (dispatch) => ({
