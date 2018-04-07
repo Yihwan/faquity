@@ -1,0 +1,74 @@
+@import "../base/globals";
+
+.trade-form {
+  padding: 10px 20px 0 20px;
+
+  .shares, .market-price, .estimated, .submit {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    height: 48px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: .5px;
+    line-height: 19px;
+  }
+
+
+
+  label {
+
+  }
+
+  .market-price > label {
+    color: $green;
+  }
+
+  .market-price {
+    border-bottom: 1px solid $darker;
+  }
+
+  input[type="submit"] {
+    margin-top: 35px;
+    width: 100%;
+    background-color: $green;
+    height: 48px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-weight: 500;
+    color: $dark;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    text-align: right;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    height: 36px;
+    line-height: 1.5em;
+    outline: 0;
+    background-color: $darker;
+    padding: 0 13px;
+    font-size: 14px;
+    color: $white;
+  }
+
+  input[type="number"]:focus {
+    border: 1px solid #F29743;
+  }
+
+  .message {
+    text-align: center;
+  }
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  }
+}

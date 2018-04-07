@@ -75,22 +75,4 @@
     }
 
   }
-
-  .right {
-
-    .trade-sidebar {
-      background-color: $dark;
-      width: 275px;
-      height: 300px;
-
-      border: solid 1px $dark;
-      -webkit-box-shadow: 0px 0px 13px 3px rgba(14,13,13,1);
-      -moz-box-shadow: 0px 0px 13px 3px rgba(14,13,13,1);
-      box-shadow: 0px 0px 13px 3px rgba(14,13,13,1);
-
-      position: -webkit-sticky;  // required for Safari
-      position: sticky;
-      top: 100px;
-    }
-  }
 }

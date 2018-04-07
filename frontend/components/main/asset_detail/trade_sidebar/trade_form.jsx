@@ -9,24 +9,34 @@ class TradeForm extends React.Component {
 
   render() {
     return(
-      <div>
-        i am form type: {this.props.formType}
-        <div>
-          <label>Shares
-            <input type="number" placeholder="0"/>
-          </label>
-        </div>
+      <section >
+        <form className="trade-form">
+          <div className="shares">
+            <label>Shares</label>
+            <input type="number" min="0" step="1" placeholder="0"/>
+          </div>
 
-        <label>Market Price
-          <input type="number" placeholder="0"/>
-        </label>
+          <div className="market-price">
+            <label>Market Price</label>
+            <div>$0</div>
+          </div>
 
-        <label>Estimated Something
-          <input type="number" placeholder="0"/>
-        </label>
+          <div className="estimated">
+            <label>Estimated</label>
+            <div>$0</div>
+          </div>
 
 
+          <div className="submit">
+            <input type="submit" value="Submit Order"/>
+          </div>
+
+      </form>
+
+      <div className="message">
+        <div>Useful Message Here</div>
       </div>
+    </section>
     );
   }
 }

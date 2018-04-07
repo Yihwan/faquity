@@ -83,7 +83,7 @@ class SignupForm extends React.Component {
               />
 
               <input
-                type="number"
+                type="number" min="0" step="1"
                 placeholder="Initial cash value (you can only set this once!)"
                 value={this.state.buying_power}
                 onChange={this.handleChange('buying_power')}
