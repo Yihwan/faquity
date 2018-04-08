@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Dashboard from './dashboard';
 import { logout } from '../../../actions/session_actions';
-import { fetchAssets } from '../../../actions/asset_actions';
+import { fetchAssets, fetchAsset } from '../../../actions/asset_actions';
 import { fetchPortfolio } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state) => ({
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
   fetchAssets: () => dispatch(fetchAssets()),
+  fetchAsset: (id) => dispatch(fetchAsset(id)),
   fetchPortfolio: (id) => dispatch(fetchPortfolio(id))
 
 });

@@ -94,10 +94,9 @@ class Dashboard extends React.Component {
 
   render() {
 
-    if (this.props.portfolio === []) {
+    if (this.props.portfolio === {}) {
       return "Loading...";
     }
-
     return(
         <section className="main">
           <div className="left">
@@ -113,7 +112,10 @@ class Dashboard extends React.Component {
             {this.renderAssetIndex(this.props.assets)}
           </div>
           <div className="right">
-            <DashboardSidebar user={this.props.currentUser}/>
+            <DashboardSidebar
+              portfolio={this.props.portfolio}
+              fetchAsset={this.props.fetchAsset}
+            />
           </div>
         </section>
     );
