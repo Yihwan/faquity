@@ -94,10 +94,10 @@ class Dashboard extends React.Component {
 
   render() {
 
-    if (this.props.portfolio === {}) {
-      return "Loading...";
-    }
     return(
+      this.props.assets.length === 0 ?
+        <div>Loading...</div>
+      :
         <section className="main">
           <div className="left">
 
@@ -115,7 +115,6 @@ class Dashboard extends React.Component {
             <DashboardSidebar
               assets={this.props.assets}
               holdings={this.props.currentUser.holdings}
-
             />
           </div>
         </section>

@@ -1,13 +1,5 @@
 import React from 'react';
-// assets.map((asset, idx) => {
-//   return(
-//     <tr key={idx} className="main-table-row">
-//       <td className="asset-name">symbol</td>
-//       <td className="asset-symbol">num_shares</td>
-//       <td className="asset-price">latest_price</td>
-//     </tr>
-//   );
-// })
+import { currencyFormatter } from '../../../../../utils/helpers';
 
 const renderTableRows = (holdings, assets) =>  (
   Object.keys(holdings).map((assetId, idx) => {
@@ -15,9 +7,11 @@ const renderTableRows = (holdings, assets) =>  (
 
     return(
       <tr key={idx} className="main-table-row">
-        <td className="asset-name">{assetId}</td>
-        <td className="asset-symbol">{numShares}</td>
-        <td className="asset-price">latest_price</td>
+        <td className="portfolio-symbol">{assets[assetId].symbol}</td>
+        <td className="portfolio-numshares">{numShares} shares</td>
+        <td className="asset-price">
+          {currencyFormatter.format(assets[assetId].latest_price)}
+        </td>
       </tr>
     );
   })
@@ -33,6 +27,7 @@ const renderAssetIndex = (holdings, assets) => (
 );
 
 const PortfolioSidebar = ({ holdings, assets }) => {
+
   return(
     <aside className="sidebar-element">
       <h3 className="sidebar-header-one">Stocks</h3>
