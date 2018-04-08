@@ -19,6 +19,20 @@ class TradeForm extends React.Component {
     this.props.createFill(this.state);
   }
 
+  renderErrors() {
+    return(
+      this.props.errors.map((error, idx) => (
+        <li key={`error-${idx}`}>
+          {error}
+        </li>
+      ))
+    );
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   render() {
     return(
       <section >
@@ -49,6 +63,8 @@ class TradeForm extends React.Component {
       <div className="message">
         <div>{this.props.message}</div>
       </div>
+
+      {this.renderErrors()}
     </section>
     );
   }

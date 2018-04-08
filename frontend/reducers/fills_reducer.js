@@ -1,4 +1,4 @@
-import { RECEIVE_FILL } from '../actions/fill_actions';
+import { RECEIVE_FILL, RECEIVE_ERRORS } from '../actions/fill_actions';
 import merge from 'lodash/merge';
 
 const fillsReducer = (state={}, action) => {

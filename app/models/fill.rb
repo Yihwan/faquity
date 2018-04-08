@@ -13,6 +13,7 @@
 #
 
 class Fill < ApplicationRecord
+
   validates :asset_id, :portfolio_id, :price, :size,
             :side, presence: true
 
@@ -30,5 +31,9 @@ class Fill < ApplicationRecord
     class_name: 'User',
     through: :portfolio,
     source: :user
+
+  def ensure_buying_power(portfolio_id)
+    (self.price * self.size) < User.find(portfolio_id).buying_power
+  end
 
 end
