@@ -3,6 +3,7 @@ import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
 import DashboardSummary from './summary';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { currencyFormatter } from '../../../utils/helpers';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -35,12 +36,6 @@ class Dashboard extends React.Component {
     );
   }
 
-  // from http://jsfiddle.net/hAfMM/
-  formatCurrency(n, currency) {
-    return currency + " " +
-      n.replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
-  }
-
   renderTags(tags) {
     return(
       tags.map((tag, idx) => {
@@ -63,7 +58,7 @@ class Dashboard extends React.Component {
                 onClick={this.handleClick(asset.id)}>
                 <td className="asset-name">{asset.name}</td>
               <td>{asset.symbol}</td>
-              <td>{this.formatCurrency(asset.latest_price, "$")}</td>
+              <td>{currencyFormatter.format(asset.latest_price, "$")}</td>
               <td>{this.renderTags(asset.tags)}</td>
             </tr>
 

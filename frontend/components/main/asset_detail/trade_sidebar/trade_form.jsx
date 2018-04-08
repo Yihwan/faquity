@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { currencyFormatter } from '../../../../utils/helpers';
 
 class TradeForm extends React.Component {
   constructor(props) {
@@ -34,6 +35,8 @@ class TradeForm extends React.Component {
   }
 
   render() {
+    let estimatedWord = this.state.side === "buy" ? "Cost" : "Credit";
+
     return(
       <section >
         <form className="trade-form" onSubmit={this.handleSubmit}>
@@ -45,12 +48,16 @@ class TradeForm extends React.Component {
 
           <div className="market-price">
             <label>Market Price</label>
-            <div>${this.props.asset.latest_price}</div>
+            <div>
+              {currencyFormatter.format(this.props.asset.latest_price)}
+            </div>
           </div>
 
           <div className="estimated">
-            <label>Estimated</label>
-            <div>$0</div>
+            <label>Estimated {estimatedWord}</label>
+            <div>
+              {currencyFormatter.format(this.state.price * this.state.size)}
+            </div>
           </div>
 
 

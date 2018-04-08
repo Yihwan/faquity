@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TradeForm from './trade_form';
-import { createFill } from '../../../../actions/fill_actions';
+import { createFill, receiveErrors } from '../../../../actions/fill_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   fill: {
@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  createFill: (fill) => dispatch(createFill(fill))
+  createFill: (fill) => dispatch(createFill(fill)),
+  clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TradeForm);
