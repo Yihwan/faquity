@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :assets, only: [:index, :show]
     resources :fills, only: [:index, :create, :show]
+    resources :portfolios, only: [:show]
   end
 end

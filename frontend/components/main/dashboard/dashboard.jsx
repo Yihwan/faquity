@@ -12,6 +12,7 @@ class Dashboard extends React.Component {
 
 
   componentDidMount() {
+    this.props.fetchPortfolio(this.props.currentUser.id);
     this.props.fetchAssets();
     this.renderGreeting();
   }
@@ -93,6 +94,9 @@ class Dashboard extends React.Component {
 
   render() {
 
+    if (this.props.portfolio === {}) {
+      return "Loading...";
+    }
 
     return(
         <section className="main">
@@ -100,13 +104,16 @@ class Dashboard extends React.Component {
 
             <section className="summary-bar">
               {this.renderGreeting()}
-              <DashboardSummary user={this.props.currentUser}/>
+              <DashboardSummary
+                portfolio={this.props.portfolio}
+                user={this.props.currentUser}
+              />
             </section>
 
             {this.renderAssetIndex(this.props.assets)}
           </div>
           <div className="right">
-            <DashboardSidebar />
+            <DashboardSidebar user={this.props.currentUser}/>
           </div>
         </section>
     );

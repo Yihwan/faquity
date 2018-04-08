@@ -15,7 +15,6 @@ class AssetDetail extends React.Component {
   }
 
   render() {
-
     if (this.props.asset === undefined) {
       return "Loading...";
     }

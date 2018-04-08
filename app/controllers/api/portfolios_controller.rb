@@ -4,6 +4,11 @@ class Api::PortfoliosController < ApplicationController
     portfolio.save!
   end
 
+  def show
+    @portfolio = Portfolio.find(params[:id])
+    render 'api/portfolios/show'
+  end
+
   private
 
   def portfolio_params

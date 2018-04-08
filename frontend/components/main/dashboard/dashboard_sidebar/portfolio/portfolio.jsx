@@ -4,8 +4,8 @@ const renderTableRows = (assets) => (
   assets.map((asset, idx) => {
     return(
       <tr key={idx} className="main-table-row">
-        <td className="asset-name">name</td>
-        <td className="asset-symbol">symbol</td>
+        <td className="asset-name">symbol</td>
+        <td className="asset-symbol">num_shares</td>
         <td className="asset-price">latest_price</td>
       </tr>
     );
@@ -29,12 +29,12 @@ const renderAssetIndex = (assets) => (
   </table>
 );
 
-const PortfolioSidebar = () => (
+const PortfolioSidebar = (user) => (
 
   <aside className="sidebar-element">
     <h3 className="sidebar-header-one">Stocks</h3>
     <div className="sidebar-data">
-      {renderAssetIndex([1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1])}
+      {renderAssetIndex([1,1,1,1,1,1])}
     </div>
   </aside>
 );
