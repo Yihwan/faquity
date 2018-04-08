@@ -39,6 +39,9 @@ class Portfolio < ApplicationRecord
       end
     end
 
+    # remove from holdings if you sold all of a certain asset
+    holdings.delete_if { | asset, num_shares| num_shares == 0 }
+
     holdings
   end
 

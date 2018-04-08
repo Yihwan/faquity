@@ -1,8 +1,7 @@
 import React from 'react';
 import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
 import DashboardSummary from './summary';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { currencyFormatter } from '../../../utils/helpers';
 
 class Dashboard extends React.Component {

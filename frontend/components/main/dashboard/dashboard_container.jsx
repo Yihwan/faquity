@@ -8,7 +8,7 @@ import { fetchPortfolio } from '../../../actions/portfolio_actions';
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
   portfolio: state.entities.portfolio,
-  assets: Object.values(state.entities.assets)
+  assets: Object.keys(state.entities.assets).map((id) => state.entities.assets[id])
 });
 
 const mapDispatchToProps = (dispatch) => ({
