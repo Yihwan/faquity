@@ -70,6 +70,7 @@ class Dashboard extends React.Component {
 
   // with help from menubar.io, creating react tables
   renderAssetIndex(assets) {
+
     return(
       <section className="asset-index">
         <h1 className='sticky'>All Assets</h1>
@@ -112,8 +113,9 @@ class Dashboard extends React.Component {
           </div>
           <div className="right">
             <DashboardSidebar
-              holdings={this.props.currentUser.holdings}
               assets={this.props.assets}
+              holdings={this.props.currentUser.holdings}
+
             />
           </div>
         </section>

@@ -36,7 +36,6 @@ class TradeForm extends React.Component {
 
   render() {
     let estimatedWord = this.state.side === "buy" ? "Cost" : "Credit";
-
     return(
       <section >
         <form className="trade-form" onSubmit={this.handleSubmit}>
