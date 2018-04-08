@@ -26,8 +26,29 @@ class Portfolio < ApplicationRecord
     through: :fills,
     source: :asset
 
-  # iterate through fills and do some math
-  # def
+  def holdings
+    holdings = Hash.new(0)
 
-  #
+    self.fills.each do |fill|
+      if fill.side == "buy"
+        holdings[fill.id] += fill.size
+      else
+        holdings[fill.id] -= fill.size
+      end
+    end
+
+    holdings
+  end
+
+  def value
+    value = 0
+
+    self.get_holdings.each do |asset, num_shares|
+      holdings_value = Asset.find_by(id: asset).latest_price * num_shares
+      value += holdings_value
+    end
+
+    value
+  end
+
 end

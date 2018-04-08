@@ -47,7 +47,7 @@ class Fill < ApplicationRecord
   def ensure_buying_power(portfolio_id)
     if (self.price * self.size) < User.find(portfolio_id).buying_power
       return true
-    else 
+    else
       errors[:size].push("Insufficient buying power")
       return false
     end

@@ -13,9 +13,10 @@ class Api::FillsController < ApplicationController
     end
 
     if @fill.save
-      trade_amount = @fill.size * @fill.price
-      trade_amount * -1 if @fill.side == "buy"
-      @fill.user.update_buying_power!(trade_amount)
+
+      change_amount = @fill.size * @fill.price
+      change_amount * -1 if @fill.side == "buy"
+      @fill.user.update_buying_power!(change_amount)
       render json: @fill
     else
       render json: @fill.errors.full_messages, status: 422

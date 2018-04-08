@@ -58,7 +58,7 @@ class Dashboard extends React.Component {
                 onClick={this.handleClick(asset.id)}>
                 <td className="asset-name">{asset.name}</td>
               <td>{asset.symbol}</td>
-              <td>{currencyFormatter.format(asset.latest_price, "$")}</td>
+              <td>{currencyFormatter.format(asset.latest_price)}</td>
               <td>{this.renderTags(asset.tags)}</td>
             </tr>
 
