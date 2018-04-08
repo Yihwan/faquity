@@ -94,7 +94,7 @@ class Dashboard extends React.Component {
 
   render() {
 
-    if (this.props.portfolio === {}) {
+    if (this.props.portfolio === []) {
       return "Loading...";
     }
 

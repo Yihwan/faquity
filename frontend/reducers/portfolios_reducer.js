@@ -6,8 +6,8 @@ const portfoliosReducer = (state={}, action) => {
 
   switch (action.type) {
     case RECEIVE_PORTFOLIO:
-      const fetchedPortfolio = { [action.portfolio.id]: action.portfolio };
-      return merge({}, state, fetchedPortfolio);
+      const fetchedPortfolio = action.portfolio;
+      return merge({}, fetchedPortfolio);
     default:
       return state;
   }
