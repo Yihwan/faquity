@@ -10,7 +10,6 @@ class Dashboard extends React.Component {
     super(props);
   }
 
-
   componentDidMount() {
     this.props.fetchPortfolio(this.props.currentUser.id);
     this.props.fetchAssets();
@@ -113,8 +112,8 @@ class Dashboard extends React.Component {
           </div>
           <div className="right">
             <DashboardSidebar
-              portfolio={this.props.portfolio}
-              fetchAsset={this.props.fetchAsset}
+              holdings={this.props.currentUser.holdings}
+              assets={this.props.assets}
             />
           </div>
         </section>

@@ -41,7 +41,15 @@ class Fill < ApplicationRecord
     end
   end
 
-  def ensure_portfolio_holdings
+  def ensure_portfolio_holdings(portfolio_id)
+    portfolio = Portfolio.find(portfolio_id)
+    if self.size < portfolio.holdings[self.asset_id]
+      return true
+    else
+      errors[:size].push("Insufficient shares")
+      return
+      false
+    end
   end
 
   def ensure_buying_power(portfolio_id)

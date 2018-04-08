@@ -9,40 +9,35 @@ import React from 'react';
 //   );
 // })
 
-const renderTableRows = (holdings, fetchAsset) =>  {
+const renderTableRows = (holdings, assets) =>  (
+  Object.keys(holdings).map((assetId, idx) => {
+    let numShares = holdings[assetId];
 
-  // Object.keys(holdings).forEach((assetId, idx) => {
-  //   let asset = fetchAsset(assetId);
-  //   let numShares = holdings[assetId];
-  //
-  //   return(
-  //     <tr key={idx} className="main-table-row">
-  //       <td className="asset-name">{asset.name}</td>
-  //       <td className="asset-symbol">hello</td>
-  //       <td className="asset-price">latest_price</td>
-  //     </tr>
-  //   );
-  // });
-
-};
-
+    return(
+      <tr key={idx} className="main-table-row">
+        <td className="asset-name">{assetId}</td>
+        <td className="asset-symbol">{numShares}</td>
+        <td className="asset-price">latest_price</td>
+      </tr>
+    );
+  })
+);
 
 // with help from menubar.io, creating react tables
-const renderAssetIndex = (holdings, fetchAsset) => (
+const renderAssetIndex = (holdings, assets) => (
   <table className="sidebar-table">
     <tbody>
-      {renderTableRows(holdings, fetchAsset)}
+      {renderTableRows(holdings, assets)}
     </tbody>
   </table>
 );
 
-const PortfolioSidebar = ({ portfolio, fetchAsset }) => {
-  console.log(fetchAsset);
+const PortfolioSidebar = ({ holdings, assets }) => {
   return(
     <aside className="sidebar-element">
       <h3 className="sidebar-header-one">Stocks</h3>
       <div className="sidebar-data">
-        {renderAssetIndex(portfolio.holdings, fetchAsset)}
+        {renderAssetIndex(holdings, assets)}
       </div>
     </aside>
   );

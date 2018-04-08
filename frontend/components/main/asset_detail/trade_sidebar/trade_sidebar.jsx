@@ -9,9 +9,9 @@ const panes = (asset) => ([
   ]
 );
 
-const TradeSidebar = ({ asset }) => (
+const TradeSidebar = ({ asset, portfolio }) => (
   <section className='trade-sidebar'>
-    <Tabs panes={panes(asset)}/>
+    <Tabs panes={panes(asset, portfolio)}/>
   </section>
 );
 

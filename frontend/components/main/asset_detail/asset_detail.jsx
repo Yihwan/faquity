@@ -12,6 +12,7 @@ class AssetDetail extends React.Component {
 
   componentDidMount() {
     this.props.fetchAsset(this.props.match.params.assetId);
+    this.props.fetchPortfolio(this.props.currentUser.id);
   }
 
   render() {
@@ -27,7 +28,10 @@ class AssetDetail extends React.Component {
             <AssetAbout asset={this.props.asset}/>
           </div>
           <div className="right">
-            <TradeSidebar asset={this.props.asset}/>
+            <TradeSidebar
+              asset={this.props.asset}
+              portfolio={this.props.portfolio}
+            />
           </div>
         </section>
 

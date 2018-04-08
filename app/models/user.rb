@@ -21,7 +21,7 @@ class User < ApplicationRecord
             :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 10, allow_nil: true }
 
-  attr_reader :password
+  attr_reader :password, :holdings
 
   has_one :portfolio,
     class_name: 'Portfolio',
@@ -69,6 +69,10 @@ class User < ApplicationRecord
   def update_buying_power!(change)
     self.buying_power += change
     self.save!
+  end
+
+  def holdings
+    self.portfolio.holdings
   end
 
 end

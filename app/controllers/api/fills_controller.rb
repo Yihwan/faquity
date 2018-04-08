@@ -15,7 +15,8 @@ class Api::FillsController < ApplicationController
     if @fill.save
 
       change_amount = @fill.size * @fill.price
-      change_amount * -1 if @fill.side == "buy"
+      change_amount *= -1 if @fill.side == "buy"
+      
       @fill.user.update_buying_power!(change_amount)
       render json: @fill
     else

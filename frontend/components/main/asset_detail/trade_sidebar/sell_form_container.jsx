@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => ({
     side: 'sell'
   },
   errors: state.errors.fill,
-  message: '1 Share Available'
+  message: `${state.session.currentUser.holdings[ownProps.asset.id]} Shares Available`
 });
 
 const mapDispatchToProps = (dispatch) => ({
