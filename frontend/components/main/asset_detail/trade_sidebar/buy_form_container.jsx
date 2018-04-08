@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => ({
     side: 'buy'
   },
   errors: state.errors.fill,
-  message: `${currencyFormatter(state.session.currentUser.buying_power)} Buying Power Available`
+  message: `${currencyFormatter.format(state.session.currentUser.buying_power)} Buying Power Available`
 });
 
 const mapDispatchToProps = (dispatch) => ({

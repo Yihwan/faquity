@@ -6,7 +6,7 @@
 #  first_name      :string           not null
 #  last_name       :string           not null
 #  email           :string           not null
-#  buying_power    :integer          not null
+#  buying_power    :decimal(, )      not null
 #  password_digest :string           not null
 #  session_token   :string           not null
 #  created_at      :datetime         not null
@@ -65,4 +65,10 @@ class User < ApplicationRecord
   def create_portfolio
     portfolio = Portfolio.create!(user_id: self.id)
   end
+
+  def update_buying_power!(change)
+    self.buying_power += change
+    self.save!
+  end
+
 end
