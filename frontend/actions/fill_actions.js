@@ -15,6 +15,6 @@ export const receiveErrors = (errors) => ({
 
 export const createFill = (fill) => (dispatch) => (
   FillAPIUtil.createFill(fill)
-    .then((newFill) => dispatch(receiveFill(newFill))),
-    (errors) => dispatch(receiveErrors(errors.responseJSON))
+    .then((newFill) => dispatch(receiveFill(newFill)),
+    (errors) => dispatch(receiveErrors(errors.responseJSON)))
 );

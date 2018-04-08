@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
     size: 0,
     side: 'sell'
   },
-  errors: state.errors,
+  errors: state.errors.fill,
   message: '1 Share Available'
 });
 
