@@ -7,8 +7,8 @@ class Api::FillsController < ApplicationController
   def create
     @fill = Fill.new(fill_params)
 
-    if @fill.ensure_buying_power(@fill.portfolio_id) == false
-      render json: ["Insufficient buying_power"], status: 401
+    unless @fill.validate(@fill.portfolio_id)
+      render json: @fill.errors[:size], status: 422
       return
     end
 

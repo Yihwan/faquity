@@ -32,8 +32,23 @@ class Fill < ApplicationRecord
     through: :portfolio,
     source: :user
 
+
+  def validate(portfolio_id)
+    if self.side == "buy"
+      ensure_buying_power(portfolio_id)
+    else self.side == "sell"
+      ensure_portfolio_holdings(portfolio_id)
+    end
+  end
+
+  def ensure_portfolio_holdings
+  end
+
   def ensure_buying_power(portfolio_id)
-    (self.price * self.size) < User.find(portfolio_id).buying_power
+    unless (self.price * self.size) < User.find(portfolio_id).buying_power
+      errors[:size].push("Insufficient buying power")
+      return false
+    end
   end
 
 end
