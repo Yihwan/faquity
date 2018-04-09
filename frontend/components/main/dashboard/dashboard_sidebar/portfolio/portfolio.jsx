@@ -12,8 +12,8 @@ const renderTableRows = (holdings, assets, history) =>  (
   Object.keys(holdings).map((assetId, idx) => {
     let numShares = holdings[assetId];
 
-    return(
-
+    if (numShares > 0) {
+      return(
         <tr key={idx} className="main-table-row"
           onClick={handleClick(assetId, history)}>
           <td className="portfolio-symbol">{assets[assetId - 1].symbol}</td>
@@ -22,7 +22,8 @@ const renderTableRows = (holdings, assets, history) =>  (
             {currencyFormatter.format(assets[assetId - 1].latest_price)}
           </td>
         </tr>
-    );
+      );
+    }
   })
 );
 
