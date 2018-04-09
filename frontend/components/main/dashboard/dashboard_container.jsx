@@ -16,7 +16,6 @@ const mapDispatchToProps = (dispatch) => ({
   fetchAssets: () => dispatch(fetchAssets()),
   fetchAsset: (id) => dispatch(fetchAsset(id)),
   fetchPortfolio: (id) => dispatch(fetchPortfolio(id))
-
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
