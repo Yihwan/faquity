@@ -34,6 +34,11 @@ class Fill < ApplicationRecord
 
 
   def validate(portfolio_id)
+    if self.size <= 0
+      errors[:size].push("Trade size cannot be 0.")
+      return false
+    end
+
     if self.side == "buy"
       ensure_buying_power(portfolio_id)
     else self.side == "sell"
