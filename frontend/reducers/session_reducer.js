@@ -19,9 +19,14 @@ const sessionReducer = (state=_nullUser, action) => {
       if (action.fill.side === "buy") {
 
         nextState.currentUser.buying_power -= fillAmt;
-        nextState.currentUser.holdings[action.fill.asset_id] += action.fill.size;
+        nextState.currentUser.holdings[action.fill.asset_id] =
+          (nextState.currentUser.holdings[action.fill.asset_id]||0) +
+          action.fill.size;
+
       } else {
-        nextState.currentUser.buying_power = parseFloat(nextState.currentUser.buying_power) + parseFloat(fillAmt);
+        nextState.currentUser.buying_power =
+          parseFloat(nextState.currentUser.buying_power) +
+          parseFloat(fillAmt);
         nextState.currentUser.holdings[action.fill.asset_id] -= action.fill.size;
       }
       return nextState;

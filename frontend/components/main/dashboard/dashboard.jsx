@@ -8,12 +8,13 @@ class Dashboard extends React.Component {
   constructor(props) {
     super(props);
 
-    // this.state = { loading: true; }
+    this.state = { loading: true };
   }
 
   componentDidMount() {
     this.props.fetchPortfolio(this.props.currentUser.id);
-    this.props.fetchAssets(); //.then(() => this.setState({loading: false});
+    this.props.fetchAssets()
+      .then(() => this.setState({loading: false}));
     this.renderGreeting();
   }
 
@@ -97,7 +98,7 @@ class Dashboard extends React.Component {
 
     // change this conditional using this.state.loading
     return(
-      this.props.assets.length === 0 ?
+      this.state.loading ?
         <div>Loading...</div>
       :
         <section className="main">
