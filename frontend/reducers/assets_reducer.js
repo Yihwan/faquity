@@ -7,7 +7,9 @@ const assetsReducer = (state={}, action) => {
   switch (action.type) {
     case RECEIVE_ASSET:
       const newAsset = { [action.asset.id]: action.asset };
-      return merge({}, state, newAsset);
+      const newState = merge({}, state, newAsset);
+
+      return newState;
     case RECEIVE_ASSETS:
       return action.assets;
     default:

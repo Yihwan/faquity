@@ -26,7 +26,7 @@ const renderAboutTable = (asset) => {
   );
 };
 
-const AssetAbout = ({ asset, fetchAsset }) => {
+const AssetAbout = ({ asset }) => {
 
 
   return(

@@ -14,6 +14,7 @@ export const receiveAsset = (asset) =>({
 });
 
 export const fetchAssets = () => (dispatch) => (
+  // dispatch(startLoadingAllAssets)
   AssetAPIUtil.fetchAssets()
     .then((assets) => dispatch(receiveAssets(assets)))
 );

@@ -9,3 +9,5 @@ json.extract! @asset,
               :headquarters,
               :tags,
               :latest_price
+
+json.watched_by_current_user !!@asset.watches.find_by(user_id: current_user.id)

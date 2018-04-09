@@ -7,11 +7,13 @@ import { currencyFormatter } from '../../../utils/helpers';
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+
+    // this.state = { loading: true; }
   }
 
   componentDidMount() {
     this.props.fetchPortfolio(this.props.currentUser.id);
-    this.props.fetchAssets();
+    this.props.fetchAssets(); //.then(() => this.setState({loading: false});
     this.renderGreeting();
   }
 
@@ -93,6 +95,7 @@ class Dashboard extends React.Component {
 
   render() {
 
+    // change this conditional using this.state.loading
     return(
       this.props.assets.length === 0 ?
         <div>Loading...</div>

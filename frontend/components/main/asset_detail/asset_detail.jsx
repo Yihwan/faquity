@@ -8,11 +8,12 @@ import AssetWatch from './asset_watch';
 class AssetDetail extends React.Component {
   constructor(props) {
     super(props);
-
+    // this.state = this.props.asset;
+    // debugger
   }
 
   componentDidMount() {
-    this.props.fetchAssets();
+
     this.props.fetchAsset(this.props.match.params.assetId);
     this.props.fetchPortfolio(this.props.currentUser.id);
   }
@@ -22,7 +23,7 @@ class AssetDetail extends React.Component {
     // probably a class because it needs a state
 
     return(
-      this.props.asset === undefined ?
+      !this.props.asset ?
         <div>Loading...</div>
       :
         <section className="main">
@@ -30,7 +31,6 @@ class AssetDetail extends React.Component {
             <AssetSummary asset={this.props.asset}/>
             <AssetAbout
               asset={this.props.asset}
-              fetchAsset={this.props.fetchAsset}
             />
           </div>
           <div className="right">

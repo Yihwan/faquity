@@ -8,7 +8,8 @@ class Api::WatchesController < ApplicationController
     @watch.asset_id = params[:id]
 
     if @watch.save
-      render json: @watch
+      @asset = Asset.find(@watch.asset_id)
+      render 'api/assets/show'
     else
       render json: @watch.errors.full_messages, status: 422
     end
@@ -17,5 +18,8 @@ class Api::WatchesController < ApplicationController
   def destroy
     @watch = Watch.find_by(asset_id: params[:id])
     @watch.destroy
+
+    @asset = Asset.find(@watch.asset_id)
+    render 'api/assets/show'
   end
 end
