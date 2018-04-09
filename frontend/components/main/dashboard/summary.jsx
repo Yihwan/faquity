@@ -23,7 +23,7 @@ const DashboardSummary = ({ user, portfolio }) => {
       </div>
       <div className="summary-3">
         <div className="metric">
-          0
+          sum num
         </div>
         <div className="caption">
           <h3>Number of Trades</h3>

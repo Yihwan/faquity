@@ -12,21 +12,26 @@ class AssetDetail extends React.Component {
   }
 
   componentDidMount() {
+    this.props.fetchAssets();
     this.props.fetchAsset(this.props.match.params.assetId);
     this.props.fetchPortfolio(this.props.currentUser.id);
   }
 
   render() {
-    if (this.props.asset === undefined) {
-      return "Loading...";
-    }
     // render trade form container pass in fill info as props,
     // probably a class because it needs a state
+
     return(
+      this.props.asset === undefined ?
+        <div>Loading...</div>
+      :
         <section className="main">
           <div className="left">
             <AssetSummary asset={this.props.asset}/>
-            <AssetAbout asset={this.props.asset}/>
+            <AssetAbout
+              asset={this.props.asset}
+              fetchAsset={this.props.fetchAsset}
+            />
           </div>
           <div className="right">
             <TradeSidebar

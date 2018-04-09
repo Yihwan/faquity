@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AssetDetail from './asset_detail';
-import { fetchAsset, watchAsset, unwatchAsset } from '../../../actions/asset_actions';
+import { fetchAsset, watchAsset, unwatchAsset, fetchAssets } from '../../../actions/asset_actions';
 import { fetchPortfolio } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -11,6 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  fetchAssets: () => dispatch(fetchAssets()),
   fetchAsset: (id) => dispatch(fetchAsset(id)),
   fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
   watchAsset: (id) => dispatch(watchAsset(id)),
