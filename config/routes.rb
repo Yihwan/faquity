@@ -8,5 +8,8 @@ Rails.application.routes.draw do
     resources :assets, only: [:index, :show]
     resources :fills, only: [:index, :create, :show]
     resources :portfolios, only: [:show]
+
+    delete '/watches', to: 'watches#destroy'
+    resources :watches, only: [:create]
   end
 end

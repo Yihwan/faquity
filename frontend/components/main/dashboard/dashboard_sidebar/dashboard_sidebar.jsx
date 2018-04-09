@@ -2,7 +2,7 @@ import React from 'react';
 import PortfolioSidebar from './portfolio/portfolio';
 import WatchlistSidebar from './watchlist/watchlist';
 
-const DashboardSidebar = ({ holdings, assets }) => {
+const DashboardSidebar = ({ assets, holdings, watchlist }) => {
 
   return(
     <section className='dashboard-sidebar'>
@@ -10,8 +10,11 @@ const DashboardSidebar = ({ holdings, assets }) => {
         <PortfolioSidebar
           holdings={holdings}
           assets={assets}
-          />
-        <WatchlistSidebar />
+        />
+        <WatchlistSidebar
+          watchlist={watchlist}
+          assets={assets}
+        />
       </div>
     </section>
   );

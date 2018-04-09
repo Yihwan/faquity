@@ -75,4 +75,23 @@
     }
 
   }
+
+  .right {
+
+    .asset-watch {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+
+      .asset-watch-btn {
+        background-color: $dark;
+        border: none;
+        cursor: pointer;
+        color: $green;
+        font-size: 14px;
+        letter-spacing: .25px;
+        line-height: 19px;
+      }
+    }
+  }
 }

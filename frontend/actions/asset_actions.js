@@ -22,3 +22,13 @@ export const fetchAsset = (id) => (dispatch) => (
   AssetAPIUtil.fetchAsset(id)
     .then((asset) => dispatch(receiveAsset(asset)))
 );
+
+export const watchAsset = (id) => (dispatch) => (
+  AssetAPIUtil.watchAsset(id)
+    .then((asset) => dispatch(receiveAsset(asset)))
+);
+
+export const unwatchAsset = (id) => (dispatch) => (
+  AssetAPIUtil.unwatchAsset(id)
+    .then((asset) => dispatch(receiveAsset(asset)))
+);

@@ -23,5 +23,11 @@ class Asset < ApplicationRecord
   has_many :fills,
     class_name: 'Fill',
     primary_key: :id,
-    foreign_key: :asset_id 
+    foreign_key: :asset_id
+
+  has_many :watches,
+    class_name: 'Watch',
+    primary_key: :id,
+    foreign_key: :asset_id
+
 end

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import TradeSidebar from './trade_sidebar/trade_sidebar';
 import AssetSummary from './asset_research/asset_summary';
 import AssetAbout from './asset_research/asset_about';
+import AssetWatch from './asset_watch';
 
 class AssetDetail extends React.Component {
   constructor(props) {
@@ -32,6 +33,15 @@ class AssetDetail extends React.Component {
               asset={this.props.asset}
               portfolio={this.props.portfolio}
             />
+
+          <div className="asset-watch">
+            <AssetWatch
+              watchAsset = {this.props.watchAsset}
+              unwatchAsset = {this.props.unwatchAsset}
+              asset = {this.props.asset}
+              watchlist = {this.props.currentUser.watchlist}
+            />
+          </div>
           </div>
         </section>
 

@@ -21,7 +21,16 @@ class User < ApplicationRecord
             :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 10, allow_nil: true }
 
-  attr_reader :password, :holdings
+  attr_reader :password, :holdings, :watchlist
+
+  has_many :watches,
+    class_name: 'Watch',
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :watched_assets,
+    through: :watches,
+    source: :asset
 
   has_one :portfolio,
     class_name: 'Portfolio',
@@ -75,4 +84,13 @@ class User < ApplicationRecord
     self.portfolio.holdings
   end
 
+  def watchlist
+    asset_ids = []
+
+    self.watches.each_with_index do |watch, idx|
+      asset_ids.push(self.watches[idx].asset_id)
+    end
+
+    asset_ids
+  end
 end

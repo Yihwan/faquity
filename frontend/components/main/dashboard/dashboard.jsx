@@ -114,6 +114,7 @@ class Dashboard extends React.Component {
             <DashboardSidebar
               assets={this.props.assets}
               holdings={this.props.currentUser.holdings}
+              watchlist={this.props.currentUser.watchlist}
             />
           </div>
         </section>

@@ -11,3 +11,19 @@ export const fetchAsset = (id) => (
     method: 'GET'
   })
 );
+//
+export const watchAsset = (id) => (
+  $.ajax({
+    url: `/api/watches`,
+    method: 'POST',
+    data: { id }
+  })
+);
+
+export const unwatchAsset = (id) => (
+  $.ajax({
+    url: `/api/watches`,
+    method: 'DELETE',
+    data: { id }
+  })
+);
