@@ -13,9 +13,7 @@ class AssetDetail extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchAsset(this.props.match.params.assetId);
-    this.props.fetchPortfolio(this.props.currentUser.id);
   }
 
   render() {
@@ -36,7 +34,6 @@ class AssetDetail extends React.Component {
           <div className="right">
             <TradeSidebar
               asset={this.props.asset}
-              portfolio={this.props.portfolio}
             />
 
           <div className="asset-watch">

@@ -84,6 +84,7 @@ class User < ApplicationRecord
     self.portfolio.holdings
   end
 
+
   def watchlist
     asset_ids = []
 

@@ -6,14 +6,12 @@ import { fetchPortfolio } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
-  asset: state.entities.assets[ownProps.match.params.assetId],
-  portfolio: state.entities.portfolio
+  asset: state.entities.assets[ownProps.match.params.assetId]
 });
 
 const mapDispatchToProps = (dispatch) => ({
   fetchAssets: () => dispatch(fetchAssets()),
   fetchAsset: (id) => dispatch(fetchAsset(id)),
-  fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
   watchAsset: (id) => dispatch(watchAsset(id)),
   unwatchAsset: (id) => dispatch(unwatchAsset(id))
 
