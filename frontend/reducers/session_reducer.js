@@ -20,17 +20,22 @@ const sessionReducer = (state=_nullUser, action) => {
       let buyingPower = nextState.currentUser.buying_power;
       let holdings = nextState.currentUser.holdings;
 
+
       if (action.fill.side === "buy") {
-        buyingPower -= fillAmt;
+
+        buyingPower = parseFloat(buyingPower) - fillAmt;
         holdings[action.fill.asset_id] =
           (holdings[action.fill.asset_id]||0) +
           action.fill.size;
       } else {
-        buyingPower = parseFloat(buyingPower) + parseFloat(fillAmt);
+
+        buyingPower = parseFloat(buyingPower) + fillAmt;
         holdings[action.fill.asset_id] -= action.fill.size;
       }
 
-      nextState.currentUser.num_trades++; 
+      nextState.currentUser.buying_power = buyingPower;
+      nextState.currentUser.holdings = holdings;
+      nextState.currentUser.num_trades++;
       return nextState;
     case RECEIVE_ASSET:
       nextState = merge({}, state);
