@@ -87,6 +87,7 @@
       -webkit-box-orient:vertical;
       flex-direction:column;
       max-height: 85vh;
+      overflow: hidden;
 
 
       .scrollable {
@@ -96,6 +97,8 @@
         -webkit-box-flex:1;
         flex:1;
       }
+
+      .scrollable::-webkit-scrollbar { display: none }
     }
   }
 
