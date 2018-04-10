@@ -13,7 +13,6 @@ const AssetSummary = ({ asset }) => (
     <h1 className="latest-price">
       {currencyFormatter.format(asset.latest_price)}
     </h1>
-    <div className="chart">This is not a chart.</div>
   </section>
 );
 

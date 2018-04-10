@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import TradeSidebar from './trade_sidebar/trade_sidebar';
 import AssetSummary from './asset_research/asset_summary';
 import AssetAbout from './asset_research/asset_about';
+import AssetChart from './asset_research/asset_chart';
 import AssetWatch from './asset_watch';
 
 class AssetDetail extends React.Component {
@@ -28,6 +29,7 @@ class AssetDetail extends React.Component {
         <section className="main">
           <div className="left">
             <AssetSummary asset={this.props.asset}/>
+            <AssetChart />
             <AssetAbout
               asset={this.props.asset}
             />
