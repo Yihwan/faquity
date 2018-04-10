@@ -104,6 +104,13 @@ class AssetSearch extends React.Component {
 
         <div className={resultsContainer}>
           <table>
+            <thead>
+              <tr>
+                <td className="heading">
+                  Stocks
+                </td>
+              </tr>
+            </thead>
             <tbody>
               {results}
             </tbody>
