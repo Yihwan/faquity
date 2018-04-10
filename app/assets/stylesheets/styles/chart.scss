@@ -1,0 +1,39 @@
+@import "../base/globals";
+
+.asset-detail-chart {
+
+  .button-bar {
+    margin: 20px 0;
+    border-bottom: 1px solid $darker;
+
+
+    .time-buttons {
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: $white;
+      margin-right: 12px;
+
+      font-weight: 500;
+      font-size: 14px;
+      letter-spacing: .25px;
+      line-height: 19px;
+
+      padding-bottom: 12px;
+
+      cursor: pointer;
+    }
+
+    .time-buttons:hover {
+      color: $green;
+    }
+
+    .time-buttons:focus {
+      color: $green;
+      border-bottom: 2px solid $green;
+      outline: none;
+    }
+
+
+  }
+}
