@@ -4,21 +4,53 @@ import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer, Legend } from 'recharts';
 
 
-class CustomTooltip extends React.Component {
+//
+// class CustomLegend extends React.Component {
+//
+//   constructor(props) {
+//     super(props);
+//   }
+//
+//   render() {
+//
+//       const { payload } = this.props;
+//
+//       return (
+//         <ul>
+//           {
+//             payload.map((entry, index) => (
+//               <li key={`item-${index}`}>{entry.value}</li>
+//             ))
+//           }
+//         </ul>
+//       );
+//
+//   }
+// }
 
+
+class CustomTooltip extends React.Component {
   constructor(props) {
     super(props);
   }
+  //
+  componentWillReceiveProps(nextProps) {
+    //
+    if (nextProps.payload && nextProps.payload[0]
+    && nextProps.payload[0].payload) {
+      let featuredPrice = document.getElementById("featured-price");
+      featuredPrice.innerHTML = nextProps.payload[0].payload["amt"];
+    }
+  }
 
   render() {
-    const { active } = this.props;
-
-    if (active) {
-      const { payload, label } = this.props;
+    if (this.props.active) {
+      // this.props.updatePrice(this.props.payload[0].payload["amt"]);
 
       return (
         <div className="custom-tooltip">
-          <p className="label">{`${payload[0].payload["date"]}`}</p>
+
+          <p className="label">{`${this.props.payload[0].payload["date"]}`}</p>
         </div>
       );
     }
@@ -26,12 +58,36 @@ class CustomTooltip extends React.Component {
     return null;
   }
 }
+//  const CustomTooltip = ({ payload, active, updatePrice }) => {
+//
+//   if (active) {
+//
+//     updatePrice(payload[0].payload["amt"]);
+//
+//     return (
+//       <div className="custom-tooltip">
+//         <p className="label">{`${payload[0].payload["date"]}`}</p>
+//       </div>
+//     );
+//   }
+//
+//   return null;
+// };
 
 
 
 class AssetChart extends React.Component {
   constructor(props) {
     super(props);
+    this.updatePrice = this.updatePrice.bind(this);
+
+    this.state = {
+      selectedPrice: 0
+    };
+  }
+
+  updatePrice(newPrice) {
+    this.setState({ selectedPrice: newPrice });
   }
 
   render() {
@@ -168,35 +224,38 @@ class AssetChart extends React.Component {
     const min = Math.min.apply(Math,data.map(function(o){return o.y;}));
 
     return(
-      <div className="chart">
-        <ResponsiveContainer width='100%' height="100%">
-          <LineChart data={data} margin={{top:25, bottom: 25}}>
+      <div>
+        <div id="featured-price"> </div>
 
-            <Line type="linear"
-              dataKey="amt"
-              strokeWidth={2} stroke="#21ce99"
-              dot={false}
-            />
+        <div className="chart">
+          <ResponsiveContainer width='100%' height="100%">
+            <LineChart data={data} margin={{top:25, bottom: 25}}>
 
-            <YAxis
-              hide={true}
-              domain={[min, max]}
-            />
+              <Line type="linear"
+                dataKey="amt"
+                strokeWidth={2} stroke="#21ce99"
+                dot={false}
+              />
+
+              <YAxis
+                hide={true}
+                domain={[min, max]}
+              />
 
             <Tooltip
 
-              wrapperStyle={{background: 'transparent', border: 'none'}}
-              labelStyle={{color: 'gray'}}
-              cursor={{strokeWidth: 1}}
-              offset={-40}
-              position={{y: 0}}
-              content={<CustomTooltip />}
-              isAnimationActive={false}
-            />
+                wrapperStyle={{background: 'transparent', border: 'none'}}
+                labelStyle={{color: 'gray'}}
+                cursor={{strokeWidth: 1}}
+                offset={-60}
+                position={{y: 0}}
+                content={<CustomTooltip/>}
+                isAnimationActive={false}
+              />
+            </LineChart>
+          </ResponsiveContainer>
 
-          </LineChart>
-        </ResponsiveContainer>
-
+        </div>
       </div>
     );
   }
