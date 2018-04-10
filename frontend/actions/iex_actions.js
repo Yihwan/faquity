@@ -8,9 +8,9 @@ export const receivePrices = (prices) => ({
 });
 
 
-export const fetchPrices = (time) => (dispatch) => (
+export const fetchPrices = (time, symbol) => (dispatch) => (
   // dispatch(startLoadingAllAssets)
 
-  IEXAPIUtil.fetchPrices(time)
+  IEXAPIUtil.fetchPrices(time, symbol)
     .then((prices) => dispatch(receivePrices(prices)))
 );

@@ -1,6 +1,6 @@
-export const fetchPrices = (time) => (
+export const fetchPrices = (time, symbol) => (
   $.ajax({
-    url: `https://api.iextrading.com/1.0/stock/aapl/chart/${time}?filter=date,label,high`,
+    url: `https://api.iextrading.com/1.0/stock/${symbol}/chart/${time}?filter=date,label,high`,
     method: 'GET'
   })
 );

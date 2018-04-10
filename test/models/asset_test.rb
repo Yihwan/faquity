@@ -14,6 +14,7 @@
 #  latest_price  :decimal(, )      not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
+#  fake_symbol   :string
 #
 
 require 'test_helper'

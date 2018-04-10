@@ -67,7 +67,8 @@ class AssetChart extends React.Component {
 
   changeTime(newTime) {
     this.setState({ time: newTime });
-    this.props.fetchPrices(newTime);
+
+    this.props.fetchPrices(newTime, this.props.asset.fake_symbol);
   }
 
   renderButtons() {
@@ -84,13 +85,14 @@ class AssetChart extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPrices(this.state.time)
+    this.props.fetchPrices(this.state.time, this.props.asset.fake_symbol)
       .then(()=>this.setState({ loading:false }));
   }
 
   render() {
 
-    let data = this.props.prices;
+    let rawData = this.props.prices;
+    let data = rawData.filter((obj) => obj.high > 0);
 
     // provided by tobyodavies on stackoverflow
     const max = Math.max.apply(Math,data.map(function(o){return o.y;}));
@@ -147,7 +149,7 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) =>({
-  fetchPrices: (time) => dispatch(fetchPrices(time))
+  fetchPrices: (time, symbol) => dispatch(fetchPrices(time, symbol))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AssetChart);

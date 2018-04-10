@@ -8,6 +8,7 @@ json.extract! @asset,
               :year_founded,
               :headquarters,
               :tags,
-              :latest_price
+              :latest_price,
+              :fake_symbol
 
 json.watched_by_current_user !!@asset.watches.find_by(user_id: current_user.id)
