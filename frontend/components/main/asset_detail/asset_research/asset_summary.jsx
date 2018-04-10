@@ -10,9 +10,6 @@ const AssetSummary = ({ asset }) => (
   <section className='asset-summary'>
     {renderTags(asset.tags)}
     <h1 className="name">{asset.name}</h1>
-    <h1 className="latest-price">
-      {currencyFormatter.format(asset.latest_price)}
-    </h1>
   </section>
 );
 

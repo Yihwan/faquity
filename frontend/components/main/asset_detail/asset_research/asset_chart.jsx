@@ -1,7 +1,8 @@
 import React from 'react';
 import { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer, Legend } from 'recharts';
+import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
+import { currencyFormatter } from '../../../../utils/helpers';
 
 
 //
@@ -39,7 +40,10 @@ class CustomTooltip extends React.Component {
     if (nextProps.payload && nextProps.payload[0]
     && nextProps.payload[0].payload) {
       let featuredPrice = document.getElementById("featured-price");
-      featuredPrice.innerHTML = nextProps.payload[0].payload["amt"];
+
+      featuredPrice.innerHTML = currencyFormatter.format(
+        nextProps.payload[0].payload["amt"]
+      );
     }
   }
 
@@ -79,16 +83,11 @@ class CustomTooltip extends React.Component {
 class AssetChart extends React.Component {
   constructor(props) {
     super(props);
-    this.updatePrice = this.updatePrice.bind(this);
-
-    this.state = {
-      selectedPrice: 0
-    };
   }
 
-  updatePrice(newPrice) {
-    this.setState({ selectedPrice: newPrice });
-  }
+  // updatePrice(newPrice) {
+  //   this.setState({ selectedPrice: newPrice });
+  // }
 
   render() {
     const data = [
@@ -225,7 +224,7 @@ class AssetChart extends React.Component {
 
     return(
       <div>
-        <div id="featured-price"> </div>
+        <div id="featured-price">${this.props.asset.latest_price}</div>
 
         <div className="chart">
           <ResponsiveContainer width='100%' height="100%">
@@ -262,7 +261,7 @@ class AssetChart extends React.Component {
 }
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
 
 });
 

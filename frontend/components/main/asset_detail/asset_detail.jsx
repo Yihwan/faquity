@@ -29,7 +29,7 @@ class AssetDetail extends React.Component {
         <section className="main">
           <div className="left">
             <AssetSummary asset={this.props.asset}/>
-            <AssetChart />
+            <AssetChart asset={this.props.asset}/>
             <AssetAbout
               asset={this.props.asset}
             />
