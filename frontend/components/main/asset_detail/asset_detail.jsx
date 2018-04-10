@@ -8,12 +8,13 @@ import AssetWatch from './asset_watch';
 class AssetDetail extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = this.props.asset;
-    // debugger
+
+    this.state = { loading: true };
   }
 
   componentDidMount() {
-    this.props.fetchAsset(this.props.match.params.assetId);
+    this.props.fetchAsset(this.props.match.params.assetId)
+      .then(() => this.setState({loading: false}));
   }
 
   render() {
@@ -21,7 +22,7 @@ class AssetDetail extends React.Component {
     // probably a class because it needs a state
 
     return(
-      !this.props.asset ?
+      this.state.loading ?
         <div>Loading...</div>
       :
         <section className="main">
