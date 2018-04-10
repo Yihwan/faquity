@@ -67,4 +67,16 @@
   -webkit-appearance: none;
   margin: 0;
   }
+
+}
+
+.trade-errors {
+  color: $red;
+  text-align: center;
+  text-align: center;
+  font-size: 14px;
+
+  li {
+    padding-bottom: 15px;
+  }
 }

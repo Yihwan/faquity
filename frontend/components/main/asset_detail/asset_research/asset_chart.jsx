@@ -1,25 +1,33 @@
 import React from 'react';
 import { PropTypes } from 'react';
-
 import { connect } from 'react-redux';
-import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
+import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer, Legend } from 'recharts';
 
 
 class CustomTooltip extends React.Component {
+
   constructor(props) {
     super(props);
   }
 
   render() {
+    const { active } = this.props;
 
-      const { payload } = this.props;
-      return(
-        <div>
-          {`${payload[0].value}`}
+    if (active) {
+      const { payload, label } = this.props;
+
+      return (
+        <div className="custom-tooltip">
+          <p className="label">{`${payload[0].payload["date"]}`}</p>
         </div>
       );
     }
+
+    return null;
+  }
 }
+
+
 
 class AssetChart extends React.Component {
   constructor(props) {
@@ -176,15 +184,16 @@ class AssetChart extends React.Component {
             />
 
             <Tooltip
+
               wrapperStyle={{background: 'transparent', border: 'none'}}
               labelStyle={{color: 'gray'}}
               cursor={{strokeWidth: 1}}
               offset={-40}
               position={{y: 0}}
-              payload={[{date: 'hello'}]}
-              content={<p>Mar 17, 1991</p>}
+              content={<CustomTooltip />}
               isAnimationActive={false}
             />
+
           </LineChart>
         </ResponsiveContainer>
 

@@ -70,7 +70,9 @@ class TradeForm extends React.Component {
         <div>{this.props.message}</div>
       </div>
 
-      {this.renderErrors()}
+      <ul className="trade-errors">
+        {this.renderErrors()}
+      </ul>
     </section>
     );
   }
