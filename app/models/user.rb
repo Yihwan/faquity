@@ -21,7 +21,7 @@ class User < ApplicationRecord
             :password_digest, :session_token, presence: true
   validates :password, length: { minimum: 10, allow_nil: true }
 
-  attr_reader :password, :holdings, :watchlist
+  attr_reader :password, :holdings, :watchlist, :num_trades
 
   has_many :watches,
     class_name: 'Watch',
@@ -93,5 +93,9 @@ class User < ApplicationRecord
     end
 
     asset_ids
+  end
+
+  def num_trades
+    self.portfolio.fills.count
   end
 end

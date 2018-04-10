@@ -5,6 +5,15 @@ import AssetSearchContainer from './asset_search/asset_search_container';
 class Header extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    this.props.fetchAssets()
+      .then(() => this.setState({loading: false}));
   }
 
   navLinks() {
@@ -22,12 +31,15 @@ class Header extends React.Component {
 
   render() {
     return(
+      this.state.loading ?
+        <div>Loading...</div>
+      :
       <div className="nav-wrapper">
       <header className="navbar">
         <div className='logo-search'>
           <div className='logo'>😎</div>
 
-          <AssetSearchContainer />
+          <AssetSearchContainer assets={this.props.assets}/>
         </div>
         {this.navLinks()}
       </header>
