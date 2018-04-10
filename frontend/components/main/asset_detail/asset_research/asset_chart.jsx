@@ -146,7 +146,7 @@ class AssetChart extends React.Component {
     return(
       <div className="chart">
         <ResponsiveContainer width='100%' height="100%">
-          <LineChart data={data} margin={{top:25}}>
+          <LineChart data={data} margin={{top:25, bottom: 25}}>
 
             <Line type="linear"
               dataKey="amt"
@@ -165,7 +165,7 @@ class AssetChart extends React.Component {
               cursor={{strokeWidth: 1}}
               offset={-40}
               position={{y: 0}}
-              
+
               content={<p>Mar 15, 2017</p>}
               isAnimationActive={false}
             />
