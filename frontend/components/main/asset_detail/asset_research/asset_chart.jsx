@@ -5,6 +5,22 @@ import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
 
 
+class CustomTooltip extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+      const { payload } = this.props;
+      return(
+        <div>
+          {`${payload[0].value}`}
+        </div>
+      );
+    }
+}
+
 class AssetChart extends React.Component {
   constructor(props) {
     super(props);
@@ -165,8 +181,8 @@ class AssetChart extends React.Component {
               cursor={{strokeWidth: 1}}
               offset={-40}
               position={{y: 0}}
-
-              content={<p>Mar 15, 2017</p>}
+              payload={[{date: 'hello'}]}
+              content={<p>Mar 17, 1991</p>}
               isAnimationActive={false}
             />
           </LineChart>
