@@ -13,7 +13,7 @@ class Api::AssetsController < ApplicationController
   @asset = Asset.find(params[:id])
 
     if @asset.update(asset_params)
-      render json: @asset
+      render 'api/assets/show'
     else
       render json: @asset.errors.full_messages, status: 422
     end
