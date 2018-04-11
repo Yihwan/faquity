@@ -86,27 +86,27 @@ class AssetChart extends React.Component {
 
     if (this.state.time === "1M") {
       pastTimeFrame = "Past Month";
-      pastChange = rounder(this.props.stats.month1ChangePercent*100, 3);
+      pastChange = `(${rounder(this.props.stats.month1ChangePercent*100, 3)}%)`;
     } else if (this.state.time === "3M") {
       pastTimeFrame = "Past 3M";
-      pastChange = rounder(this.props.stats.month3ChangePercent*100, 3);
+      pastChange = `(${rounder(this.props.stats.month3ChangePercent*100, 3)}%)`;
     } else if (this.state.time === "1Y") {
       pastTimeFrame = "Past Year";
-      pastChange = rounder(this.props.stats.year1ChangePercent*100, 3);
+      pastChange = `(${rounder(this.props.stats.year1ChangePercent*100, 3)}%)`;
     } else if (this.state.time === "2Y") {
       pastTimeFrame = "Past 2Y";
-      pastChange = rounder(this.props.stats.year2ChangePercent*100, 3);
+      pastChange = `(${rounder(this.props.stats.year2ChangePercent*100, 3)}%)`;
     } else if (this.state.time === "5Y") {
       pastTimeFrame = "Past 5Y";
-      pastChange = rounder(this.props.stats.year5ChangePercent*100, 3);
+      pastChange = `(${rounder(this.props.stats.year5ChangePercent*100, 3)}%)`;
     } else {
-      pastTimeFrame = "Today + After Hours";
-      pastChange = rounder(percentChange1D*100, 3);
+      pastTimeFrame = "";
+      pastChange = "Latest Price";
     }
 
     return(
       <div className="percent-change">
-        <span className="percent">({pastChange}%)</span>
+        <span className="percent">{pastChange}</span>
         <span className="timeframe"> {pastTimeFrame}</span>
       </div>
     );
