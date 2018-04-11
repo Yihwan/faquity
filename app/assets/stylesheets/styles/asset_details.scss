@@ -52,7 +52,9 @@
       line-height: 42px;
       font-weight: 400;
     }
+
     .asset-about {
+      margin: 40px 0 100px 0;
       h2 {
         font-weight: 500;
         padding-bottom: 15px;
@@ -95,7 +97,7 @@
       margin-top: 40px;
       position: -webkit-sticky;  // required for Safari
       position: sticky;
-      top: 475px;
+      top: 485px;
 
       .asset-watch-btn {
         background-color: $dark;

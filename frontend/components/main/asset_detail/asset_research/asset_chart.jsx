@@ -2,7 +2,7 @@ import React from 'react';
 import { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
-import { currencyFormatter } from '../../../../utils/helpers';
+import { currencyFormatter, rounder } from '../../../../utils/helpers';
 import { fetchPrices, fetchStats } from '../../../../actions/iex_actions';
 
 class CustomTooltip extends React.Component {
@@ -44,7 +44,8 @@ class AssetChart extends React.Component {
 
     this.state = {
       time: '1D',
-      loading: true
+      loading: true,
+      signal: "bullish"
     };
   }
 
@@ -67,8 +68,6 @@ class AssetChart extends React.Component {
   }
 
   componentDidMount() {
-    // .then(() => this.props.fetchStats(this.props.asset.fake_symbol))
-
     this.props.fetchPrices(this.state.time, this.props.asset.fake_symbol)
       .then(()=>this.setState({ loading:false }));
 
@@ -79,24 +78,34 @@ class AssetChart extends React.Component {
     let pastTimeFrame;
     let pastChange;
 
+    let priceChange1D = (this.props.prices.slice(0, 1)[0].high - this.props.latestPrice);
+    let percentChange1D = priceChange1D / this.props.latestPrice;
+
     if (this.state.time === "1M") {
       pastTimeFrame = "Past Month";
-      pastChange = this.props.stats.month1ChangePercent;
+      pastChange = rounder(this.props.stats.month1ChangePercent*100, 3);
     } else if (this.state.time === "3M") {
       pastTimeFrame = "Past Quarter";
+      pastChange = rounder(this.props.stats.month3ChangePercent*100, 3);
     } else if (this.state.time === "1Y") {
       pastTimeFrame = "Past Year";
+      pastChange = rounder(this.props.stats.year1ChangePercent*100, 3);
     } else if (this.state.time === "2Y") {
       pastTimeFrame = "Past 2Y";
+      pastChange = rounder(this.props.stats.year2ChangePercent*100, 3);
     } else if (this.state.time === "5Y") {
       pastTimeFrame = "Past 5Y";
+      pastChange = rounder(this.props.stats.year5ChangePercent*100, 3);
     } else {
       pastTimeFrame = "Today";
-      pastChange = "-$3.00 (-35.54%)";
+      pastChange = rounder(percentChange1D*100, 3);
     }
 
     return(
-      <div>{pastChange}  {pastTimeFrame}</div>
+      <div className="percent-change">
+        <span className="percent">({pastChange}%)</span>
+        <span className="timeframe"> {pastTimeFrame}</span>
+      </div>
     );
   }
   render() {
