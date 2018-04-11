@@ -27,3 +27,11 @@ export const unwatchAsset = (id) => (
     data: { id }
   })
 );
+
+export const updateAssetPrice = (asset) => (
+  $.ajax({
+    url: `/api/assets/${asset.id}`,
+    method: 'PATCH',
+    data: { asset }
+  })
+);

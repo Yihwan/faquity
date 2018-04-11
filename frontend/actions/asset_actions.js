@@ -33,3 +33,8 @@ export const unwatchAsset = (id) => (dispatch) => (
   AssetAPIUtil.unwatchAsset(id)
     .then((asset) => dispatch(receiveAsset(asset)))
 );
+
+export const updateAssetPrice = (asset) => (dispatch) => (
+  AssetAPIUtil.updateAssetPrice(asset)
+    .then((updatedAsset) => dispatch(receiveAsset(updatedAsset)))
+);

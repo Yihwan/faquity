@@ -4,6 +4,7 @@ import Dashboard from './dashboard';
 import { logout } from '../../../actions/session_actions';
 import { fetchAssets, fetchAsset } from '../../../actions/asset_actions';
 import { fetchPortfolio } from '../../../actions/portfolio_actions';
+import { fetchPrices, fetchStats, fetchLatestPrice } from '../../../actions/iex_actions';
 
 const mapStateToProps = (state) => ({
   currentUser: state.session.currentUser,
@@ -15,7 +16,10 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => dispatch(logout()),
   fetchAssets: () => dispatch(fetchAssets()),
   fetchAsset: (id) => dispatch(fetchAsset(id)),
-  fetchPortfolio: (id) => dispatch(fetchPortfolio(id))
+  fetchPortfolio: (id) => dispatch(fetchPortfolio(id)),
+  fetchLatestPrice: (symbol) => dispatch(fetchLatestPrice(symbol)),
+  fetchStats: (symbol) => dispatch(fetchStats(symbol))
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

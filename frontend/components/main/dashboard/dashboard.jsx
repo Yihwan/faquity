@@ -12,8 +12,8 @@ class Dashboard extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchPortfolio(this.props.currentUser.id);
-    this.props.fetchAssets()
+    this.props.fetchPortfolio(this.props.currentUser.id)
+      .then(() => this.props.fetchAssets())
       .then(() => this.setState({loading: false}));
     this.renderGreeting();
   }
@@ -53,6 +53,7 @@ class Dashboard extends React.Component {
   }
 
   renderTableRows(assets) {
+
     return(
       assets.map(asset => {
         return(
@@ -96,7 +97,6 @@ class Dashboard extends React.Component {
 
   render() {
 
-    // change this conditional using this.state.loading
     return(
       this.state.loading ?
         <div>Loading...</div>
@@ -114,6 +114,7 @@ class Dashboard extends React.Component {
 
             {this.renderAssetIndex(this.props.assets)}
           </div>
+
           <div className="right">
             <DashboardSidebar
               assets={this.props.assets}

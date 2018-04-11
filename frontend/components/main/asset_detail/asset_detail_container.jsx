@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import AssetDetail from './asset_detail';
-import { fetchAsset, watchAsset, unwatchAsset, fetchAssets } from '../../../actions/asset_actions';
+import { fetchAsset, watchAsset, unwatchAsset, fetchAssets, updateAssetPrice } from '../../../actions/asset_actions';
 import { fetchPrices, fetchStats, fetchLatestPrice } from '../../../actions/iex_actions';
 import { fetchPortfolio } from '../../../actions/portfolio_actions';
 
@@ -18,7 +18,8 @@ const mapDispatchToProps = (dispatch) => ({
   watchAsset: (id) => dispatch(watchAsset(id)),
   unwatchAsset: (id) => dispatch(unwatchAsset(id)),
   fetchLatestPrice: (symbol) => dispatch(fetchLatestPrice(symbol)),
-  fetchStats: (symbol) => dispatch(fetchStats(symbol))
+  fetchStats: (symbol) => dispatch(fetchStats(symbol)),
+  updateAssetPrice: (asset) => dispatch(updateAssetPrice(asset))
 
 });
 

@@ -5,6 +5,7 @@
                   :symbol,
                   :name,
                   :latest_price,
-                  :tags
+                  :tags,
+                  :fake_symbol
   end
 end
