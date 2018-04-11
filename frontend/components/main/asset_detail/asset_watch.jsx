@@ -11,8 +11,8 @@ export default ({ asset, watchAsset, unwatchAsset, watchlist }) => {
   }
 
   return(
-    <button className="asset-watch-btn" onClick={watchAction}>
+    <div className="asset-watch-btn" onClick={watchAction}>
       {watchText}
-    </button>
+    </div>
   );
 };

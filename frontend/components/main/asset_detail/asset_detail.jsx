@@ -37,6 +37,7 @@ class AssetDetail extends React.Component {
             />
             <AssetAbout
               asset={this.props.asset}
+              stats={this.props.stats}
             />
           </div>
           <div className="right">

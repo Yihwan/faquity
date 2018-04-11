@@ -7,7 +7,7 @@ export const fetchPrices = (time, symbol) => (
 
 export const fetchStats = (symbol) => (
   $.ajax({
-    url: `https://api.iextrading.com/1.0/stock/${symbol}/stats?filter=marketcap,%20week52high,%20week52low,%20dividendYield,%20year5ChangePercent,%20year2ChangePercent,%20year1ChangePercent,%20month3ChangePercent,%20month1changePercent,%20month1ChangePercent,%20peRatioLow`,
+    url: `https://api.iextrading.com/1.0/stock/${symbol}/stats`,
     method: 'GET'
   })
 );

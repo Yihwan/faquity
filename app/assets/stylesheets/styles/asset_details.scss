@@ -64,6 +64,12 @@
         width: 100%;
         font-size: 14px;
 
+        .row-2 {
+          td {
+            padding-top: 20px;
+          }
+        }
+
         thead {
           font-weight: 500;
         }
@@ -84,9 +90,12 @@
   .right {
 
     .asset-watch {
-      margin-top: 40px;
       display: flex;
       justify-content: center;
+      margin-top: 40px;
+      position: -webkit-sticky;  // required for Safari
+      position: sticky;
+      top: 475px;
 
       .asset-watch-btn {
         background-color: $dark;
