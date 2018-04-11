@@ -9,17 +9,6 @@ class TradeForm extends React.Component {
     this.state = this.props.fill;
   }
 
-  componentDidMount() {
-    this.props.fetchLatestPrice(this.props.asset.fake_symbol);
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.latestPrice) {
-      this.setState({ price: nextProps.latestPrice });
-    }
-  }
-
   handleChange(type) {
     return (e) => {
       this.setState({ [type]: e.target.value });

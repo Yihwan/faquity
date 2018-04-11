@@ -3,7 +3,7 @@ import { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
 import { currencyFormatter } from '../../../../utils/helpers';
-import { fetchPrices } from '../../../../actions/iex_actions';
+import { fetchPrices, fetchStats } from '../../../../actions/iex_actions';
 
 class CustomTooltip extends React.Component {
   constructor(props) {
@@ -36,23 +36,6 @@ class CustomTooltip extends React.Component {
     return null;
   }
 }
-//  const CustomTooltip = ({ payload, active, updatePrice }) => {
-//
-//   if (active) {
-//
-//     updatePrice(payload[0].payload["amt"]);
-//
-//     return (
-//       <div className="custom-tooltip">
-//         <p className="label">{`${payload[0].payload["date"]}`}</p>
-//       </div>
-//     );
-//   }
-//
-//   return null;
-// };
-
-
 
 class AssetChart extends React.Component {
   constructor(props) {
@@ -67,7 +50,6 @@ class AssetChart extends React.Component {
 
   changeTime(newTime) {
     this.setState({ time: newTime });
-
     this.props.fetchPrices(newTime, this.props.asset.fake_symbol);
   }
 
@@ -85,10 +67,38 @@ class AssetChart extends React.Component {
   }
 
   componentDidMount() {
+    // .then(() => this.props.fetchStats(this.props.asset.fake_symbol))
+
     this.props.fetchPrices(this.state.time, this.props.asset.fake_symbol)
       .then(()=>this.setState({ loading:false }));
+
   }
 
+  renderChange() {
+
+    let pastTimeFrame;
+    let pastChange;
+
+    if (this.state.time === "1M") {
+      pastTimeFrame = "Past Month";
+      pastChange = this.props.stats.month1ChangePercent;
+    } else if (this.state.time === "3M") {
+      pastTimeFrame = "Past Quarter";
+    } else if (this.state.time === "1Y") {
+      pastTimeFrame = "Past Year";
+    } else if (this.state.time === "2Y") {
+      pastTimeFrame = "Past 2Y";
+    } else if (this.state.time === "5Y") {
+      pastTimeFrame = "Past 5Y";
+    } else {
+      pastTimeFrame = "Today";
+      pastChange = "-$3.00 (-35.54%)";
+    }
+
+    return(
+      <div>{pastChange}  {pastTimeFrame}</div>
+    );
+  }
   render() {
 
     let rawData = this.props.prices;
@@ -103,7 +113,9 @@ class AssetChart extends React.Component {
         <div>Loading</div>
       :
       <div className="asset-detail-chart">
-        <div id="featured-price">${this.props.asset.latest_price}</div>
+        <div id="featured-price">${this.props.latestPrice}</div>
+
+        {this.renderChange()}
 
         <div className="chart">
           <ResponsiveContainer width='100%' height="100%">
@@ -145,11 +157,13 @@ class AssetChart extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  prices: Object.values(state.entities.iex.prices)
+  prices: Object.values(state.entities.iex.prices),
+  stats: state.entities.iex.stats
 });
 
 const mapDispatchToProps = (dispatch) =>({
-  fetchPrices: (time, symbol) => dispatch(fetchPrices(time, symbol))
+  fetchPrices: (time, symbol) => dispatch(fetchPrices(time, symbol)),
+  fetchStats: (symbol) => dispatch(fetchStats(symbol))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AssetChart);

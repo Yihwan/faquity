@@ -17,26 +17,12 @@ class AssetDetail extends React.Component {
 
   componentDidMount() {
     this.props.fetchAsset(this.props.match.params.assetId)
+      .then(() => this.props.fetchLatestPrice(this.props.asset.fake_symbol))
+      .then(() => this.props.fetchStats(this.props.asset.fake_symbol))
       .then(() => this.setState({loading: false}));
   }
 
-  // getLatestPrice() {
-  //   if (!this.state.loading) {
-  //     this.props.fetchPrices("1D", this.props.asset.fake_symbol)
-  //     .then(() => this.setState({ loading2: false }));
-  //
-  //     if (!this.state.loading2) {
-  //       let lastPrice = this.props.prices.slice(-1)[0].high;
-  //       this.setState({ latestPrice: lastPrice});
-  //
-  //     }
-  //   }
-  // }
-
   render() {
-    // render trade form container pass in fill info as props,
-    // probably a class because it needs a state
-
 
     return(
       this.state.loading ?
@@ -45,7 +31,10 @@ class AssetDetail extends React.Component {
         <section className="main">
           <div className="left">
             <AssetSummary asset={this.props.asset}/>
-            <AssetChart asset={this.props.asset}/>
+            <AssetChart
+              asset={this.props.asset}
+              latestPrice={this.props.latestPrice}
+            />
             <AssetAbout
               asset={this.props.asset}
             />
@@ -53,6 +42,7 @@ class AssetDetail extends React.Component {
           <div className="right">
             <TradeSidebar
               asset={this.props.asset}
+              latestPrice={this.props.latestPrice}
             />
 
           <div className="asset-watch">

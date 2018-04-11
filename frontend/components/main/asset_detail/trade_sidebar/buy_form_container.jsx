@@ -9,19 +9,17 @@ const mapStateToProps = (state, ownProps) => ({
   fill: {
     asset_id: ownProps.asset.id,
     portfolio_id: state.session.currentUser.id,
-    price: -1,
+    price: ownProps.latestPrice,
     size: 0,
     side: 'buy'
   },
-  latestPrice: state.entities.iex.latestPrice,
   errors: state.errors.fill,
   message: `${currencyFormatter.format(state.session.currentUser.buying_power || 0)} Buying Power Available`
 });
 
 const mapDispatchToProps = (dispatch) => ({
   createFill: (fill) => dispatch(createFill(fill)),
-  clearErrors: () => dispatch(receiveErrors([])),
-  fetchLatestPrice: (symbol) => dispatch(fetchLatestPrice(symbol))
+  clearErrors: () => dispatch(receiveErrors([]))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TradeForm);
