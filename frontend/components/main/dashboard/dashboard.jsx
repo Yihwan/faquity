@@ -13,6 +13,7 @@ class Dashboard extends React.Component {
 
   componentDidMount() {
     this.props.fetchPortfolio(this.props.currentUser.id)
+      .then(() => this.props.fetchPortfolioSnapshots(this.props.currentUser.id))
       .then(() => this.props.fetchAssets())
       .then(() => this.setState({loading: false}));
     this.renderGreeting();
@@ -108,6 +109,7 @@ class Dashboard extends React.Component {
               {this.renderGreeting()}
               <DashboardSummary
                 portfolio={this.props.portfolio}
+                snapshots={this.props.snapshots}
                 user={this.props.currentUser}
               />
             </section>

@@ -1,0 +1,23 @@
+# == Schema Information
+#
+# Table name: portfolio_snapshots
+#
+#  id           :integer          not null, primary key
+#  portfolio_id :integer          not null
+#  date         :string           not null
+#  value        :decimal(, )      not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+# This model initially had no columns defined. If you add columns to the
+# model remove the '{}' from the fixture names and add the columns immediately
+# below each fixture, per the syntax in the comments below
+#
+one: {}
+# column: value
+#
+two: {}
+# column: value

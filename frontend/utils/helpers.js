@@ -20,3 +20,8 @@ export const currencyRound = new Intl.NumberFormat('en-US', {
 export const rounder = (value, decimals) => (
   Number(Math.round(value+'e'+decimals)+'e-'+decimals)
 );
+
+// from Elias Zamaris on stackoverflow.com
+export const addCommas = (x) => {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+};

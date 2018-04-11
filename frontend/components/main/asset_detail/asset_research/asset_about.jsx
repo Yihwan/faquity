@@ -1,5 +1,5 @@
 import React from 'react';
-import { currencyRound, rounder } from '../../../../utils/helpers';
+import { currencyRound, rounder, addCommas } from '../../../../utils/helpers';
 
 const renderAboutTable = (asset, stats) => {
 
@@ -18,7 +18,7 @@ const renderAboutTable = (asset, stats) => {
       <tbody>
         <tr key={asset.id}>
           <td>{asset.ceo}</td>
-          <td>{asset.num_employees}</td>
+          <td>{addCommas(asset.num_employees)}</td>
           <td>{asset.headquarters}</td>
           <td>{asset.year_founded}</td>
         </tr>

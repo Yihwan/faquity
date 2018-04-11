@@ -7,7 +7,7 @@ const DashboardSummary = ({ user, portfolio }) => {
     <div className="summary-stats">
       <div className="summary-1">
         <div className="metric">
-          {currencyFormatter.format(portfolio.value)}
+          {currencyFormatter.format(portfolio.data.value)}
         </div>
         <div className="caption">
           <h3>Portfolio Value</h3>

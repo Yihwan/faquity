@@ -26,6 +26,11 @@ class Portfolio < ApplicationRecord
     through: :fills,
     source: :asset
 
+  has_many :snapshots,
+    class_name: 'PortfolioSnapshot',
+    primary_key: :id,
+    foreign_key: :portfolio_id 
+
   attr_reader :holdings, :value
 
   def holdings
@@ -56,17 +61,6 @@ class Portfolio < ApplicationRecord
     value
   end
 
-  def real_value
-    value = 0
-
-    self.holdings.each do |asset, num_shares|
-      asset_price =
-      value += holdings_value
-    end
-
-    value
-  end
-
   # def take_snapshot
   #   portfolio_value = self.user.buying_power + self.value
   #   label = "#{Date::MONTHNAMES[Date.today.month]} #{Date.today.day}, #{Date.today.year}"
@@ -75,8 +69,7 @@ class Portfolio < ApplicationRecord
   #
   #   hash[label] = portfolio_value
   #
-  #   puts hash
-  #   puts hash[label]
+  #   hash
   # end
 
 end
