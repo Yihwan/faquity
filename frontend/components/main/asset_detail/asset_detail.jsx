@@ -10,7 +10,9 @@ class AssetDetail extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { loading: true };
+    this.state = {
+      loading: true
+     };
   }
 
   componentDidMount() {
@@ -18,9 +20,23 @@ class AssetDetail extends React.Component {
       .then(() => this.setState({loading: false}));
   }
 
+  // getLatestPrice() {
+  //   if (!this.state.loading) {
+  //     this.props.fetchPrices("1D", this.props.asset.fake_symbol)
+  //     .then(() => this.setState({ loading2: false }));
+  //
+  //     if (!this.state.loading2) {
+  //       let lastPrice = this.props.prices.slice(-1)[0].high;
+  //       this.setState({ latestPrice: lastPrice});
+  //
+  //     }
+  //   }
+  // }
+
   render() {
     // render trade form container pass in fill info as props,
     // probably a class because it needs a state
+
 
     return(
       this.state.loading ?

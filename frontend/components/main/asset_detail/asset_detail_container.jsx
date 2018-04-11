@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import AssetDetail from './asset_detail';
 import { fetchAsset, watchAsset, unwatchAsset, fetchAssets } from '../../../actions/asset_actions';
+import { fetchPrices } from '../../../actions/iex_actions';
 import { fetchPortfolio } from '../../../actions/portfolio_actions';
 
 const mapStateToProps = (state, ownProps) => ({

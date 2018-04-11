@@ -9,6 +9,17 @@ class TradeForm extends React.Component {
     this.state = this.props.fill;
   }
 
+  componentDidMount() {
+    this.props.fetchLatestPrice(this.props.asset.fake_symbol);
+
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.latestPrice) {
+      this.setState({ price: nextProps.latestPrice });
+    }
+  }
+
   handleChange(type) {
     return (e) => {
       this.setState({ [type]: e.target.value });
@@ -35,8 +46,13 @@ class TradeForm extends React.Component {
   }
 
   render() {
+
     let estimatedWord = this.state.side === "buy" ? "Cost" : "Credit";
+
     return(
+      this.state.price === -1 ?
+        <div>Loading ...</div>
+      :
       <section >
         <form className="trade-form" onSubmit={this.handleSubmit}>
           <div className="shares">
@@ -48,7 +64,7 @@ class TradeForm extends React.Component {
           <div className="market-price">
             <label>Market Price</label>
             <div>
-              {currencyFormatter.format(this.props.asset.latest_price)}
+              {currencyFormatter.format(this.state.price)}
             </div>
           </div>
 

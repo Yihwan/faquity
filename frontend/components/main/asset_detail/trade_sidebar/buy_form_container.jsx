@@ -2,23 +2,26 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import TradeForm from './trade_form';
 import { createFill, receiveErrors } from '../../../../actions/fill_actions';
+import { fetchLatestPrice } from '../../../../actions/iex_actions';
 import { currencyFormatter } from '../../../../utils/helpers';
 
 const mapStateToProps = (state, ownProps) => ({
   fill: {
     asset_id: ownProps.asset.id,
     portfolio_id: state.session.currentUser.id,
-    price: ownProps.asset.latest_price,
+    price: -1,
     size: 0,
     side: 'buy'
   },
+  latestPrice: state.entities.iex.latestPrice,
   errors: state.errors.fill,
   message: `${currencyFormatter.format(state.session.currentUser.buying_power || 0)} Buying Power Available`
 });
 
 const mapDispatchToProps = (dispatch) => ({
   createFill: (fill) => dispatch(createFill(fill)),
-  clearErrors: () => dispatch(receiveErrors([]))
+  clearErrors: () => dispatch(receiveErrors([])),
+  fetchLatestPrice: (symbol) => dispatch(fetchLatestPrice(symbol))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TradeForm);

@@ -1,4 +1,4 @@
-import { RECEIVE_PRICES } from '../actions/iex_actions';
+import { RECEIVE_PRICES, RECEIVE_LATEST_PRICE } from '../actions/iex_actions';
 import { combineReducers } from 'redux';
 
 const priceReducer = (state={}, action) => {
@@ -12,8 +12,20 @@ const priceReducer = (state={}, action) => {
   }
 };
 
+const latestPriceReducer = (state={}, action) => {
+  Object.freeze(state);
+
+  switch (action.type) {
+    case RECEIVE_LATEST_PRICE:
+      return action.price;
+    default:
+      return state;
+  }
+};
+
 const iexReducer = combineReducers({
-  prices: priceReducer
+  prices: priceReducer,
+  latestPrice: latestPriceReducer
 });
 
 export default iexReducer;

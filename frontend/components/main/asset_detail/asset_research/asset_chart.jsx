@@ -128,7 +128,7 @@ class AssetChart extends React.Component {
                 wrapperStyle={{background: 'transparent', border: 'none'}}
                 labelStyle={{color: 'gray'}}
                 cursor={{strokeWidth: 1}}
-                offset={-60}
+                offset={-30}
                 position={{y: 0}}
                 content={<CustomTooltip/>}
                 isAnimationActive={false}

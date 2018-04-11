@@ -18,3 +18,10 @@ export const fetchOhlc = (symbol) => (
     method: 'GET'
   })
 );
+
+export const fetchLatestPrice = (symbol) => (
+  $.ajax({
+    url: `https://api.iextrading.com/1.0/stock/${symbol}/price`,
+    method: 'GET'
+  })
+);
