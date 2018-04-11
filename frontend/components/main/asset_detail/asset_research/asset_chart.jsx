@@ -78,14 +78,17 @@ class AssetChart extends React.Component {
     let pastTimeFrame;
     let pastChange;
 
-    let priceChange1D = (this.props.prices.slice(0, 1)[0].high - this.props.latestPrice);
+    let rawData = this.props.prices;
+    let data = rawData.filter((obj) => obj.high > 0);
+
+    let priceChange1D = (data.slice(0, 1)[0].high - this.props.latestPrice);
     let percentChange1D = priceChange1D / this.props.latestPrice;
 
     if (this.state.time === "1M") {
       pastTimeFrame = "Past Month";
       pastChange = rounder(this.props.stats.month1ChangePercent*100, 3);
     } else if (this.state.time === "3M") {
-      pastTimeFrame = "Past Quarter";
+      pastTimeFrame = "Past 3M";
       pastChange = rounder(this.props.stats.month3ChangePercent*100, 3);
     } else if (this.state.time === "1Y") {
       pastTimeFrame = "Past Year";
@@ -97,7 +100,7 @@ class AssetChart extends React.Component {
       pastTimeFrame = "Past 5Y";
       pastChange = rounder(this.props.stats.year5ChangePercent*100, 3);
     } else {
-      pastTimeFrame = "Today";
+      pastTimeFrame = "Today + After Hours";
       pastChange = rounder(percentChange1D*100, 3);
     }
 
@@ -146,10 +149,9 @@ class AssetChart extends React.Component {
 
             <Tooltip
 
-                wrapperStyle={{background: 'transparent', border: 'none'}}
-                labelStyle={{color: 'gray'}}
+                wrapperStyle={{background: 'transparent', border: 'none', color: '#8c8c8e'}}
                 cursor={{strokeWidth: 1}}
-                offset={-30}
+                offset={-35}
                 position={{y: 0}}
                 content={<CustomTooltip/>}
                 isAnimationActive={false}
