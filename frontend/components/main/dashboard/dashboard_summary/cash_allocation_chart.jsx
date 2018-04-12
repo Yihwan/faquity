@@ -78,7 +78,7 @@ class CashAllocationChart extends React.Component {
 
   	return (
 
-        <PieChart width={420} height={300}>
+        <PieChart width={440} height={300}>
           <Pie
             activeIndex={this.state.activeIndex}
             activeShape={renderActiveShape}
