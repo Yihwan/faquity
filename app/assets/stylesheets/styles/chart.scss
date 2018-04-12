@@ -1,9 +1,24 @@
 @import "../base/globals";
 
-#latest-value {
-  font-size: 36px;
-  line-height: 42px;
+.portfolio-chart {
+  margin-top: 10px;
+
+  #latest-value {
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 500;
+  }
+
+  #original-value {
+    display: none;
+  }
+}
+
+.portfolio-caption {
   font-weight: 500;
+  font-size: 14px;
+  letter-spacing: .25px;
+  line-height: 19px;
 }
 .asset-detail-chart {
 

@@ -16,7 +16,7 @@
     .summary-bar {
 
       .greeting {
-        font-weight: 600;
+        font-weight: 400;
       }
 
       .summary-stats{
@@ -59,7 +59,9 @@
 
     .asset-index {
       width: 690px;
-
+      h1 {
+        font-weight: 600;
+      }
     }
   }
 

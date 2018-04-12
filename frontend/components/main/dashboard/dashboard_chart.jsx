@@ -11,13 +11,19 @@ class CustomTooltip extends React.Component {
   //
   componentWillReceiveProps(nextProps) {
     //
-    if (nextProps.payload && nextProps.payload[0]
-                          && nextProps.payload[0].payload) {
-      let featuredPrice = document.getElementById("latest-value");
+    let latestValue = document.getElementById("latest-value");
+    let originalValue = document.getElementById("original-value");
 
-      featuredPrice.innerHTML = currencyFormatter.format(
-        nextProps.payload[0].payload["value"]
-      );
+    if (this.props.active) {
+      if (nextProps.payload && nextProps.payload[0]
+        && nextProps.payload[0].payload) {
+
+          latestValue.innerHTML = currencyFormatter.format(
+            nextProps.payload[0].payload["value"]
+          );
+        }
+    } else {
+      latestValue.innerHTML = originalValue.innerHTML;
     }
   }
 
@@ -57,12 +63,20 @@ class DashboardChart extends React.Component {
 
     return(
       <div className="portfolio-chart">
+        <div id="original-value">
+          {currencyFormatter.format(
+            parseFloat(this.props.portfolio.value) +
+              parseFloat(this.props.user.buying_power)
+          )}
+        </div>
+
         <div id="latest-value">
           {currencyFormatter.format(
             parseFloat(this.props.portfolio.value) +
               parseFloat(this.props.user.buying_power)
           )}
         </div>
+        <div className="portfolio-caption">Portfolio Value</div>
 
         <div className="chart">
           <ResponsiveContainer width='100%' height="100%">
@@ -72,6 +86,7 @@ class DashboardChart extends React.Component {
                 type="linear"
                 dataKey="value"
                 strokeWidth={2} stroke="#21ce99"
+                animationDuration={1000}
                 dot={false}
               />
 

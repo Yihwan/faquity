@@ -11,13 +11,19 @@ class CustomTooltip extends React.Component {
   //
   componentWillReceiveProps(nextProps) {
     //
-    if (nextProps.payload && nextProps.payload[0]
-                          && nextProps.payload[0].payload) {
-      let featuredPrice = document.getElementById("featured-price");
+    let featuredPrice = document.getElementById("featured-price");
+    let originalValue = document.getElementById("original-price");
 
-      featuredPrice.innerHTML = currencyFormatter.format(
-        nextProps.payload[0].payload["high"]
-      );
+    if (this.props.active) {
+      if (nextProps.payload && nextProps.payload[0]
+        && nextProps.payload[0].payload) {
+
+          featuredPrice.innerHTML = currencyFormatter.format(
+            nextProps.payload[0].payload["high"]
+          );
+        }
+    } else {
+      featuredPrice.innerHTML = originalValue.innerHTML;
     }
   }
 
@@ -124,6 +130,7 @@ class AssetChart extends React.Component {
         <div>Loading</div>
       :
       <div className="asset-detail-chart">
+        <div id="original-price">${this.props.latestPrice}</div>
         <div id="featured-price">${this.props.latestPrice}</div>
 
         {this.renderChange()}
