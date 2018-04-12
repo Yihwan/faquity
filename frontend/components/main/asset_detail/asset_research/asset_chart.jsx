@@ -1,5 +1,4 @@
 import React from 'react';
-import { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
 import { currencyFormatter, rounder } from '../../../../utils/helpers';

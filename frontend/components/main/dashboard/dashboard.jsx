@@ -1,6 +1,7 @@
 import React from 'react';
 import DashboardSidebar from './dashboard_sidebar/dashboard_sidebar';
 import DashboardSummary from './summary';
+import DashboardChart from './dashboard_chart';
 import { Link, withRouter } from 'react-router-dom';
 import { currencyFormatter } from '../../../utils/helpers';
 
@@ -109,9 +110,15 @@ class Dashboard extends React.Component {
               {this.renderGreeting()}
               <DashboardSummary
                 portfolio={this.props.portfolio}
-                snapshots={this.props.snapshots}
                 user={this.props.currentUser}
               />
+
+              <DashboardChart
+                snapshots={this.props.snapshots}
+                portfolio={this.props.portfolio.data}
+                user={this.props.currentUser}
+              />
+
             </section>
 
             {this.renderAssetIndex(this.props.assets)}
