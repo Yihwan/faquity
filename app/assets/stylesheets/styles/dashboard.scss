@@ -20,18 +20,26 @@
       }
 
       .summary-charts {
-        margin-top: 35px;
+        margin-top: 20px;
+        margin-bottom: -5px;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         align-items: center;
 
-        .cash-allocation-title {
-          margin-bottom: 10px; 
-
+        .caption {
+          font-weight: 500;
+          font-size: 14px;
+          letter-spacing: .25px;
+          line-height: 19px;
+          margin-bottom: -10px
         }
-        .cash-allocation-chart {
+        .cash-allocation-chart, .holdings-allocation-chart {
+          text-align: center;
+        }
 
+        .holdings-allocation-title {
+          margin-top: 20px;
         }
       }
     }

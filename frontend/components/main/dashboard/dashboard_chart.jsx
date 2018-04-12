@@ -88,6 +88,7 @@ class DashboardChart extends React.Component {
                 dataKey="value"
                 strokeWidth={2} stroke="#21ce99"
                 animationDuration={1000}
+                animationBegin={100}
                 dot={false}
               />
 

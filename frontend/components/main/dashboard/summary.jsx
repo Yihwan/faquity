@@ -1,22 +1,37 @@
 import React from 'react';
 import { currencyFormatter } from '../../../utils/helpers';
 import CashAllocationChart from './dashboard_summary/cash_allocation_chart';
-import PortfolioAllocationChart from './dashboard_summary/portfolio_allocation_chart';
+import HoldingsAllocationChart from './dashboard_summary/holdings_allocation_chart';
 
 const DashboardSummary = ({ user, portfolio, assets }) => {
+  // <h2 className="holdings-allocation-title">
+  //   Holdings Diversity
+  // </h2>
+
 
   return(
     <div className="summary-charts">
-      <h2 className="cash-allocation-title">
-        Cash Allocation
-      </h2>
+
       <div className="cash-allocation-chart">
+      <p className="caption">
+        Cash Allocation
+      </p>
         <CashAllocationChart
           cash={user.buying_power}
           holdings={portfolio.value}
           />
       </div>
 
+      <div className="holdings-allocation-chart">
+        <p className="caption">
+          Holdings Diversity
+        </p>
+        <HoldingsAllocationChart
+          assets={assets}
+          cash={user.buying_power}
+          holdings={portfolio.holdings}
+          />
+      </div>
     </div>
   );
 };

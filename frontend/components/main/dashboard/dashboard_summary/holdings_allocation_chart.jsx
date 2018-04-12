@@ -19,7 +19,7 @@ const renderActiveShape = (props) => {
   return (
     <g>
     // inner text
-      <text fontSize={20} fontWeight={600} x={cx} y={cy} dy={8} textAnchor="middle" fill={"#FFF"}>{payload.name}</text>
+      <text fontSize={20} fontWeight={600} x={cx} y={cy} dy={8} textAnchor="middle" fill={"#FFF"}>{payload.label}</text>
 
       // active circle
       <Sector
@@ -45,7 +45,7 @@ const renderActiveShape = (props) => {
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
-      <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#FFF">{currencyFormatter.format(value)}</text>
+      <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#FFF">{`${value} shares`}</text>
       <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#b1bfc4">
         {`(${(percent * 100).toFixed(2)}%)`}
       </text>
@@ -53,7 +53,7 @@ const renderActiveShape = (props) => {
   );
 };
 
-class CashAllocationChart extends React.Component {
+class HoldingsAllocationChart extends React.Component {
   constructor(props) {
     super(props);
     this.onPieEnter = this.onPieEnter.bind(this);
@@ -71,10 +71,19 @@ class CashAllocationChart extends React.Component {
 
 	render () {
     let cash = parseFloat(this.props.cash);
-    let holdings = parseFloat(this.props.holdings);
+    const assets = this.props.assets;
+    let holdings = Object.keys(this.props.holdings).map((id) => (
+      {[id]: this.props.holdings[id]}
+    ));
 
-    const data = [{name: 'Cash', value: cash},
-                      {name: 'Holdings', value: holdings}, ];
+    let data = [];
+
+    holdings.forEach((holding) => {
+      let thisLabel = assets[Object.keys(holding)[0] - 1].symbol;
+      let thisValue = Object.values(holding)[0];
+
+      data.push({"label": thisLabel, "value": thisValue});
+    });
 
   	return (
 
@@ -97,4 +106,4 @@ class CashAllocationChart extends React.Component {
   }
 }
 
-export default CashAllocationChart;
+export default HoldingsAllocationChart;
