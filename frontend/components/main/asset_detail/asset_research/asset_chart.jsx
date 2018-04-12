@@ -54,6 +54,8 @@ class AssetChart extends React.Component {
       pastChange: 'Latest Price',
       pastTimeFrame: ''
     };
+
+    this.props.setMarketSignal("bullish");
   }
 
   changeTime(newTime) {
@@ -136,13 +138,6 @@ class AssetChart extends React.Component {
 
     this.setState({ pastChange: pastChange });
     this.setState({ pastTimeFrame });
-
-    // return(
-    //   <div className="percent-change">
-    //     <span className="percent">{pastChange}</span>
-    //     <span className="timeframe"> {pastTimeFrame}</span>
-    //   </div>
-    // );
   }
   render() {
 
