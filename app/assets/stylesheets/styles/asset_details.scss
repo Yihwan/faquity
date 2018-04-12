@@ -21,7 +21,7 @@
 
       .bullish {
         color: $green;
-        background-color: $light-green;        
+        background-color: $light-green;
       }
 
       .bearish {
@@ -114,10 +114,17 @@
         background-color: $dark;
         border: none;
         cursor: pointer;
-        color: $green;
         font-size: 14px;
         letter-spacing: .25px;
         line-height: 19px;
+      }
+
+      .bullish {
+        color: $green;
+      }
+
+      .bearish {
+        color: $red; 
       }
     }
   }

@@ -12,6 +12,13 @@ class Headers extends React.Component {
         klass = 'active';
       }
 
+      if (this.props.signal === "bullish") {
+        klass += "-bullish";
+      } else {
+        klass += "-bearish";
+      }
+
+
       return (
         <li
           key={index}
@@ -49,10 +56,11 @@ export default class Tabs extends React.Component {
     return (
       <div>
         <div className='tabs'>
-          <Headers 
+          <Headers
             selectedPane={this.state.selectedPane}
             onTabChosen={this.selectTab}
-            panes={this.props.panes}>
+            panes={this.props.panes}
+            signal={this.props.signal}>
           </Headers>
           <div className='tab-content'>
             <article>

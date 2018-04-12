@@ -63,11 +63,19 @@ class AssetChart extends React.Component {
 
   renderButtons() {
     const timeframes = ['1D', '1M', '3M', '1Y', '2Y', '5Y'];
+    let className = 'time-buttons';
+
+    if (this.props.signal === "bullish") {
+      className += " bullish";
+    } else {
+      className += " bearish";
+    }
+
     return(
       timeframes.map((time, idx) => (
 
         <button
-          key={idx} className="time-buttons"
+          key={idx} className={className}
           onClick={() => this.changeTime(time)}
           >{time}</button>
       ))

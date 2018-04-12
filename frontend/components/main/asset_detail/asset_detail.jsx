@@ -55,6 +55,7 @@ class AssetDetail extends React.Component {
             <TradeSidebar
               asset={this.props.asset}
               latestPrice={this.props.latestPrice}
+              signal={this.props.signal}
             />
 
           <div className="asset-watch">
@@ -63,6 +64,7 @@ class AssetDetail extends React.Component {
               unwatchAsset = {this.props.unwatchAsset}
               asset = {this.props.asset}
               watchlist = {this.props.currentUser.watchlist}
+              signal = {this.props.signal}
             />
           </div>
           </div>

@@ -43,8 +43,12 @@
           cursor: pointer;
         }
 
-        .active {
+        .active-bullish {
           border-bottom: 2px solid $green;
+        }
+
+        .active-bearish {
+          border-bottom: 2px solid $red;
         }
       }
 

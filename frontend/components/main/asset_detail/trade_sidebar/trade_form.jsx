@@ -37,6 +37,16 @@ class TradeForm extends React.Component {
   render() {
 
     let estimatedWord = this.state.side === "buy" ? "Cost" : "Credit";
+    let marketPriceClass = "market-price";
+    let submitClass = "submit";
+
+    if (this.props.signal === "bullish") {
+      marketPriceClass += " bullish";
+      submitClass += " bullish";
+    } else {
+      marketPriceClass += " bearish";
+      submitClass += " bearish";
+    }
 
     return(
       this.state.price === -1 ?
@@ -50,7 +60,7 @@ class TradeForm extends React.Component {
               onChange={this.handleChange('size')}/>
           </div>
 
-          <div className="market-price">
+          <div className={marketPriceClass}>
             <label>Market Price</label>
             <div>
               {currencyFormatter.format(this.state.price)}
@@ -65,7 +75,7 @@ class TradeForm extends React.Component {
           </div>
 
 
-          <div className="submit">
+          <div className={submitClass}>
             <input type="submit" value="Submit Order"/>
           </div>
 

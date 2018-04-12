@@ -16,12 +16,6 @@
     line-height: 19px;
   }
 
-
-
-  .market-price > label {
-    color: $green;
-  }
-
   .market-price {
     border-bottom: 1px solid $darker;
   }
@@ -29,7 +23,6 @@
   input[type="submit"] {
     margin-top: 35px;
     width: 100%;
-    background-color: $green;
     height: 48px;
     border: 1px solid transparent;
     cursor: pointer;
@@ -38,6 +31,26 @@
     font-size: 14px;
     font-weight: 500;
     color: $dark;
+  }
+
+  .bullish {
+    input[type="submit"] {
+      background-color: $green;
+    }
+  }
+
+  .bearish {
+    input[type="submit"] {
+      background-color: $red;
+    }
+  }
+
+  .bullish {
+    color: $green;
+  }
+
+  .bearish {
+    color: $red;
   }
 
   input[type="number"] {
