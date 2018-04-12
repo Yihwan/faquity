@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
 import { currencyFormatter, rounder } from '../../../../utils/helpers';
 import { fetchPrices, fetchStats } from '../../../../actions/iex_actions';
+import { setMarketSignal } from '../../../../actions/ui_actions';
 
 class CustomTooltip extends React.Component {
   constructor(props) {
@@ -50,7 +51,8 @@ class AssetChart extends React.Component {
     this.state = {
       time: '1D',
       loading: true,
-      signal: "bullish"
+      pastChange: 'Latest Price',
+      pastTimeFrame: ''
     };
   }
 
@@ -75,10 +77,19 @@ class AssetChart extends React.Component {
   componentDidMount() {
     this.props.fetchPrices(this.state.time, this.props.asset.fake_symbol)
       .then(()=>this.setState({ loading:false }));
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.renderChange();
+    }
   }
 
   renderChange() {
+
+    if (this.state.loading) {
+      return null;
+    }
 
     let pastTimeFrame;
     let pastChange;
@@ -109,12 +120,21 @@ class AssetChart extends React.Component {
       pastChange = "Latest Price";
     }
 
-    return(
-      <div className="percent-change">
-        <span className="percent">{pastChange}</span>
-        <span className="timeframe"> {pastTimeFrame}</span>
-      </div>
-    );
+    if (pastChange.includes("-")) {
+      this.props.setMarketSignal("bearish");
+    } else {
+      this.props.setMarketSignal("bullish");
+    }
+
+    this.setState({ pastChange: pastChange });
+    this.setState({ pastTimeFrame });
+
+    // return(
+    //   <div className="percent-change">
+    //     <span className="percent">{pastChange}</span>
+    //     <span className="timeframe"> {pastTimeFrame}</span>
+    //   </div>
+    // );
   }
   render() {
 
@@ -124,16 +144,26 @@ class AssetChart extends React.Component {
     // provided by tobyodavies on stackoverflow
     const max = Math.max.apply(Math,data.map(function(o){return o.y;}));
     const min = Math.min.apply(Math,data.map(function(o){return o.y;}));
+    let strokeColor;
+
+    if (this.props.signal === "bullish") {
+      strokeColor = "#21ce99";
+    } else {
+      strokeColor = "#f45531";
+    }
 
     return(
       this.state.loading ?
         <div>Loading</div>
       :
       <div className="asset-detail-chart">
-        <div id="original-price">${this.props.latestPrice}</div>
-        <div id="featured-price">${this.props.latestPrice}</div>
+        <div id="original-price">{currencyFormatter.format(this.props.latestPrice)}</div>
+        <div id="featured-price">{currencyFormatter.format(this.props.latestPrice)}</div>
 
-        {this.renderChange()}
+          <div className="percent-change">
+            <span className="percent">{this.state.pastChange}</span>
+            <span className="timeframe"> {this.state.pastTimeFrame}</span>
+          </div>
 
         <div className="chart">
           <ResponsiveContainer width='100%' height="100%">
@@ -142,9 +172,8 @@ class AssetChart extends React.Component {
               <Line
                 type="linear"
                 dataKey="high"
-                strokeWidth={2} stroke="#21ce99"
+                strokeWidth={2} stroke={strokeColor}
                 dot={false}
-
                 isAnimationActive={false}
               />
 
@@ -154,7 +183,6 @@ class AssetChart extends React.Component {
               />
 
             <Tooltip
-
                 wrapperStyle={{background: 'transparent', border: 'none', color: '#8c8c8e'}}
                 cursor={{strokeWidth: 1}}
                 offset={-35}
@@ -175,12 +203,14 @@ class AssetChart extends React.Component {
 
 const mapStateToProps = (state, ownProps) => ({
   prices: Object.values(state.entities.iex.prices),
-  stats: state.entities.iex.stats
+  stats: state.entities.iex.stats,
+  signal: state.ui.signal
 });
 
 const mapDispatchToProps = (dispatch) =>({
   fetchPrices: (time, symbol) => dispatch(fetchPrices(time, symbol)),
-  fetchStats: (symbol) => dispatch(fetchStats(symbol))
+  fetchStats: (symbol) => dispatch(fetchStats(symbol)),
+  setMarketSignal: (signal) => dispatch(setMarketSignal(signal))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AssetChart);

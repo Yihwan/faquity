@@ -2,6 +2,7 @@ import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 import React from 'react';
 import { currencyFormatter } from '../../../../utils/helpers';
 
+// adapted from recharts examples
 const renderActiveShape = (props) => {
   const RADIAN = Math.PI / 180;
   const { cx, cy, midAngle, innerRadius, outerRadius, startAngle, endAngle,
