@@ -66,9 +66,9 @@ class AssetChart extends React.Component {
     let className = 'time-buttons';
 
     if (this.props.signal === "bullish") {
-      className += " bullish";
+      className += "-bullish";
     } else {
-      className += " bearish";
+      className += "-bearish";
     }
 
     return(
