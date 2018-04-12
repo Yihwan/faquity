@@ -37,7 +37,10 @@ class AssetDetail extends React.Component {
       :
         <section className="main">
           <div className="left">
-            <AssetSummary asset={this.props.asset}/>
+            <AssetSummary
+              asset={this.props.asset}
+              signal={this.props.signal}
+            />
             <AssetChart
               asset={this.props.asset}
               latestPrice={this.props.latestPrice}

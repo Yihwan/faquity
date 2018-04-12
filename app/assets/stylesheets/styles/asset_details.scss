@@ -8,8 +8,6 @@
     .asset-summary {
 
       .tag {
-        color: $green;
-        background-color: $light-green;
         font-weight: 500;
         border-radius: 17px;
         height: 28px;
@@ -19,6 +17,15 @@
         font-size: 13px;
         letter-spacing: .25px;
         line-height: 19px;
+      }
+
+      .bullish {
+        color: $green;
+        background-color: $light-green;        
+      }
+
+      .bearish {
+        color: $red;
       }
 
       .name {

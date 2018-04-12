@@ -16,21 +16,27 @@ const DashboardSummary = ({ user, portfolio, assets }) => {
       <p className="caption">
         Cash Allocation
       </p>
+
+      <div className="graphic-left">
         <CashAllocationChart
           cash={user.buying_power}
           holdings={portfolio.value}
           />
+      </div>
       </div>
 
       <div className="holdings-allocation-chart">
         <p className="caption">
           Holdings Diversity
         </p>
-        <HoldingsAllocationChart
-          assets={assets}
-          cash={user.buying_power}
-          holdings={portfolio.holdings}
-          />
+
+        <div className="graphic-right">
+          <HoldingsAllocationChart
+            assets={assets}
+            cash={user.buying_power}
+            holdings={portfolio.holdings}
+            />
+        </div>
       </div>
     </div>
   );

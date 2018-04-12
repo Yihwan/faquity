@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
   currentUser: state.session.currentUser,
   asset: state.entities.assets[ownProps.match.params.assetId],
   stats: state.entities.iex.stats,
-  latestPrice: state.entities.iex.latestPrice
+  latestPrice: state.entities.iex.latestPrice,
+  signal: state.ui.signal
 });
 
 const mapDispatchToProps = (dispatch) => ({
