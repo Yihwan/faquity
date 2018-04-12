@@ -6,6 +6,7 @@ class TradeForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.reviewFill = this.reviewFill.bind(this);
     this.state = this.props.fill;
   }
 
@@ -28,6 +29,20 @@ class TradeForm extends React.Component {
         </li>
       ))
     );
+  }
+
+  reviewFill() {
+    console.log("IN FILL");
+    if (this.props.errors.length === 0) {
+      console.log("HELLO!");
+      return(
+        "you are submitting something"
+      );
+    } else {
+      return(
+        "ERRORS!!!!"
+      );
+    }
   }
 
   componentWillUnmount() {

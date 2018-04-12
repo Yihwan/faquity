@@ -29,6 +29,16 @@ class AssetDetail extends React.Component {
       .then(() => this.setState({loading: false}));
   }
 
+  componentDidUpdate(prevProps) {
+
+    if ( prevProps.asset && (prevProps.asset.id !== parseInt(this.props.match.params.assetId))) {
+      this.setState({ loading: true });
+      this.props.fetchAsset(this.props.match.params.assetId)
+        .then(() => this.setState({loading: false}));
+
+    }
+  }
+
   render() {
 
     return(

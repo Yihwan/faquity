@@ -18,7 +18,7 @@ const renderAboutTable = (asset, stats) => {
       <tbody>
         <tr key={asset.id}>
           <td>{asset.ceo}</td>
-          <td>{addCommas(asset.num_employees)}</td>
+          <td>{asset.num_employees}</td>
           <td>{asset.headquarters}</td>
           <td>{asset.year_founded}</td>
         </tr>

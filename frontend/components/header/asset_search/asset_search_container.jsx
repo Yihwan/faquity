@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchAssets } from '../../../actions/asset_actions';
+import { fetchAssets, fetchAsset } from '../../../actions/asset_actions';
 import AssetSearch from './asset_search';
 
 const mapStateToProps = ({ session }) => ({
@@ -7,7 +7,8 @@ const mapStateToProps = ({ session }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchAssets: () => (dispatch(fetchAssets()))
+  fetchAssets: () => (dispatch(fetchAssets())),
+  fetchAsset: (id) => (dispatch(fetchAsset(id)))
 });
 
 export default connect(

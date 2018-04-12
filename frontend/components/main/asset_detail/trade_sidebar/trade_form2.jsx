@@ -6,9 +6,8 @@ class TradeForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = {
-      step: 1
-    };
+    this.reviewFill = this.reviewFill.bind(this);
+    this.state = this.props.fill;
   }
 
   handleChange(type) {
@@ -32,19 +31,80 @@ class TradeForm extends React.Component {
     );
   }
 
+  reviewFill() {
+    console.log("IN FILL");
+    if (this.props.errors.length === 0) {
+      console.log("HELLO!");
+      return(
+        "you are submitting something"
+      );
+    } else {
+      return(
+        "ERRORS!!!!"
+      );
+    }
+  }
+
   componentWillUnmount() {
     this.props.clearErrors();
   }
 
   render() {
-    switch (this.state.step) {
-      case 1:
-        return <Start />;
-      case 2:
-        return <Confirm />;
-      case 3:
-        return <Success />;
+
+    let estimatedWord = this.state.side === "buy" ? "Cost" : "Credit";
+    let marketPriceClass = "market-price";
+    let submitClass = "submit";
+
+    if (this.props.signal === "bullish") {
+      marketPriceClass += " bullish";
+      submitClass += " bullish";
+    } else {
+      marketPriceClass += " bearish";
+      submitClass += " bearish";
     }
+
+    return(
+      this.state.price === -1 ?
+        <div>Loading ...</div>
+      :
+      <section >
+        <form className="trade-form" onSubmit={this.handleSubmit}>
+          <div className="shares">
+            <label>Shares</label>
+            <input type="number" min="0" step="1" placeholder="0"
+              onChange={this.handleChange('size')}/>
+          </div>
+
+          <div className={marketPriceClass}>
+            <label>Market Price</label>
+            <div>
+              {currencyFormatter.format(this.state.price)}
+            </div>
+          </div>
+
+          <div className="estimated">
+            <label>Estimated {estimatedWord}</label>
+            <div>
+              {currencyFormatter.format(this.state.price * this.state.size)}
+            </div>
+          </div>
+
+
+          <div className={submitClass}>
+            <input type="submit" value="Submit Order"/>
+          </div>
+
+      </form>
+
+      <div className="message">
+        <div>{this.props.message}</div>
+      </div>
+
+      <ul className="trade-errors">
+        {this.renderErrors()}
+      </ul>
+    </section>
+    );
   }
 }
 
