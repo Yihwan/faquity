@@ -108,16 +108,18 @@ class Dashboard extends React.Component {
 
             <section className="summary-bar">
               {this.renderGreeting()}
+              
+              <DashboardChart
+                snapshots={this.props.snapshots}
+                portfolio={this.props.portfolio.data}
+                user={this.props.currentUser}
+                />
+
               <DashboardSummary
                 portfolio={this.props.portfolio}
                 user={this.props.currentUser}
               />
 
-              <DashboardChart
-                snapshots={this.props.snapshots}
-                portfolio={this.props.portfolio.data}
-                user={this.props.currentUser}
-              />
 
             </section>
 
