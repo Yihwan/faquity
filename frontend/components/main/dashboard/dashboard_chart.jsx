@@ -80,7 +80,8 @@ class DashboardChart extends React.Component {
 
         <div className="chart">
           <ResponsiveContainer width='100%' height="100%">
-            <LineChart data={Object.values(data)} margin={{top:25, bottom: 25}}>
+            <LineChart data={Object.values(data)}
+              margin={{top:25, left: 10, right: 10, bottom: 10}}>
 
               <Line
                 type="linear"

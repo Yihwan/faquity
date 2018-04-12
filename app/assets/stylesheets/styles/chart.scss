@@ -2,6 +2,7 @@
 
 .portfolio-chart {
   margin-top: 10px;
+  border-bottom: 1px solid $darker;
 
   #latest-value {
     font-size: 36px;
@@ -11,6 +12,10 @@
 
   #original-value {
     display: none;
+  }
+
+  .chart {
+    margin-top: -10px;
   }
 }
 

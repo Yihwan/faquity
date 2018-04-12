@@ -19,40 +19,19 @@
         font-weight: 400;
       }
 
-      .summary-stats{
+      .summary-charts {
+        margin-top: 35px;
         display: flex;
-        justify-content: space-around;
-        text-align: center;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        height: 100px;
-        margin: 25px 0 30px 0;
 
-        .metric {
-          font-size: 28px;
-          font-weight: 600;
-          letter-spacing: 1.3px;
+        .cash-allocation-title {
+          margin-bottom: 10px; 
+
         }
+        .cash-allocation-chart {
 
-        .summary-1, .summary-2, .summary-3 {
-          border: 1px solid $darker;
-          padding: 20px 30px;
-        }
-
-        .summary-1 {
-          background-color: $red;
-        }
-
-        .summary-2 {
-          background-color: $green;
-        }
-
-        .summary-3 {
-          background-color: $darker;
-        }
-
-        .caption {
-          padding-top: 10px;
-          font-size: 16px;
         }
       }
     }
