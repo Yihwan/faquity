@@ -18,16 +18,16 @@
 
 ## Data Schema
 
-<center>![cool-name db schema](https://i.imgur.com/hd7EIOm.png)<center/>
+[cool-name db schema](https://i.imgur.com/hd7EIOm.png)
 
 ## Demos
 ### Dashboard Metrics
 After logging in, users can view key portfolio performance metrics on their personal dashboard.
 
-<center>![cool-name-dashboard](https://media.giphy.com/media/22PyXTCGeRrN3Awvwd/giphy.gif)<center/>
+[cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
 
 ### Asset Research & Trade
-<center>![cool-name-dashboard](https://media.giphy.com/media/fVbVppcJusHvqHFWWP/giphy.gif)<center/>
+[cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
 
 ## Code Sample
 
@@ -114,7 +114,7 @@ In order to chart portfolio performance over time, Cool-Name will run a cron job
 Assets will be grouped by tag (e.g., `Food` or `Finance`) to create a sortable/filterable index.
 
 ### "More Like This"
-Asset Detail containers could display a carousel of similar Assets Properties used to determine similarity could include `tags`, `market_cap`, or assets added by similar users. 
+Asset Detail containers could display a carousel of similar Assets Properties used to determine similarity could include `tags`, `market_cap`, or assets added by similar users.
 
 ### Detailed Asset Research
 The [IEX API](https://iextrading.com/developer/docs/) includes detailed asset information on earnings, dividends, and financials. Cool-Name could leverage this data to display more detailed asset research information in the Asset About container.
