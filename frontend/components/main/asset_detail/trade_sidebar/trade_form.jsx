@@ -74,7 +74,6 @@ class TradeForm extends React.Component {
             </div>
           </div>
 
-
           <div className={submitClass}>
             <input type="submit" value="Submit Order"/>
           </div>

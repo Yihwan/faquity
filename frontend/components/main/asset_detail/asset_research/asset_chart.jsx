@@ -161,7 +161,7 @@ class AssetChart extends React.Component {
       :
       <div className="asset-detail-chart">
         <div id="original-price">{currencyFormatter.format(this.props.latestPrice)}</div>
-        <div id="featured-price">{currencyFormatter.format(this.props.latestPrice)}</div>
+        <div id="featured-price" className="odometer">{currencyFormatter.format(this.props.latestPrice)}</div>
 
           <div className="percent-change">
             <span className="percent">{this.state.pastChange}</span>

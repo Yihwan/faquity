@@ -70,7 +70,7 @@ class DashboardChart extends React.Component {
           )}
         </div>
 
-        <div id="latest-value">
+        <div id="latest-value" className="odometer">
           {currencyFormatter.format(
             parseFloat(this.props.portfolio.value) +
               parseFloat(this.props.user.buying_power)
