@@ -14,6 +14,8 @@ const mapStateToProps = (state, ownProps) => ({
     side: 'buy'
   },
   errors: state.errors.fill,
+  user: state.session.currentUser,
+  assets: state.entities.assets,
   message: `${currencyFormatter.format(state.session.currentUser.buying_power || 0)} Buying Power Available`
 });
 

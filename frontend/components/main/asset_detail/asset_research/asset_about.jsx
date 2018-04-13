@@ -25,7 +25,7 @@ const ExpandedAbout = ({ stats }) => {
 
       <thead className="row-4">
         <tr>
-          <td>Revenue (Trailing 12M)</td>
+          <td>Revenue (TTM)</td>
           <td>Per Employee</td>
           <td>Per Share</td>
           <td>Profit Margin</td>
@@ -74,7 +74,7 @@ class AssetAbout extends React.Component {
         <tbody>
           <tr key={asset.id}>
             <td>{asset.ceo}</td>
-            <td>{asset.num_employees}</td>
+            <td>{addCommas(asset.num_employees)}</td>
             <td>{asset.headquarters}</td>
             <td>{asset.year_founded}</td>
           </tr>
