@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TradeSidebar from './trade_sidebar/trade_sidebar';
 import AssetSummary from './asset_research/asset_summary';
-import AssetAbout from './asset_research/asset_about2';
+import AssetAbout from './asset_research/asset_about';
 import AssetChart from './asset_research/asset_chart';
 import AssetWatch from './asset_watch';
 
