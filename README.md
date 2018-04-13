@@ -18,16 +18,16 @@
 
 ## Data Schema
 
-[cool-name db schema](https://i.imgur.com/hd7EIOm.png)
+![cool-name db schema](https://i.imgur.com/hd7EIOm.png)
 
 ## Demos
 ### Dashboard Metrics
 After logging in, users can view key portfolio performance metrics on their personal dashboard.
 
-[cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
+![cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
 
 ### Asset Research & Trade
-[cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
+![cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
 
 ## Code Sample
 
