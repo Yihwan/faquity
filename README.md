@@ -1,4 +1,4 @@
-# Cool-name
+# Cool-Name
 [Live Demo](https://yihwan-marketsim.herokuapp.com/#/)
 
 ## Features
@@ -18,14 +18,16 @@
 
 ## Data Schema
 
-![cool-name db schema](https://i.imgur.com/hd7EIOm.png)
+<center>![cool-name db schema](https://i.imgur.com/hd7EIOm.png)<center/>
 
 ## Demos
 ### Dashboard Metrics
-![cool-name-dashboard](https://media.giphy.com/media/22PyXTCGeRrN3Awvwd/giphy.gif)
+After logging in, users can view key portfolio performance metrics on their personal dashboard.
+
+<center>![cool-name-dashboard](https://media.giphy.com/media/22PyXTCGeRrN3Awvwd/giphy.gif)<center/>
 
 ### Asset Research & Trade
-![cool-name-dashboard](https://media.giphy.com/media/fVbVppcJusHvqHFWWP/giphy.gif)
+<center>![cool-name-dashboard](https://media.giphy.com/media/fVbVppcJusHvqHFWWP/giphy.gif)<center/>
 
 ## Code Sample
 
@@ -75,7 +77,7 @@ class Fill < ApplicationRecord
 
     if self.side == "buy"
       ensure_buying_power(portfolio_id)
-    else 
+    else
       ensure_portfolio_holdings(portfolio_id)
     end
   end
@@ -104,3 +106,18 @@ end
 ```
 
 ## Future Development
+
+### Portfolio Snapshot Cron Job
+In order to chart portfolio performance over time, Cool-Name will run a cron job that creates a new `PortfolioSnapshot` for each user's portfolio.
+
+### Collections
+Assets will be grouped by tag (e.g., `Food` or `Finance`) to create a sortable/filterable index.
+
+### "More Like This"
+Asset Detail containers could display a carousel of similar Assets Properties used to determine similarity could include `tags`, `market_cap`, or assets added by similar users. 
+
+### Detailed Asset Research
+The [IEX API](https://iextrading.com/developer/docs/) includes detailed asset information on earnings, dividends, and financials. Cool-Name could leverage this data to display more detailed asset research information in the Asset About container.
+
+### Additional Assets
+Cool-Name will continue to list new assets from IPOs or exchange transfers. Please contact the administrator for more information on how to be listed on Cool-Name.
