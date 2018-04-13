@@ -10,6 +10,8 @@
 
 class Portfolio < ApplicationRecord
 
+  after_create :take_first_snapshot
+
   validates :user_id, presence: true
 
   belongs_to :user,
@@ -29,7 +31,7 @@ class Portfolio < ApplicationRecord
   has_many :snapshots,
     class_name: 'PortfolioSnapshot',
     primary_key: :id,
-    foreign_key: :portfolio_id 
+    foreign_key: :portfolio_id
 
   attr_reader :holdings, :value
 
@@ -61,15 +63,14 @@ class Portfolio < ApplicationRecord
     value
   end
 
-  # def take_snapshot
-  #   portfolio_value = self.user.buying_power + self.value
-  #   label = "#{Date::MONTHNAMES[Date.today.month]} #{Date.today.day}, #{Date.today.year}"
-  #
-  #   hash = {}
-  #
-  #   hash[label] = portfolio_value
-  #
-  #   hash
-  # end
+  def take_first_snapshot
+
+    snapshot = PortfolioSnapshot.create!(
+      portfolio_id: self.id,
+      date: Time.now.strftime("%b %d, %Y"),
+      value: self.user.buying_power,
+    )
+
+  end
 
 end
