@@ -22,9 +22,10 @@
 
 ## Demos
 
-![cool-name-dashboard](https://media.giphy.com/media/22PyXTCGeRrN3Awvwd/giphy.gif)
+![cool-name-dashboard](/Users/yihwan/Desktop/faquity/app/assets/images/cool-name_asset_detail-hd.gif)
 
-<img src="https://media.giphy.com/media/fVbVppcJusHvqHFWWP/giphy.gif" width="100%">
+![cool-name-dashboard](/Users/yihwan/Desktop/faquity/app/assets/images/cool-name_asset_detail-hd.gif)
+
 
 ## Code Samples
 
