@@ -1,52 +1,56 @@
 # Cool-Name
-[Live Demo](https://yihwan-marketsim.herokuapp.com/#/)
+**[Live Demo](https://yihwan-marketsim.herokuapp.com/#/)** |
+[Wiki](https://github.com/Yihwan/robinhood-clone/wiki)
+
+Cool-Name is a browser-based trading platform where users can practice trading with realtime market data without incurring any actual risk. Cool-Name's design identity was cloned from Robinhood's beta web trading application.
 
 ## Features
-* User authentication: end-to-end using BCrypt.
-* Asset search: by ticker symbol or asset name.
-* Watchlist: "follow" assets without committing to a buy.
-* Personal dashboard: View portfolio value over time, current cash allocation, and holdings diversity.
-* Asset Research: View key financial metrics about an asset and its price over time.
-* Portfolio: Buy and sell assets at the latest market price.
+* **User authentication:** end-to-end using BCrypt.
+* **Asset search:** by ticker symbol or asset name.
+* **Watchlist:** "follow" assets without committing to a buy.
+* **Dashboard:** View portfolio value over time, current cash allocation, and holdings diversity.
+* **Asset Research:** View key financial metrics about an asset and its price over time.
+* **Portfolio:** Buy and sell assets at the latest market price.
 
 ## Technologies
-* Backend: Rails/ActiveRecord
-* Frontend: React/Redux
+* **Backend:** Rails/ActiveRecord/PostgreSQL
+* **Frontend:** React/Redux
 * [Recharts](https://github.com/recharts/recharts)
 * [IEX API](https://iextrading.com/developer/docs/)
 * SAAS
 
-## Data Schema
+## Database Schema
 
 ![cool-name db schema](https://i.imgur.com/hd7EIOm.png)
 
 ## Demos
 ### Dashboard Metrics
-After logging in, users can view key portfolio performance metrics on their personal dashboard.
+After logging in, users can view key portfolio performance metrics on their personal dashboard. The `PortfolioSnapshot` model generates historical portfolio performance data, while the Cash Allocation and Holdings Diversity charts are generated from `Portfolio` model associations.
+
+Users can also view an index of all assets on the platform as well as their current holdings and watched assets in a sticky sidebar.
 
 ![cool-name-dashboard](app/assets/images/cool-name_asset_detail-hd.gif)
 
 ### Asset Research & Trade
+When navigating to an individual asset page, users can conduct basic research and make trades.
+
+* Asset price history is charted on 1D, 1M, 3M, 1Y, 2Y, and 5Y timeframes.
+* Basic data on corporate structure, financials, and trade activity is available through a "Show More" button in the Asset About component.
+* Both buys and sells are filled through the Trade Sidebar component.
+
 ![cool-name-dashboard](app/assets/images/cool-name_dashboard-hd.gif)
 
-## Code Sample
+## Code Samples
+### **`fill`**
+
+The `fill` model generates most of the key data for Cool-Name. For portfolios, the `fill` table calculates the value and distribution of holdings, as well as any other desired insights from the available data fields.
+
+This table could also be used to generate information on the `asset` side (e.g., trade volume, order book distribution) or for the entire market (e.g., data to trigger circuit breakers).
+
+As the data in the `fill` table provides the foundation for all market activities, Cool-Name validates all incoming data on the database and model level. The platform also creates informative errors when a user attempts to create a fill with invalid inputs.
 
 ```RUBY
 # /app/models/fill.rb
-
-# == Schema Information
-#
-# Table name: fills
-#
-#  id           :integer          not null, primary key
-#  asset_id     :integer          not null
-#  portfolio_id :integer          not null
-#  price        :decimal(, )      not null
-#  size         :integer          not null
-#  side         :string           not null
-#  created_at   :datetime         not null
-#  updated_at   :datetime         not null
-#
 
 class Fill < ApplicationRecord
 
@@ -54,20 +58,13 @@ class Fill < ApplicationRecord
             :side, presence: true
 
   belongs_to :portfolio,
-    class_name: 'Portfolio',
-    primary_key: :id,
-    foreign_key: :portfolio_id
+  # [...]
 
   belongs_to :asset,
-    class_name: 'Asset',
-    primary_key: :id,
-    foreign_key: :asset_id
+  # [...]
 
   has_one :user,
-    class_name: 'User',
-    through: :portfolio,
-    source: :user
-
+  # [...]
 
   def validate(portfolio_id)
     if self.size <= 0
@@ -85,21 +82,86 @@ class Fill < ApplicationRecord
   def ensure_portfolio_holdings(portfolio_id)
     portfolio = Portfolio.find(portfolio_id)
     if self.size <= portfolio.holdings[self.asset_id]
-      return true
+      true
     else
       errors[:size].push("Insufficient shares")
-      return
       false
     end
   end
 
   def ensure_buying_power(portfolio_id)
     if (self.price * self.size) <= User.find(portfolio_id).buying_power
-      return true
+      true
     else
       errors[:size].push("Insufficient buying power")
-      return false
+      false
     end
+  end
+
+end
+```
+
+### **`portfolio`**
+To ensure database portability and avoid persisting unnecessary information, the `portfolio` model generates key information about a user's portfolio through various associations.
+
+```RUBY
+# /app/models/portfolio.rb
+
+class Portfolio < ApplicationRecord
+
+  after_create :take_first_snapshot
+
+  validates :user_id, presence: true
+
+  belongs_to :user,
+  # [...]
+
+  has_many :fills,
+  # [...]
+
+  has_many :assets,
+  # [...]
+
+  has_many :snapshots,
+    class_name: 'PortfolioSnapshot',
+  # [...]
+
+  attr_reader :holdings, :value
+
+  def holdings
+    holdings = Hash.new(0)
+
+    self.fills.each do |fill|
+      if fill.side == "buy"
+        holdings[fill.asset_id] += fill.size
+      else
+        holdings[fill.asset_id] -= fill.size
+      end
+    end
+
+    # remove from holdings if all assets are sold
+    holdings.delete_if { | asset, num_shares| num_shares == 0 }
+
+    holdings
+  end
+
+  def value
+    value = 0
+
+    self.holdings.each do |asset, num_shares|
+      holdings_value = Asset.find_by(id: asset).latest_price * num_shares
+      value += holdings_value
+    end
+
+    value
+  end
+
+  def take_first_snapshot
+    PortfolioSnapshot.create!(
+      portfolio_id: self.id,
+      date: Time.now.strftime("%b %d, %Y"),
+      value: self.user.buying_power,
+    )
   end
 
 end
@@ -115,6 +177,9 @@ Assets will be grouped by tag (e.g., `Food` or `Finance`) to create a sortable/f
 
 ### "More Like This"
 Asset Detail containers could display a carousel of similar Assets Properties used to determine similarity could include `tags`, `market_cap`, or assets added by similar users.
+
+### Notifications
+A dropdown menu in the primary `NavBar` could display notifications of recent actions or key insights about existing holdings.
 
 ### Detailed Asset Research
 The [IEX API](https://iextrading.com/developer/docs/) includes detailed asset information on earnings, dividends, and financials. Cool-Name could leverage this data to display more detailed asset research information in the Asset About container.
