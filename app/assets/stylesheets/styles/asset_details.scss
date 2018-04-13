@@ -67,20 +67,44 @@
 
     .asset-about {
       margin: 40px 0 100px 0;
-      h2 {
-        font-weight: 500;
+
+      .about-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        border-bottom: 1px solid $darker;
         padding-bottom: 15px;
         margin-bottom: 20px;
-        border-bottom: 1px solid $darker;
+
+        h2 {
+          font-weight: 500;
+        }
+
+        span {
+          cursor: pointer;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: .25px;
+          line-height: 19px;
+        }
+
+        .bullish {
+          color: $green;
+        }
+
+        .bearish {
+          color: $red;
+        }
       }
 
       .about-table {
         width: 100%;
         font-size: 14px;
+        table-layout: fixed;
 
-        .row-2 {
+        .row-2, .row-3, .row-4, .row-5 {
           td {
-            padding-top: 20px;
+            padding-top: 25px;
           }
         }
 

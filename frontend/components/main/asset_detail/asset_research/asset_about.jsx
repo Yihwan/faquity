@@ -52,6 +52,7 @@ const AssetAbout = ({ asset, stats }) => {
   return(
     <section className='asset-about'>
       <h2>About</h2>
+      <div>Show More</div>
       <p>{asset.description}</p>
       {renderAboutTable(asset, stats)}
     </section>
