@@ -37,7 +37,7 @@ class Header extends React.Component {
       <div className="nav-wrapper">
       <header className="navbar">
         <div className='logo-search'>
-          <div className='logo'>😎</div>
+          <Link to='/'><div className='logo'>😎</div></Link>
 
           <AssetSearchContainer assets={this.props.assets}/>
         </div>

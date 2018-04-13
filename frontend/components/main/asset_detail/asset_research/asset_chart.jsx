@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { LineChart, Line, Tooltip, YAxis, ResponsiveContainer } from 'recharts';
-import { currencyFormatter, rounder } from '../../../../utils/helpers';
+import { currencyRound, rounder } from '../../../../utils/helpers';
 import { fetchPrices, fetchStats } from '../../../../actions/iex_actions';
 import { setMarketSignal } from '../../../../actions/ui_actions';
 
@@ -19,7 +19,7 @@ class CustomTooltip extends React.Component {
       if (nextProps.payload && nextProps.payload[0]
         && nextProps.payload[0].payload) {
 
-          featuredPrice.innerHTML = currencyFormatter.format(
+          featuredPrice.innerHTML = currencyRound.format(
             nextProps.payload[0].payload["high"]
           );
         }
@@ -112,19 +112,19 @@ class AssetChart extends React.Component {
 
     if (this.state.time === "1M") {
       pastTimeFrame = "Past Month";
-      pastChange = `(${rounder(this.props.stats.month1ChangePercent*100, 3)}%)`;
+      pastChange = `(${rounder(this.props.stats.month1ChangePercent*100, 2)}%)`;
     } else if (this.state.time === "3M") {
       pastTimeFrame = "Past 3M";
-      pastChange = `(${rounder(this.props.stats.month3ChangePercent*100, 3)}%)`;
+      pastChange = `(${rounder(this.props.stats.month3ChangePercent*100, 2)}%)`;
     } else if (this.state.time === "1Y") {
       pastTimeFrame = "Past Year";
-      pastChange = `(${rounder(this.props.stats.year1ChangePercent*100, 3)}%)`;
+      pastChange = `(${rounder(this.props.stats.year1ChangePercent*100, 2)}%)`;
     } else if (this.state.time === "2Y") {
       pastTimeFrame = "Past 2Y";
-      pastChange = `(${rounder(this.props.stats.year2ChangePercent*100, 3)}%)`;
+      pastChange = `(${rounder(this.props.stats.year2ChangePercent*100, 2)}%)`;
     } else if (this.state.time === "5Y") {
       pastTimeFrame = "Past 5Y";
-      pastChange = `(${rounder(this.props.stats.year5ChangePercent*100, 3)}%)`;
+      pastChange = `(${rounder(this.props.stats.year5ChangePercent*100, 2)}%)`;
     } else {
       pastTimeFrame = "";
       pastChange = "Latest Price";
@@ -160,8 +160,8 @@ class AssetChart extends React.Component {
         <div>Loading</div>
       :
       <div className="asset-detail-chart">
-        <div id="original-price">{currencyFormatter.format(this.props.latestPrice)}</div>
-        <div id="featured-price" className="odometer">{currencyFormatter.format(this.props.latestPrice)}</div>
+        <div id="original-price">{currencyRound.format(this.props.latestPrice)}</div>
+        <div id="featured-price">{currencyRound.format(this.props.latestPrice)}</div>
 
           <div className="percent-change">
             <span className="percent">{this.state.pastChange}</span>

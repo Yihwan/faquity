@@ -16,8 +16,8 @@ const ExpandedAbout = ({ stats }) => {
 
       <tbody>
         <tr>
-          <td>{rounder(stats.week52high, 2)}</td>
-          <td>{rounder(stats.week52low, 2)}</td>
+          <td>{currencyRound.format(stats.week52high)}</td>
+          <td>{currencyRound.format(stats.week52low)}</td>
           <td>{addCommas(stats.sharesOutstanding, 2)}</td>
           <td>{addCommas(stats.float, 2)}</td>
         </tr>
