@@ -24,7 +24,7 @@
 
 ![cool-name-dashboard](https://media.giphy.com/media/22PyXTCGeRrN3Awvwd/giphy.gif)
 
-![cool-name-asset-detail](https://media.giphy.com/media/4TvuMn2EAtdzFl8oZW/giphy.gif)
+<img src="https://media.giphy.com/media/fVbVppcJusHvqHFWWP/giphy.gif" width="100%">
 
 ## Code Samples
 
