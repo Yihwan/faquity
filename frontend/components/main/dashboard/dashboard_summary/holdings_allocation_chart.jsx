@@ -1,6 +1,6 @@
 import { PieChart, Pie, Sector, ResponsiveContainer } from 'recharts';
 import React from 'react';
-import { currencyFormatter } from '../../../../utils/helpers';
+import { currencyFormatter, currencyRound } from '../../../../utils/helpers';
 
 // adapted from recharts samples
 const renderActiveShape = (props) => {
@@ -16,6 +16,7 @@ const renderActiveShape = (props) => {
   const ex = mx + (cos >= 0 ? 1 : -1) * 22;
   const ey = my;
   const textAnchor = cos >= 0 ? 'start' : 'end';
+
 
   return (
     <g>
@@ -46,7 +47,7 @@ const renderActiveShape = (props) => {
       />
       <path d={`M${sx},${sy}L${mx},${my}L${ex},${ey}`} stroke={fill} fill="none"/>
       <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none"/>
-      <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#FFF">{`${value} shares`}</text>
+      <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} textAnchor={textAnchor} fill="#FFF">{currencyRound.format(value)}</text>
       <text fontSize={16} x={ex + (cos >= 0 ? 1 : -1) * 12} y={ey} dy={18} textAnchor={textAnchor} fill="#b1bfc4">
         {`(${(percent * 100).toFixed(2)}%)`}
       </text>
@@ -81,7 +82,9 @@ class HoldingsAllocationChart extends React.Component {
 
     holdings.forEach((holding) => {
       let thisLabel = assets[Object.keys(holding)[0] - 1].symbol;
-      let thisValue = Object.values(holding)[0];
+      let numShares = Object.values(holding)[0];
+      let latestPrice = parseFloat(assets[Object.keys(holding)[0] - 1].latest_price);
+      let thisValue = numShares * latestPrice;
 
       data.push({"label": thisLabel, "value": thisValue});
     });
