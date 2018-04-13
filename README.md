@@ -2,7 +2,7 @@
 **[Live Demo](https://yihwan-marketsim.herokuapp.com/#/)** |
 [Wiki](https://github.com/Yihwan/robinhood-clone/wiki)
 
-Cool-Name is a browser-based trading platform where users can practice trading with realtime market data without incurring any actual risk. Cool-Name's design identity was cloned from Robinhood's beta web trading application.
+Cool-Name is a browser-based trading platform where users can practice trading with realtime market data without incurring any actual risk. Cool-Name's design identity was cloned from Robinhood's beta web application.
 
 ## Features
 * **User authentication:** end-to-end using BCrypt.
@@ -35,8 +35,9 @@ Users can also view an index of all assets on the platform as well as their curr
 When navigating to an individual asset page, users can conduct basic research and make trades.
 
 * Asset price history is charted on 1D, 1M, 3M, 1Y, 2Y, and 5Y timeframes.
-* Basic data on corporate structure, financials, and trade activity is available through a "Show More" button in the Asset About component.
-* Both buys and sells are filled through the Trade Sidebar component.
+* Basic data on corporate structure, financials, and trade activity is available through a "Show More" button in the `AssetAbout` component.
+* Both buys and sells are filled through the `TradeSidebar` component.
+* The `AssetDetail` component's primary colors are set by the global state's `ui.signal` slice, which is in turn determined by the price movement (`bullish` or `bearish`) in the currently displayed `AssetChart`.
 
 ![cool-name-dashboard](app/assets/images/cool-name_dashboard-hd.gif)
 
@@ -79,16 +80,6 @@ class Fill < ApplicationRecord
     end
   end
 
-  def ensure_portfolio_holdings(portfolio_id)
-    portfolio = Portfolio.find(portfolio_id)
-    if self.size <= portfolio.holdings[self.asset_id]
-      true
-    else
-      errors[:size].push("Insufficient shares")
-      false
-    end
-  end
-
   def ensure_buying_power(portfolio_id)
     if (self.price * self.size) <= User.find(portfolio_id).buying_power
       true
@@ -98,6 +89,17 @@ class Fill < ApplicationRecord
     end
   end
 
+
+  def ensure_portfolio_holdings(portfolio_id)
+    portfolio = Portfolio.find(portfolio_id)
+
+    if self.size <= portfolio.holdings[self.asset_id]
+        true
+    else
+      errors[:size].push("Insufficient shares")
+      false
+    end
+  end
 end
 ```
 
