@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import AssetSearchContainer from './asset_search/asset_search_container';
 
+
 class Header extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,14 @@ class Header extends React.Component {
       <div className="nav-wrapper">
       <header className="navbar">
         <div className='logo-search'>
-          <Link to='/'><div className='logo'>😎</div></Link>
+          <Link to='/'>
+            <div className='logo'>
+              <img src="https://i.imgur.com/c3k30SS.png"
+                alt="Faquity"
+
+                />
+            </div>
+          </Link>
 
           <AssetSearchContainer assets={this.props.assets}/>
         </div>

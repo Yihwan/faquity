@@ -12,7 +12,7 @@ class LoginForm extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearErrors(); 
+    this.props.clearErrors();
   }
 
   handleChange(field) {
@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
           <div className='right-half'>
             <div className='outer-form-container'>
               <form onSubmit={this.handleSubmit}>
-                <h2>Welcome to Cool-Name</h2>
+                <h2>Welcome to Faquity</h2>
 
                 <input
                   type="text"
