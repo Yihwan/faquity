@@ -30,9 +30,10 @@ class AssetDetail extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-
     if ( nextProps.asset && (nextProps.asset.id !== parseInt(this.props.match.params.assetId))) {
-      this.setState({ loading: true }, () => this.props.fetchAsset(this.props.match.params.assetId)
+      this.setState({ loading: true },
+        () => this.props.fetchAsset(this.props.match.params.assetId)
+        .then(() => this.props.fetchLatestPrice(this.props.asset.fake_symbol))
         .then(() => this.setState({loading: false})));
     }
   }
