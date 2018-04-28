@@ -4,6 +4,7 @@ import DashboardSummary from './summary';
 import DashboardChart from './dashboard_chart';
 import { Link, withRouter } from 'react-router-dom';
 import { currencyFormatter } from '../../../utils/helpers';
+import { ScaleLoader } from 'halogenium';
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -101,7 +102,13 @@ class Dashboard extends React.Component {
 
     return(
       this.state.loading ?
-        <div>Loading...</div>
+        <div>
+          <ScaleLoader
+            className="loading-spinner"
+            color="#21ce99"
+            size="16px"
+            margin="4px"/>
+        </div>
       :
         <section className="main">
           <div className="left">

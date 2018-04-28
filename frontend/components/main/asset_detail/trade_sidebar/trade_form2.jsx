@@ -2,15 +2,21 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { currencyFormatter } from '../../../../utils/helpers';
 
-const ReviewButton = () => (
-  <div className="review-btn">
-    Review
+const renderConfirmation = () => (
+  <div>
+    "YO"
   </div>
 );
 
-const InitialForm = () => (
-
+const ReviewButton = () => (
+  <div className="review-btn" onClick={() => renderConfirmation()}>
+    Review
+  </div>
 );
+//
+// const InitialForm = () => (
+//
+// );
 
 class TradeForm extends React.Component {
   constructor(props) {
@@ -117,9 +123,11 @@ class TradeForm extends React.Component {
 
           {this.state.formStage === "initial" && <ReviewButton />}
 
-          <div className={submitClass}>
-            <input type="submit" value="Submit Order"/>
-          </div>
+          {this.state.formStage !== "initial" &&
+            <div className={submitClass}>
+              <input type="submit" value="Submit Order"/>
+            </div>
+          }
 
       </form>
 

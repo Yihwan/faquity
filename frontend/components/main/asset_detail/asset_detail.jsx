@@ -5,6 +5,7 @@ import AssetSummary from './asset_research/asset_summary';
 import AssetAbout from './asset_research/asset_about';
 import AssetChart from './asset_research/asset_chart';
 import AssetWatch from './asset_watch';
+import { ScaleLoader } from 'halogenium';
 
 class AssetDetail extends React.Component {
   constructor(props) {
@@ -42,7 +43,13 @@ class AssetDetail extends React.Component {
 
     return(
       this.state.loading ?
-        <div>Loading...</div>
+      <div>
+        <ScaleLoader
+          className="loading-spinner"
+          color="#21ce99"
+          size="16px"
+          margin="4px"/>
+      </div>
       :
         <section className="main">
           <div className="left">
