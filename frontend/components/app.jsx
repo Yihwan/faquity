@@ -26,7 +26,6 @@ const App = () => (
       <AuthRoute exact path="/login" component={LogInFormContainer} />
       <ProtectedRoute exact path='/assets/:assetId' component={AssetDetailContainer}/>
       <ProtectedRoute path='/' component={ProtectedViews}/>
-      p
     </Switch>
   </div>
 
