@@ -2,6 +2,7 @@ import React from 'react';
 
 export default () => (
   <div className="mobile-lockout">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <div className="content">
       <h2>Hi, there!</h2>
       <p>Faquity isn't quite ready for the small screen. 😵</p>
