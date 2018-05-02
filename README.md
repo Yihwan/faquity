@@ -1,6 +1,6 @@
 # Faquity
-**[Live Demo](https://yihwan-marketsim.herokuapp.com/#/)** |
-[Wiki](https://github.com/Yihwan/robinhood-clone/wiki)
+**[Live Demo](http://faquity.com)** |
+[Wiki](https://github.com/Yihwan/faquity/wiki)
 
 Faquity is a browser-based trading platform where users can practice trading with realtime market data without incurring any actual risk. Faquity's design identity was cloned from Robinhood's beta web application.
 
