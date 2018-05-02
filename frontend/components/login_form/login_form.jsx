@@ -56,7 +56,7 @@ class LoginForm extends React.Component {
           <div className='right-half'>
             <div className='outer-form-container'>
               <form onSubmit={this.handleSubmit}>
-                <h2>Welcome to Faquity</h2>
+                <h2>Welcome to Fāquity</h2>
 
                 <input
                   type="text"
