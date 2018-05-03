@@ -20,7 +20,7 @@ class Header extends React.Component {
   navLinks() {
     return(
       <div className='nav-links'>
-        <div className='link' onClick={() => this.props.history.push('/')}>Home</div>
+        <div className='link' onClick={() => this.props.history.push('/')}>Dashboard</div>
         <div>
           {this.props.currentUser.first_name} &nbsp;
           {this.props.currentUser.last_name}
@@ -38,14 +38,14 @@ class Header extends React.Component {
       <div className="nav-wrapper">
       <header className="navbar">
         <div className='logo-search'>
-          <Link to='/'>
+          <a href="http://faquity.com">
             <div className='logo'>
               <img src="https://i.imgur.com/c3k30SS.png"
                 alt="Faquity"
 
                 />
             </div>
-          </Link>
+          </a>
 
           <AssetSearchContainer assets={this.props.assets}/>
         </div>
