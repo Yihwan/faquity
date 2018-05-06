@@ -171,6 +171,9 @@ end
 
 ## Future Development
 
+### Multi-step Trade Confirmation Form
+Users should probably not be able to trade hundreds of thousands of dollars worth of assets with just one click! :) The first priority for future development is to add a multi-step trade confirmation form that also integrates trade errors. 
+
 ### Portfolio Snapshot Cron Job
 In order to chart portfolio performance over time, Faquity will run a cron job that creates a new `PortfolioSnapshot` for each user's portfolio.
 
