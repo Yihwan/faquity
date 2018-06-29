@@ -1,6 +1,5 @@
 # Faquity
-**[Live Demo](http://faquity.com)** |
-[Wiki](https://github.com/Yihwan/faquity/wiki)
+**[Live Demo](http://faquity.com)** 
 
 Faquity is a browser-based trading platform where users can practice trading with realtime market data without incurring any actual risk. Faquity's design identity was cloned from Robinhood's beta web application.
 
@@ -172,7 +171,7 @@ end
 ## Future Development
 
 ### Multi-step Trade Confirmation Form
-Users should probably not be able to trade hundreds of thousands of dollars worth of assets with just one click! :) The first priority for future development is to add a multi-step trade confirmation form that also integrates trade errors. 
+Users should probably not be able to trade hundreds of thousands of dollars worth of assets with just one click! :) The first priority for future development is to add a multi-step trade confirmation form that also integrates trade errors.
 
 ### Allow multiple demo accounts
 Currently, a user signed-in to a demo account will be automatically logged out if a different user logs into the demo account.
