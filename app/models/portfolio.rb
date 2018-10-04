@@ -55,8 +55,8 @@ class Portfolio < ApplicationRecord
   def value
     value = 0
 
-    self.holdings.each do |asset, num_shares|
-      holdings_value = Asset.find_by(id: asset).latest_price * num_shares
+    self.holdings.each do |asset_id, num_shares|
+      holdings_value = Asset.find(asset_id).latest_price * num_shares
       value += holdings_value
     end
 

@@ -6,18 +6,30 @@ class TradeForm extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.state = this.props.fill;
+    this.state = {
+      fill: this.props.fill,
+      message: null
+    };
   }
 
   handleChange(type) {
     return (e) => {
-      this.setState({ [type]: e.target.value });
+      this.setState({
+        fill: Object.assign({}, this.state.fill, {[type]: e.target.value})
+      });
     };
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.createFill(this.state);
+    this.props.createFill(this.state.fill);
+
+    const size = this.state.fill.size;
+    const action = this.state.fill.side === 'buy' ? 'bought' : 'sold';
+
+    const message = `You have ${action} ${size}!`;
+
+    this.setState({ message });
   }
 
   renderErrors() {
@@ -48,8 +60,10 @@ class TradeForm extends React.Component {
       submitClass += " bearish";
     }
 
+    console.log(this.state.fill);
+
     return(
-      this.state.price === -1 ?
+      this.state.fill.price === -1 ?
         <div>Loading ...</div>
       :
       <section >
@@ -63,14 +77,14 @@ class TradeForm extends React.Component {
           <div className={marketPriceClass}>
             <label>Market Price</label>
             <div>
-              {currencyFormatter.format(this.state.price)}
+              {currencyFormatter.format(this.state.fill.price)}
             </div>
           </div>
 
           <div className="estimated">
             <label>Estimated {estimatedWord}</label>
             <div>
-              {currencyFormatter.format(this.state.price * this.state.size)}
+              {currencyFormatter.format(this.state.fill.price * this.state.fill.size)}
             </div>
           </div>
 
